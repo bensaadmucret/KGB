@@ -3,11 +3,11 @@
 namespace mzb;
 
 use mzb\Router\Router;
+use mzb\Validator\Validator;
 
 require_once 'Helper.php';
 
 require_once __DIR__ . '/vendor/autoload.php';
-
 
 
 $router = new Router();
