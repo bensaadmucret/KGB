@@ -1,0 +1,27 @@
+{
+    "name": "mzb/github-copilot",
+    "authors": [
+        {
+            "name": "mohammedBensaad",
+            "email": "bensaadmucret@gmail.com"
+        }
+    ],
+    "description": "Github Copilot",
+    "license": "MIT",
+    "keywords": [
+        "github",
+        "copilot",
+        "github-copilot",
+        "github-copilot-api",
+        "github-copilot-web"
+    ],      
+    "version": "1.0.0",
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "mzb\\": "src/"
+        }
+
+    }
+}
