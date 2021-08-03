@@ -61,4 +61,37 @@ class Validator
 
         return true;
     }
+
+    public function is_phone($phone)
+    {
+        if (strlen($phone) < 10) {
+            return false;
+        }
+        if (!preg_match('/^[0-9]{10,}$/', $phone)) {
+            return false;
+        }
+        return true;
+    }
+
+    public function is_code_postal($code_postal)
+    {
+        if (strlen($code_postal) < 5) {
+            return false;
+        }
+        if (!preg_match('/^[0-9]{5,}$/', $code_postal)) {
+            return false;
+        }
+        return true;
+    }
+    
+    public function is_date($date)
+    {
+        if (strlen($date) < 10) {
+            return false;
+        }
+        if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $date)) {
+            return false;
+        }
+        return true;
+    }
 }
