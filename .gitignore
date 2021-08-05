@@ -1,0 +1,38 @@
+
+ixudra
+Posted 6 years ago #
+Hey Jason
+
+First thing I see: do NOT ignore the composer.lock file, it's bad practice. For the explanation on this, I will refer you to a talk by Jordi Boggiano (creator of composer) on the subject - he can explain it much better than I can.
+
+Here is a sample of the gitignore file I use on my projects. I won't claim that it's perfect, but it will get you started.
+
+/bootstrap/compiled.php
+/vendor
+
+
+/build/logs
+/build/coverage
+
+
+/app/tests/_log
+
+
+composer.phar
+
+
+.DS_Store
+
+
+/.idea
+/_ide_helper.php
+
+
+/app/config/packages
+/public/packages
+
+
+/node_modules
+
+
+.env
