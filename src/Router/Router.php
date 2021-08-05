@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
+
 
 namespace mzb\Router;
 
-
 /** Source : https://github.com/bramus/router
- * 
- * 
+ *
+ *
  */
 
 class Router

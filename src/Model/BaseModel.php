@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 
 namespace mzb\Model;
 
@@ -13,8 +14,8 @@ class BaseModel
         $this->db = DbConnection::get()->connect();
     }
 
-    public function query( $table){
+    public function query($table)
+    {
         $sql = "SELECT * WHERE .'$table'. ";
-
     }
 }
