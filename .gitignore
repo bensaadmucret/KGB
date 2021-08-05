@@ -18,7 +18,6 @@ Here is a sample of the gitignore file I use on my projects. I won't claim that 
 /app/tests/_log
 
 
-composer.phar
 
 
 .DS_Store
