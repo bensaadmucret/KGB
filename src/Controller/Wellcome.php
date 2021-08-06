@@ -9,13 +9,17 @@ class Wellcome extends Controller
 {
     public function index()
     {
-        $data = ['welcome, word'] ;
+        $data = ['welcome, JT'] ;
         $this->render('/wellcome/index', compact('data'));
     }
 
+  
+
     public function test()
     {
-        $title = 'Test';
-        $this->render('/wellcome/index', compact('title'));
+        $data = ['welcome', 'Mohammed le zouzou'];
+      
+
+        $this->render('/wellcome/test', compact(['data']));
     }
 }
