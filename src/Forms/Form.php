@@ -88,13 +88,8 @@ class Form
      */
     public function addBouton(string $texte, array $attributs = []):self
     {
-        // On ouvre le bouton
         $this->form .= '<button ';
-
-        // On ajoute les attributs
         $this->form .= $attributs ? $this->addAttributes($attributs) : '';
-
-        // On ajoute le texte et on ferme
         $this->form .= ">$texte</button>";
 
         return $this;
@@ -200,9 +195,7 @@ class Form
     public function addFor(string $name, string $texte, array $attributs = []):self
     {
         $this->form .= "<label for='$name'";
-     
         $this->form .= $attributs ? $this->addAttributes($attributs) : '';
-        
         $this->form .= ">$texte</label>";
 
         return $this;
