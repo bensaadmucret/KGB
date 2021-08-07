@@ -47,10 +47,7 @@ class Form
     {
         $attribute_data='';
         $short_attributes = ['autocomplete', 'autofocus', 'checked', 'disabled',
-        'formaction', 'formenctype', 'formmethod', 'formnovalidate',
-        'formtarget', 'list', 'max', 'maxlength', 'min', 'multiple',
-        'pattern', 'placeholder', 'readonly', 'required', 'size',
-        'src', 'step', 'type', 'value'];
+        'list', 'multiple', 'readonly', 'required'];
         foreach ($attributes as $key => $value) {
             if (in_array($key, $short_attributes)) {
                 $attribute_data .= " $key ";
