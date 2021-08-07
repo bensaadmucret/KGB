@@ -59,9 +59,14 @@ class Form
 
         
        
-     
- 
-
+    /**
+     * add input
+     *
+     * @param string $name
+     * @param string $value
+     * @param array $attribute
+     * @return self
+     */
     public function addText(string $name, string $value = ' ', array $attribute=[]): self
     {
         $this->form .='<input type="text" name="' . $name . '" value="' . $value . '"';
@@ -89,13 +94,27 @@ class Form
 
         return $this;
     }
-
+    /**
+     * add input Textearea
+     *
+     * @param string $name
+     * @param string $value
+     * @return self
+     */
     public function addTextarea(string $name, string $value = ''): self
     {
         $this->form .='<textarea name="' . $name . '">' . $value . '</textarea>';
         return $this;
     }
     
+    /**
+     * add Sélect
+     *
+     * @param string $name
+     * @param array $options
+     * @param string $selected
+     * @return self
+     */
     public function addSelect(string $name, array $options, string $selected = ''): self
     {
         $this->form .='<select name="' . $name . '">';
@@ -108,6 +127,14 @@ class Form
         return $this;
     }
     
+    /**
+     * addCheckbox
+     *
+     * @param string $name
+     * @param string $value
+     * @param boolean $checked
+     * @return self
+     */
     public function addCheckbox(string $name, string $value = '', bool $checked = false): self
     {
         $this->form .='<input type="checkbox" name="' . $name . '" value="' . $value . '"';
@@ -115,6 +142,14 @@ class Form
         return $this;
     }
     
+    /**
+     * addRadio
+     *
+     * @param string $name
+     * @param array $options
+     * @param string $selected
+     * @return self
+     */
     public function addRadio(string $name, array $options, string $selected = ''): self
     {
         foreach ($options as $key => $value) {
@@ -124,12 +159,26 @@ class Form
         return $this;
     }
     
+    /**
+     * addHidden
+     *
+     * @param string $name
+     * @param string $value
+     * @return self
+     */
     public function addHidden(string $name, string $value = ''): self
     {
         $this->form .='<input type="hidden" name="' . $name . '" value="' . $value . '" />';
         return $this;
     }
     
+    /**
+     * addFile
+     *
+     * @param string $name
+     * @param string $value
+     * @return self
+     */
     public function addFile(string $name, string $value = ''): self
     {
         $this->form .= '<input type="file" name="' . $name . '" value="' . $value . '" />';
@@ -137,7 +186,7 @@ class Form
     }
 
     /**
-     * Ajout d'un label
+     * add label
      * @param string $for
      * @param string $texte
      * @param array $attributs
@@ -145,13 +194,10 @@ class Form
      */
     public function addFor(string $name, string $texte, array $attributs = []):self
     {
-        // On ouvre la balise
         $this->form .= "<label for='$name'";
-
-        // On ajoute les attributs
+     
         $this->form .= $attributs ? $this->addAttributes($attributs) : '';
-
-        // On ajoute le texte
+        
         $this->form .= ">$texte</label>";
 
         return $this;
@@ -159,7 +205,7 @@ class Form
     
     
     /**
-     * ferme la balise form
+     * close form
      *
      * @return self
      */
@@ -169,6 +215,11 @@ class Form
         return $this;
     }
 
+    /**
+     * créer un formulaire
+     *
+     * @return void
+     */
     public function renderForm()
     {
         return $this->form;
