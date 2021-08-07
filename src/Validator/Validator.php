@@ -5,9 +5,14 @@ namespace mzb\Validator;
 
 class Validator
 {
+    /**
+     * vérification de la validité de l'adresse email
+     *
+     * @param [type] $email
+     * @return boolean
+     */
     public function is_email($email)
     {
-    
 
         // Test for the minimum length the email can be.
         if (strlen($email) < 6) {
@@ -63,6 +68,12 @@ class Validator
         return true;
     }
 
+    /**
+     * vérification du téléphone
+     *
+     * @param [type] $phone
+     * @return boolean
+     */
     public function is_phone($phone)
     {
         if (strlen($phone) < 10) {
@@ -74,6 +85,12 @@ class Validator
         return true;
     }
 
+    /**
+     * Vérification de la structure du code postal
+     *
+     * @param [type] $code_postal
+     * @return boolean
+     */
     public function is_code_postal($code_postal)
     {
         if (strlen($code_postal) < 5) {
@@ -84,7 +101,14 @@ class Validator
         }
         return true;
     }
-    
+
+
+    /**
+     * Vérification de la structure de la date
+     *
+     * @param [type] $date
+     * @return boolean
+     */
     public function is_date($date)
     {
         if (strlen($date) < 10) {
@@ -94,5 +118,23 @@ class Validator
             return false;
         }
         return true;
+    }
+
+    /**
+     * Vérification si tous le schamps proposés sont remplis
+     * @param array $form Tableau issu du formulaire
+     * @param array $fields Tableau de champs obligatoires
+     * @return bool
+     */
+
+    public function validate_form(array $form, array $fields)
+    {
+        $errors = [];
+        foreach ($fields as $field) {
+            if (!isset($form[$field]) || empty($form[$field])) {
+                $errors[] = $field;
+            }
+        }
+        return $errors;
     }
 }

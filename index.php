@@ -36,7 +36,7 @@ $router = new Router();
 
 
 $router->setNamespace('mzb\Controller');
-$router->get('/', 'Wellcome@test');
+$router->get('/', 'Wellcome@index');
 
 
 

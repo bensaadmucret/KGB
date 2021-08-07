@@ -4,93 +4,169 @@ namespace mzb\Forms;
 
 class Form
 {
-    public $form = [];
+    private $form = '';
 
-    public function __construct(array $form)
+
+    public function create()
     {
-        $this->form = $form;
+        return $this->form;
     }
     
 
-
-    public function start_form(string $action = null, string $method = 'post', string $id = null): self
-    {
-        '<form  action="' . $action . '" method="' . $method . ' " id="' . $id . '"/>';
+    /**
+     * Début de la balise form
+     *
+     * @param string $action
+     * @param string $method
+     * @param string $id
+     * @param array $attribute
+     * @return self
+     */
+    public function start_form(
+        string $action = "",
+        string $method = 'post',
+        string $id = '#',
+        array $attribute = []
+    ): self {
+        $this->form .= '<form  action="' . $action . '" method="' . $method . ' " id="' . $id . '"';
+        $this->form .= $attribute ? $this->addAttributes($attribute).'>' : '>';
         return $this;
     }
     
-
-    public function addText(string $name, string $value = ''): self
+    /**
+     * Ajoute les attributs du formulaire
+     *
+     * @param array $attributes
+     * @return self
+     */
+    private function addAttributes(array $attributes): string
     {
-        '<input type="text" name="' . $name . '" value="' . $value . '" />';
+        $attribute_data='';
+        $short_attributes = ['autocomplete', 'autofocus', 'checked', 'disabled',
+        'formaction', 'formenctype', 'formmethod', 'formnovalidate',
+        'formtarget', 'list', 'max', 'maxlength', 'min', 'multiple',
+        'pattern', 'placeholder', 'readonly', 'required', 'size',
+        'src', 'step', 'type', 'value'];
+        foreach ($attributes as $key => $value) {
+            if (in_array($key, $short_attributes)) {
+                $attribute_data .= " $key ";
+            } else {
+                $attribute_data .=  "$key = '$value'";
+            }
+        }
+        return  $attribute_data;
+    }
+
+        
+       
+     
+ 
+
+    public function addText(string $name, string $value = ' ', array $attribute=[]): self
+    {
+        $this->form .='<input type="text" name="' . $name . '" value="' . $value . '"';
+        $this->form .= $attribute ? $this->addAttributes($attribute).'>' : '>';
+
         return $this;
     }
 
-    public function addSubmit(string $name, string $value = '', string $onclick = ''): self
+    /**
+     * Ajoute un bouton submettre
+     * @param string $texte
+     * @param array $attributs
+     * @return Form
+     */
+    public function addBouton(string $texte, array $attributs = []):self
     {
-        '<input type="button" name="' . $name . '" value="' . $value . '" onclick="' . $onclick . '" />';
+        // On ouvre le bouton
+        $this->form .= '<button ';
+
+        // On ajoute les attributs
+        $this->form .= $attributs ? $this->addAttributes($attributs) : '';
+
+        // On ajoute le texte et on ferme
+        $this->form .= ">$texte</button>";
+
         return $this;
     }
 
     public function addTextarea(string $name, string $value = ''): self
     {
-        '<textarea name="' . $name . '">' . $value . '</textarea>';
+        $this->form .='<textarea name="' . $name . '">' . $value . '</textarea>';
         return $this;
     }
     
     public function addSelect(string $name, array $options, string $selected = ''): self
     {
-        '<select name="' . $name . '">';
+        $this->form .='<select name="' . $name . '">';
         foreach ($options as $key => $value) {
-            '<option value="' . $key . '"';
-            if ($key == $selected) {
-                ' selected="selected"';
-            }
-            echo '>' . $value . '</option>';
+            $this->form .= '<option value="' . $key . '"';
+            $this->form .= $key == $selected ? ' selected="selected >' : '>';
+            $this->form .= $value . '</option>';
         }
-        echo '</select>';
+        $this->form .='</select>';
         return $this;
     }
     
     public function addCheckbox(string $name, string $value = '', bool $checked = false): self
     {
-        '<input type="checkbox" name="' . $name . '" value="' . $value . '"';
-        if ($checked) {
-            echo ' checked="checked"';
-        }
-        echo ' />';
+        $this->form .='<input type="checkbox" name="' . $name . '" value="' . $value . '"';
+        $this->form .= $checked  ? 'checked=checked />' : '/>';
         return $this;
     }
     
     public function addRadio(string $name, array $options, string $selected = ''): self
     {
         foreach ($options as $key => $value) {
-            '<input type="radio" name="' . $name . '" value="' . $key . '"';
-            if ($key == $selected) {
-                echo ' checked="checked"';
-            }
-            echo ' />';
+            $this->form .='<input type="radio" name="' . $name . '" value="' . $key . '"';
+            $this->form .= $key == $selected ? ' checked="checked /> ' : '/> ';
         }
         return $this;
     }
     
     public function addHidden(string $name, string $value = ''): self
     {
-        '<input type="hidden" name="' . $name . '" value="' . $value . '" />';
+        $this->form .='<input type="hidden" name="' . $name . '" value="' . $value . '" />';
         return $this;
     }
     
     public function addFile(string $name, string $value = ''): self
     {
-        '<input type="file" name="' . $name . '" value="' . $value . '" />';
+        $this->form .= '<input type="file" name="' . $name . '" value="' . $value . '" />';
+        return $this;
+    }
+
+    /**
+     * Ajout d'un label
+     * @param string $for
+     * @param string $texte
+     * @param array $attributs
+     * @return Form
+     */
+    public function addFor(string $name, string $texte, array $attributs = []):self
+    {
+        // On ouvre la balise
+        $this->form .= "<label for='$name'";
+
+        // On ajoute les attributs
+        $this->form .= $attributs ? $this->addAttributes($attributs) : '';
+
+        // On ajoute le texte
+        $this->form .= ">$texte</label>";
+
         return $this;
     }
     
     
-
-    public function end_form()
+    /**
+     * ferme la balise form
+     *
+     * @return self
+     */
+    public function end_form():self
     {
-        return '</form>';
+        $this->form .= '</form>';
+        return $this;
     }
 
     public function renderForm()
