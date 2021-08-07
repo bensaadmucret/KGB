@@ -6,6 +6,11 @@ class Form
 {
     private $form = '';
 
+    /**
+     * create form
+     *
+     * @return void
+     */
 
     public function create()
     {
@@ -213,15 +218,5 @@ class Form
     {
         $this->form .= '</form>';
         return $this;
-    }
-
-    /**
-     * créer un formulaire
-     *
-     * @return void
-     */
-    public function renderForm()
-    {
-        return $this->form;
     }
 }
