@@ -11,7 +11,6 @@ class Form
      *
      * @return void
      */
-
     public function create()
     {
         return $this->form;
