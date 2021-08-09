@@ -22,9 +22,6 @@ class Wellcome extends Controller
         $token = new Csrf();
         $token->generateTokenAndSetItToSessionIfNotExists();
         $key = $token->getTokenFromSession();
-        dump($key);
-
-
         $data = ['welcome, JT'] ;
        
         $form = new Form();
