@@ -2,9 +2,12 @@
 
 namespace mzb\Forms;
 
+use Nette\Utils\Strings;
+
 class Form
 {
     private $form = '';
+   
 
     /**
      * create form
@@ -28,14 +31,25 @@ class Form
      */
     public function start_form(
         string $action = "",
-        string $method = 'post',
+        string $method = 'POST',
         string $id = '#',
         array $attribute = []
     ): self {
-        $this->form .= '<form  action="' . $action . '" method="' . $method . ' " id="' . $id . '"';
+        $this->form .= '<form  action="' . $action . '"method="' . $method . '"id="' . $id . '"';
         $this->form .= $attribute ? $this->addAttributes($attribute).'>' : '>';
         return $this;
     }
+
+    public function addToken($token): self
+    {
+        $this->form .= '<input type="hidden" name="token" value="' . $token . '">';
+        return $this;
+    }
+
+
+        
+
+    
     
     /**
      * Ajoute les attributs du formulaire
@@ -71,6 +85,37 @@ class Form
     public function addText(string $name, string $value = ' ', array $attribute=[]): self
     {
         $this->form .='<input type="text" name="' . $name . '" value="' . $value . '"';
+        $this->form .= $attribute ? $this->addAttributes($attribute).'>' : '>';
+
+        return $this;
+    }
+    /**
+     * email input
+     *
+     * @param string $name
+     * @param string $value
+     * @param array $attribute
+     * @return self
+     */
+    public function addEmail(string $name, string $value = ' ', array $attribute=[]): self
+    {
+        $this->form .='<input type="email" name="' . $name . '" value="' . $value . '"';
+        $this->form .= $attribute ? $this->addAttributes($attribute).'>' : '>';
+
+        return $this;
+    }
+
+    /**
+     * password input
+     *
+     * @param string $name
+     * @param string $value
+     * @param array $attribute
+     * @return self
+     */
+    public function addPassword(string $name, string $value = ' ', array $attribute=[]): self
+    {
+        $this->form .='<input type="password" name="' . $name . '" value="' . $value . '"';
         $this->form .= $attribute ? $this->addAttributes($attribute).'>' : '>';
 
         return $this;
