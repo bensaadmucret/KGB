@@ -1,0 +1,145 @@
+a:link {
+  text-decoration: none;
+}
+.menu-top {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15rem;
+  background: #1e2339;
+  height: 33px;
+}
+
+.btn-primary-menu {
+  border: 0;
+  color: #f1f1f1;
+  background: #565968;
+  font-size: 1rem;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-primary-menu:hover {
+  border: 0;
+  color: #f1f1f1;
+  background: #4e6bfc;
+  font-size: 1rem;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.site-banner {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5rem;
+  background: #1e2339;
+  color: #b6d4fe;
+  height: 33px;
+}
+.fa-linkedin-square {
+  display: flex;
+  background: #1e2339;
+  color: #b6d4fe;
+  font-size: 1.5rem;
+  line-height: 120%;
+  padding-left: 1rem;
+  align-items: center;
+}
+
+.btn-primary {
+  border: 0;
+  background: #565968;
+  font-size: 1rem;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+}
+.header-image {
+  position: relative;
+  background-image: url("../images/header-paris.jpeg");
+  background-color: #cccccc;
+  height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.header-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  padding: 0.8rem;
+  background-color: #ffffff;
+  opacity: 0.8;
+  border-radius: 5px;
+}
+.date-event {
+  display: flex;
+  margin-right: 0;
+  color: #1e2339;
+  font-weight: 900;
+  text-align: center;
+}
+.fa-chevron-right {
+  color: orange;
+  padding: 6px;
+}
+
+.lieu-event {
+  display: flex;
+  color: #1e2339;
+  font-weight: 900;
+}
+
+.header {
+  background-color: #f1f1f1;
+  padding: 130px;
+  text-align: center;
+}
+
+#navbar {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+#navbar a {
+  align-items: center;
+  float: left;
+  display: block;
+  color: #0f0808;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.content {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 160px;
+}
