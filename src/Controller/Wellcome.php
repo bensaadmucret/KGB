@@ -50,5 +50,6 @@ class Wellcome extends Controller
         dump($data['email']);
         dump($data['password']);
         dump($data['token']);
+        
     }
 }
