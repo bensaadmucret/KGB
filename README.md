@@ -1,2 +1,1 @@
-# Github Copilot
-## creation of the project with copilot github.
+# Application web avec architecture de type MVC avec PHP
