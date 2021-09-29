@@ -9,7 +9,7 @@ Here is a sample of the gitignore file I use on my projects. I won't claim that 
 
 /bootstrap/compiled.php
 /vendor
-
+vendor
 
 /build/logs
 /build/coverage
