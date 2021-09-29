@@ -1,19 +1,16 @@
 {
-    "name": "mzb/github-copilot",
+    "name": "mzb/kgb",
     "authors": [
         {
             "name": "mohammedBensaad",
             "email": "bensaadmucret@gmail.com"
         }
     ],
-    "description": "Github Copilot",
+    "description": "L’objectif est de créer un site internet permettant la gestion des données du KGB.",
     "license": "MIT",
     "keywords": [
-        "github",
-        "copilot",
-        "github-copilot",
-        "github-copilot-api",
-        "github-copilot-web"
+        "gestion",
+        "KGB"        
     ],      
     "version": "1.0.0",
     "minimum-stability": "stable",
