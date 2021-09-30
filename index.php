@@ -32,11 +32,10 @@ $router->set404('/api(/.*)?', function () {
 
 
 
-$router->get('/admin', 'Connexion@login');
-$router->post('/admin', 'Connexion@login');
+$router->get('/dashboard', 'Connexion@index');
+$router->post('/admin', 'Connexion@index');
 
-$router->post('/login', 'Auth@login');
-$router->get('/login', 'Connexion@index');
+
 
 
 $router->get('', 'Wellcome@index');

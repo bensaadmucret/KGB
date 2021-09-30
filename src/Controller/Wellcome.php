@@ -17,15 +17,13 @@ class Wellcome extends Controller
 {
     public function index()
     {
-        session_start();
-
         $token = new Csrf();
         $token->generateTokenAndSetItToSessionIfNotExists();
         $key = $token->getTokenFromSession();
         $data = ['welcome, JT'] ;
        
         $form = new Form();
-        $form->start_form('/', 'post', 'Wellcome', [ 'class'=>'form-control', ])
+        $form->start_form('/', 'post', 'Wellcome', [ 'class'=>'form-control', 'form-text wow fadeInUp animated'])
         ->addFor('email', 'email')->addText('email', '', [ 'class'=>'form-control' ])
         ->addFor('email', 'email')->addEmail('email', '', [ 'class'=>'form-control', 'maxlength'=>'40'])
         ->addFor('password', 'password')->addPassword('password', '', [ 'class'=>'form-control', 'required'=>'true', 'minlength'=>'4'])
@@ -50,6 +48,5 @@ class Wellcome extends Controller
         dump($data['email']);
         dump($data['password']);
         dump($data['token']);
-        
     }
 }

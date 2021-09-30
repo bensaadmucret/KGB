@@ -159,28 +159,28 @@
     </footer>
   <!-- JAVASCRIPT
     ================================================== -->
-    <!-- Libs JS -->
-    <script src=<?php ROOT ?>"/assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/aos/dist/aos.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/countup.js/dist/countUp.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/dropzone/dist/min/dropzone.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/flickity-fade/flickity-fade.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/highlightjs/highlight.pack.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/jarallax/dist/jarallax.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/jarallax/dist/jarallax-video.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/jarallax/dist/jarallax-element.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/quill/dist/quill.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/libs/typed.js/lib/typed.min.js"></script>
+<div class="back-to-top hidden-xs hidden-sm">TOP</div>
+<script src=<?php echo staticPath("assets/js/jquery-1.11.1.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/modernizr.custom.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/retina.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/SmoothScroll.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/owl.carousel.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/jquery.shuffle.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/jquery.scrollbox.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/wow.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/jquery.scrollstop.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/jquery.swipebox.min.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/custom.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/switcher.js"); ?> type="text/javascript"></script>
+<script src=<?php echo staticPath("assets/js/app.js"); ?>></script>
 
+ 
+</body>
+
+
+</html>
     <!-- Theme JS -->
-    <script src=<?php ROOT ?>"/assets/js/theme.min.js"></script>
-    <script src=<?php ROOT ?>"/assets/js/app.js"></script>
+  
+
 </body>
 </html>
