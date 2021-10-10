@@ -73,21 +73,21 @@ private static $installed = array (
     ),
     'nette/component-model' => 
     array (
-      'pretty_version' => 'v3.0.1',
-      'version' => '3.0.1.0',
+      'pretty_version' => 'v3.0.2',
+      'version' => '3.0.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '66409cf5507c77edb46ffa88cf6a92ff58395601',
+      'reference' => '20a39df12009029c7e425bc5e0439ee4ab5304af',
     ),
     'nette/forms' => 
     array (
-      'pretty_version' => 'v3.1.4',
-      'version' => '3.1.4.0',
+      'pretty_version' => 'v3.1.5',
+      'version' => '3.1.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3883b688d6bc3b7ff0054996a9df9059a8768c4d',
+      'reference' => '2786ebc772cde724dad945e8bc2d7c578d831f4e',
     ),
     'nette/http' => 
     array (

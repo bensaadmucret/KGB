@@ -30,6 +30,7 @@ $router->get('/dashboard', 'Connexion@index');
 $router->post('/admin', 'Connexion@index');
 $router->get('', 'Wellcome@index');
 $router->post('', 'Wellcome@postFormSucceeded');
+$router->get('/login', 'Auth@login');
 
 
 

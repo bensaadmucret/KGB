@@ -253,4 +253,13 @@ class Form
         $this->form .= '</form>';
         return $this;
     }
+
+    public function setRequired(string $name, string $texte, array $attributs = []):self
+    {
+        $this->form .= "<label for='$name'";
+        $this->form .= $attributs ? $this->addAttributes($attributs) : '';
+        $this->form .= ">$texte</label>";
+
+        return $this;
+    }
 }
