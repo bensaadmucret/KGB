@@ -28,9 +28,9 @@ class Connection
         if ($params === false) {
             throw new \Exception("Error reading database configuration file");
         }
-        // connect to the postgresql database
+    
         $conStr = sprintf(
-            "pgsql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
+            "mysql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
             $params['host'],
             $params['port'],
             $params['database'],
@@ -57,16 +57,16 @@ class Connection
         return static::$conn;
     }
 
-    private function __construct()
+    public function __construct()
     {
     }
-    private function __clone()
+    public function __clone()
     {
     }
-    private function __wakeup()
+    public function __wakeup()
     {
     }
-    private function close()
+    public function close()
     {
         if (null !== static::$conn) {
             static::$conn = null;

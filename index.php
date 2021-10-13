@@ -1,10 +1,14 @@
 <?php declare(strict_types=1);
 
 namespace mzb;
-
+use mzb\Db\Connection;
 use mzb\Router\Router;
 
 require_once __DIR__ . '/vendor/autoload.php';
+
+
+
+
 
 $router = new Router();
 $router->setNamespace('mzb\Controller');
@@ -26,11 +30,14 @@ $router->set404('/api(/.*)?', function () {
     echo json_encode($jsonArray);
 });
 
-$router->get('/dashboard', 'Connexion@index');
-$router->post('/admin', 'Connexion@index');
+
+
 $router->get('', 'Wellcome@index');
 $router->post('', 'Wellcome@postFormSucceeded');
 $router->get('/login', 'Auth@login');
+$router->post('/login', 'Auth@checkLogin');
+$router->get('/logout', 'Auth@logout');
+$router->get('/dashboard', 'Auth@dashboard');
 
 
 

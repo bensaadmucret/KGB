@@ -4,6 +4,16 @@ namespace mzb\Security;
 
 class Session
 {
+    public function start(): void
+    {
+        if(isset($_SESSION)) {
+            return;
+        }else{
+            session_start();
+        }
+        
+    }
+
     public function get_session(string $name)
     {
         if (!isset($_SESSION[$name])) {
@@ -12,7 +22,7 @@ class Session
         return $_SESSION[$name];
     }
 
-    public function set_session(string $name, array $data)
+    public function set_session(string $name, string $data)
     {
         $_SESSION[$name] = $data;
     }
