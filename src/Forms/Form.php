@@ -97,7 +97,7 @@ class Form
      * @param array $attribute
      * @return self
      */
-    public function addEmail(string $name, string $value = ' ', array $attribute=[]): self
+    public function addEmail(string $name, string $value, array $attribute=[]): self
     {
         $this->form .='<input type="email" name="' . $name . '" value="' . $value . '"';
         $this->form .= $attribute ? $this->addAttributes($attribute).'>' : '>';
@@ -241,6 +241,21 @@ class Form
 
         return $this;
     }
+
+
+   
+   
+    /**
+     * addAttributes
+     *
+     * @param array $attributs
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->form;
+    }
+
     
     
     /**

@@ -45,4 +45,19 @@ class Session
             }
         }
     }
+
+    public function get_flash(string $name)
+    {
+        if (!isset($_SESSION[$name])) {
+            return null;
+        }
+        $flash = $_SESSION[$name];
+        unset($_SESSION[$name]);
+        return $flash;
+    }
+
+  
+
+  
+  
 }
