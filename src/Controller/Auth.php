@@ -80,44 +80,29 @@ class Auth extends Controller
          
 
            $query = new QueryBuilder();
-              $q = $query->select('*')
+              $q = $query
                 ->from('administrateur');
+
                
-             
-            
-            $res = $db->query($q);
-            $res->setFetchMode(\PDO::FETCH_ASSOC);
+            $res =  $query->execute();
             $result = $res->fetch();
+            dump($result);
            
-            $session = new Session();
-            $session->start();
-
            
-        
-
-
-
-
-         
-            
-            if($result['email'] === $_POST['email'] 
-            && password_verify($_POST['password'], $result['password_admin'])
-            && $this->token->getTokenFromSession()=== $_POST['token']){
-                $session->set_session('email', $_POST['email']);
-                $session->set_session('admin', 'admin');
-              
-                $redirection = new RedirectResponse('dashboard', 302);
+            if($result['email'] === isset($_POST['email']) && $result['password'] === isset($_POST['password'])){
+                $this->session->set_session('admin', true);
+                $redirection = new RedirectResponse('dashboard' , 302);
                 return $redirection->send();
-            }else{
-                $form = new Form();
-                $form_login = new LoginForm($form);
-                $form =  $form_login->make();
-                $session = new Session();
-                $session->start();
-                $session->set_session('error','Votre email ou mot de passe est incorrect');
-                
-                return $this->render('/admin/login', compact('form', 'session'));
             }
+            else{
+               
+                $form_login = new LoginForm($this->form);
+                $form =  $form_login->make();
+                $this->session->set_session('error','Votre email ou mot de passe est incorrect');
+                $session = $this->session;
+                return $this->render('/admin/login', compact('session', 'form'));
+            }
+            
         }
             
         

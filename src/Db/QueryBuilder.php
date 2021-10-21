@@ -24,17 +24,11 @@ class QueryBuilder
     
     public function __construct()
     {
-       
-       
-           
-       
         $this->query = '';
         $this->params = [];
         $this->types = [];
-
         $this->table = '';
         $this->columns = [];
-
         $this->where = [];
         $this->order = [];
         $this->limit = null;
@@ -67,21 +61,15 @@ class QueryBuilder
         return $this;
     }
     
-    public function columns(array $columns): QueryBuilder
+    public function columns(string $columns): QueryBuilder
     {
         $this->columns = $columns;
         return $this;
     }
     
-    public function where( string $query): QueryBuilder
-    {
-        $this->where = $query;
-        return $this;
-    }
-    
     
 
-    public function order(array $order): QueryBuilder
+    public function order(string $order): QueryBuilder
     {
         $this->order = $order;
         return $this;
@@ -131,13 +119,20 @@ class QueryBuilder
         return $this;
     }
 
-    public function andWhere(string $column, string $operator, $value): QueryBuilder
+    /**
+     * TODO refactor where avec une requête préparer
+     * 
+     */
+
+    public function Where(string $column, string $operator, string $value): QueryBuilder
     {
-        $this->where[] = [
-            'column' => $column,
-            'operator' => $operator,
-            'value' => $value,
-        ];
+       
+            $this->column = $column;
+            $this->operator = $operator;
+            $this->value = $value;
+            
+        
+        
         return $this;
     }
 
@@ -147,7 +142,9 @@ class QueryBuilder
      
 
         if ($this->where) {
-            $query .= ' WHERE ' . $this->where;
+       
+                $query .= ' WHERE ' . $this->column . ' ' . $this->operator . ' ' . $this->value;
+
         }
 
         if ($this->order) {
@@ -181,6 +178,7 @@ class QueryBuilder
         }
 
         $stmt = Connection::get()->connect()->prepare($query);
+        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
         $stmt->execute();
 
         return $stmt;

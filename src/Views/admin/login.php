@@ -1,8 +1,4 @@
-<?php
-
-echo '<h1>Login</h1>';
-
-echo '<p>You can view all the users, posts, and comments here.</p>';
+<?php declare(strict_types=1);
 ?>
 
 
