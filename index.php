@@ -38,6 +38,7 @@ $router->get('/login', 'Auth@login');
 $router->post('/login', 'Auth@checkLogin');
 $router->get('/logout', 'Auth@logout');
 $router->get('/dashboard', 'Auth@dashboard');
+$router->post('/dashboard', 'Auth@dashboard');
 
 
 

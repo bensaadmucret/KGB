@@ -22,7 +22,7 @@ class LoginForm
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     
     $form = new Form();
-    $form->start_form('', 'POST', '', 
+    $form->start_form('login', 'POST', 'login', 
     [ 'class'=>'form-control form-text wow fadeInUp animated' ])
     ->addFor('email', 'email')->addEmail('email', $email, 
     [ 'class'=>'form-control form-text wow fadeInUp animated', 

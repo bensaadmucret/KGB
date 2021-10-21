@@ -5,14 +5,20 @@ namespace mzb\Validator;
 
 class Validator
 {
+
+    public static function clear(string $string )
+    {
+        return trim(strip_tags($string));
+    }
     /**
      * vérification de la validité de l'adresse email
      *
      * @param [type] $email
      * @return boolean
      */
-    public function is_email($email)
+    public  static function is_email(string $email)
     {
+        
 
         // Test for the minimum length the email can be.
         if (strlen($email) < 6) {
@@ -68,13 +74,22 @@ class Validator
         return true;
     }
 
+    public static function is_password(string $password)
+    {
+        if (strlen($password) < 6) {
+            return false;
+        }
+
+        return true;
+    }
+
     /**
      * vérification du téléphone
      *
      * @param [type] $phone
      * @return boolean
      */
-    public function is_phone($phone)
+    public static function is_phone(int $phone)
     {
         if (strlen($phone) < 10) {
             return false;
@@ -91,7 +106,7 @@ class Validator
      * @param [type] $code_postal
      * @return boolean
      */
-    public function is_code_postal($code_postal)
+    public static function is_code_postal(int $code_postal)
     {
         if (strlen($code_postal) < 5) {
             return false;
@@ -109,7 +124,7 @@ class Validator
      * @param [type] $date
      * @return boolean
      */
-    public function is_date($date)
+    public static function is_date(int $date)
     {
         if (strlen($date) < 10) {
             return false;
@@ -127,7 +142,7 @@ class Validator
      * @return bool
      */
 
-    public function validate_form(array $form, array $fields)
+    public static function validate_form(array $form, array $fields)
     {
         $errors = [];
         foreach ($fields as $field) {
