@@ -2,6 +2,7 @@
 
 
 namespace mzb\Model;
+use mzb\Model\UserModel;
 
 use mzb\Db\Connection as DbConnection;
 
@@ -24,7 +25,7 @@ abstract class BaseModel
 
     public function getById($id)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE id = :id";
+        $sql = "SELECT * FROM {$this->table} WHERE id_administrateur = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -42,7 +43,7 @@ abstract class BaseModel
             $stmt->bindValue(":{$key}", $value);
         }
         $stmt->execute();
-        return $this->db->lastInsertId();
+        //return $this->db->lastInsertId();
     }
 
     public function update($id, $data)
@@ -75,10 +76,64 @@ abstract class BaseModel
         return $this->table;
     }
 
+    public function setName($name)
+    {
+        $this->nom = $name;
+    }
+
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+   
+   public function setEmail(string $email)
+   {
+       $this->email = $email;
+   }
+    public function setPassword(string $password)
+    {
+       
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
+       
+    }
+
     public function setTable($table)
     {
         $this->table = $table;
     }
+
+    public function save()
+    {
+        if ($this->emailExist($this->email)) {
+            return false;
+        }
+       
+        return $this->insert($this->getData());
+     
+    }
+
+    public function emailExist(string $email)
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE email = :email";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function getData()
+    {
+        return [
+            'nom' => $this->nom,
+            'prenom' => $this->prenom,
+            'email' => $this->email,
+            'password_admin' => $this->password,
+        ];
+    }
+
+    
+
+  
 
     public function getDb()
     {
@@ -89,6 +144,8 @@ abstract class BaseModel
     {
         $this->db = $db;
     }
+
+   
 
     public function getAllBy($field, $value)
     {

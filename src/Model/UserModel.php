@@ -1,9 +1,10 @@
 <?php
 
 
+namespace mzb\Model;
 use mzb\Model\BaseModel;
 
-class Users extends BaseModel{
+class UserModel extends BaseModel{
 
     /**
      * @var string
@@ -40,6 +41,8 @@ class Users extends BaseModel{
             return false;
         }
     }
+
+    
     
 
     /**

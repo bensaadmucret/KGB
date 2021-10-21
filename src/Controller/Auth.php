@@ -9,6 +9,7 @@ use mzb\Db\Connection;
 
 use mzb\Security\Csrf;
 use mzb\Db\QueryBuilder;
+use mzb\Model\UserModel;
 use mzb\Security\Session;
 use mzb\Services\LoginForm;
 use mzb\Controller\Controller;
@@ -31,6 +32,15 @@ class Auth extends Controller
     }
     public function login()
     {
+
+        $userModel = new UserModel();
+        $userModel->setName('mzb');
+        $userModel->setPrenom('mazin');
+        $userModel->setEmail('exemple@aol.com');
+        $userModel->setPassword('123456');
+        $userModel->setTable('administrateur');
+        $userModel->save();
+
         
         $form_login = new LoginForm($this->form);
         $form =  $form_login->make();

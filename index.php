@@ -1,10 +1,12 @@
 <?php declare(strict_types=1);
 
 namespace mzb;
+use mzb\Model\UserModel;
 use mzb\Db\Connection;
 use mzb\Router\Router;
 
 require_once __DIR__ . '/vendor/autoload.php';
+
 
 
 
