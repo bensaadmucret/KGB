@@ -18,7 +18,8 @@
         "nette/http": "^3.1",
         "nette/forms": "^3.1",
         "guzzlehttp/guzzle": "^7.3",
-        "symfony/http-foundation": "^5.3"
+        "symfony/http-foundation": "^5.3",
+        "robmorgan/phinx": "^0.12.9"
     },
     "autoload": {
         "files":["src/Helper.php"],

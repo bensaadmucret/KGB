@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'Nette\\ArgumentOutOfRangeException' => $vendorDir . '/nette/utils/src/exceptions.php',
     'Nette\\Bridges\\FormsDI\\FormsExtension' => $vendorDir . '/nette/forms/src/Bridges/FormsDI/FormsExtension.php',
     'Nette\\Bridges\\FormsLatte\\FormMacros' => $vendorDir . '/nette/forms/src/Bridges/FormsLatte/FormMacros.php',
@@ -108,6 +109,8 @@ return array(
     'Nette\\Utils\\Strings' => $vendorDir . '/nette/utils/src/Utils/Strings.php',
     'Nette\\Utils\\UnknownImageFileException' => $vendorDir . '/nette/utils/src/Utils/exceptions.php',
     'Nette\\Utils\\Validators' => $vendorDir . '/nette/utils/src/Utils/Validators.php',
+    'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+    'ReturnTypeWillChange' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
