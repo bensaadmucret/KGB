@@ -5,7 +5,7 @@ namespace mzb\Model;
 
 use mzb\Db\Connection as DbConnection;
 
-class BaseModel
+abstract class BaseModel
 {
     protected $db;
 
