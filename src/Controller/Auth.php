@@ -71,7 +71,7 @@ class Auth extends Controller
         }
         $modelUser = new UserModel();
        
-        $result = $modelUser->getAll('administrateur');
+        $result = $modelUser->getRow('administrateur');
 
         
         dump($result);

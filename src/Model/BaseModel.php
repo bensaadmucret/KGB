@@ -16,23 +16,33 @@ abstract class BaseModel
         $this->db = DbConnection::get()->connect();
     }
 
-    public function getAll($table)
+    public function getAll(string $table)
     {
         $sql = "SELECT * FROM $table";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-    
 
-    public function getById($id)
+    public function getRow(string $table)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE id_administrateur = :id";
+        $sql = "SELECT * FROM $table";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function getById($table, $id)
+    {
+        $sql = "SELECT * FROM $table WHERE id = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+    
+
+   
 
     public function insert($data)
     {
