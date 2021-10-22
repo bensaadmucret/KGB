@@ -3,8 +3,8 @@
 
 use Nette\Http\RequestFactory;
 
-define('DS', DIRECTORY_SEPARATOR);
-define("ROOT", $_SERVER['DOCUMENT_ROOT']);
+if(!defined('DS')){ define('DS',DIRECTORY_SEPARATOR); }
+if(!defined('ROOT')){define("ROOT", $_SERVER['DOCUMENT_ROOT']);}
 
 // create a function static  absolute path for css, js, image
 function staticPath($path)
