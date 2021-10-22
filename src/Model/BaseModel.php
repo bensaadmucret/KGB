@@ -2,6 +2,7 @@
 
 
 namespace mzb\Model;
+
 use mzb\Model\UserModel;
 
 use mzb\Db\Connection as DbConnection;
@@ -86,15 +87,13 @@ abstract class BaseModel
         $this->prenom = $prenom;
     }
    
-   public function setEmail(string $email)
-   {
-       $this->email = $email;
-   }
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
     public function setPassword(string $password)
     {
-       
         $this->password = password_hash($password, PASSWORD_DEFAULT);
-       
     }
 
     public function setTable($table)
@@ -109,7 +108,6 @@ abstract class BaseModel
         }
        
         return $this->insert($this->getData());
-     
     }
 
     public function emailExist(string $email)
@@ -180,6 +178,4 @@ abstract class BaseModel
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
-
-    
 }

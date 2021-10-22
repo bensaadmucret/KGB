@@ -15,8 +15,6 @@ use mzb\Services\LoginForm;
 use mzb\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-
-
 class Auth extends Controller
 {
     private $session;
@@ -28,16 +26,14 @@ class Auth extends Controller
         $this->session = new Session();
         $this->token = new Csrf();
         $this->form = new Form();
-
     }
     public function login()
     {
-
         $userModel = new UserModel();
         $userModel->setName('mzb');
-        $userModel->setPrenom('mazin');
-        $userModel->setEmail('exemple@aol.com');
-        $userModel->setPassword('123456');
+        $userModel->setPrenom('mohammed');
+        $userModel->setEmail('mohammed.bensaad@itga.fr');
+        $userModel->setPassword('password');
         $userModel->setTable('administrateur');
         $userModel->save();
 
@@ -48,8 +44,8 @@ class Auth extends Controller
         $this->session->start();
  
 
-        if($this->session->get_session('admin')){
-            $redirection = new RedirectResponse('dashboard' , 302);
+        if ($this->session->get_session('admin')) {
+            $redirection = new RedirectResponse('dashboard', 302);
             return $redirection->send();
         }
        
@@ -58,52 +54,46 @@ class Auth extends Controller
         
 
         return $this->render('/admin/login', compact('form', 'session'));
-       
-        
     }
 
-        /**
-         * vérification des données du formulaire
-         *  redirection de l'utilisateur admin
-         *
-         * @return void
-         */
-        public function checkLogin()
-        {
-            
-          
-            try {
-              $db =   Connection::get()->connect(); 
-            } catch (\PDOException $e) {
-                echo $e->getMessage();
-            }
+    /**
+     * vérification des données du formulaire
+     *  redirection de l'utilisateur admin
+     *
+     * @return void
+     */
+    public function checkLogin()
+    {
+        try {
+            $db =   Connection::get()->connect();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
          
 
-           $query = new QueryBuilder();
-              $q = $query
-                ->from('administrateur');
+        $query = new QueryBuilder();
+        $q = $query
+                ->from('administrateur')
+                ->where('email', '=', $_POST['email']);
 
                
-            $res =  $query->execute();
-            $result = $res->fetch();
-            dump($result);
+        $res =  $query->execute();
+        $result = $res->fetch();
+        dump($result);
            
            
-            if($result['email'] === isset($_POST['email']) && $result['password'] === isset($_POST['password'])){
-                $this->session->set_session('admin', true);
-                $redirection = new RedirectResponse('dashboard' , 302);
-                return $redirection->send();
-            }
-            else{
-               
-                $form_login = new LoginForm($this->form);
-                $form =  $form_login->make();
-                $this->session->set_session('error','Votre email ou mot de passe est incorrect');
-                $session = $this->session;
-                return $this->render('/admin/login', compact('session', 'form'));
-            }
-            
+        if ($result['email'] === isset($_POST['email']) && $result['password'] === isset($_POST['password'])) {
+            $this->session->set_session('admin', true);
+            $redirection = new RedirectResponse('dashboard', 302);
+            return $redirection->send();
+        } else {
+            $form_login = new LoginForm($this->form);
+            $form =  $form_login->make();
+            $this->session->set_session('error', 'Votre email ou mot de passe est incorrect');
+            $session = $this->session;
+            return $this->render('/admin/login', compact('session', 'form'));
         }
+    }
             
         
 
@@ -111,9 +101,9 @@ class Auth extends Controller
     {
         $session = new Session();
         $session->start();
-        if($session->get_session('email') != null){
+        if ($session->get_session('email') != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -121,17 +111,14 @@ class Auth extends Controller
 
     public function dashboard()
     {
-        if($this->isLogged())
-        {
+        if ($this->isLogged()) {
             return $this->render('/admin/dashboard');
-        }
-        else
-        {
+        } else {
             $session = new Session();
             $session->start();
-            $session->set_session('error','Vous devez vous connecter pour accéder à cette page');
+            $session->set_session('error', 'Vous devez vous connecter pour accéder à cette page');
 
-            $redirection = new RedirectResponse('login' , 302);
+            $redirection = new RedirectResponse('login', 302);
             return $redirection->send();
         }
     }
@@ -145,7 +132,7 @@ class Auth extends Controller
         $session->start();
         $session->destroy_session('admin');
         $session->destroy_session('email');
-        $redirection = new RedirectResponse('/' , 302);
-            return $redirection->send();
+        $redirection = new RedirectResponse('/', 302);
+        return $redirection->send();
     }
 }
