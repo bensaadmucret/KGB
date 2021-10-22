@@ -69,16 +69,11 @@ class Auth extends Controller
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }
-         
+        $modelUser = new UserModel();
+       
+        $result = $modelUser->getAll('administrateur');
 
-        $query = new QueryBuilder();
-        $q = $query
-                ->from('administrateur')
-                ->where('email', '=', $_POST['email']);
-
-               
-        $res =  $query->execute();
-        $result = $res->fetch();
+        
         dump($result);
            
            

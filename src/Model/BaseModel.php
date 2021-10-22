@@ -16,13 +16,14 @@ abstract class BaseModel
         $this->db = DbConnection::get()->connect();
     }
 
-    public function getAll()
+    public function getAll($table)
     {
-        $sql = "SELECT * FROM {$this->table}";
+        $sql = "SELECT * FROM $table";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
 
     public function getById($id)
     {
@@ -44,17 +45,17 @@ abstract class BaseModel
             $stmt->bindValue(":{$key}", $value);
         }
         $stmt->execute();
-        //return $this->db->lastInsertId();
+        return $this->db->lastInsertId();
     }
 
-    public function update($id, $data)
+    public function update($id, $data, $table)
     {
         $fields = [];
         foreach ($data as $key => $value) {
             $fields[] = "{$key} = :{$key}";
         }
         $fields = implode(',', $fields);
-        $sql = "UPDATE {$this->table} SET {$fields} WHERE id = :id";
+        $sql = "UPDATE {$table} SET {$fields} WHERE id = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id);
         foreach ($data as $key => $value) {
@@ -72,10 +73,7 @@ abstract class BaseModel
         return $stmt->execute();
     }
 
-    public function getTable()
-    {
-        return $this->table;
-    }
+   
 
     public function setName($name)
     {
@@ -101,18 +99,21 @@ abstract class BaseModel
         $this->table = $table;
     }
 
+
+
+
     public function save()
     {
-        if ($this->emailExist($this->email)) {
+        if ($this->emailExist($this->table, $this->email)) {
             return false;
         }
        
         return $this->insert($this->getData());
     }
 
-    public function emailExist(string $email)
+    public function emailExist(string $table, string $email)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE email = :email";
+        $sql = "SELECT * FROM {$table} WHERE email = :email";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
