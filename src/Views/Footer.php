@@ -3,7 +3,7 @@
 
     <!-- FOOTER
     ================================================== -->
-    <footer class="py-8 py-md-11 pt-5 bg-light text-black-50">
+    <footer class="section-first priority-2 color-scheme-6 py-8 py-md-11 pt-5 bg-light text-black-50">
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-4 col-lg-3">
@@ -19,42 +19,7 @@
 
             <!-- Social -->
             <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
-              <li class="list-inline-item list-social-item mr-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="assets/img/icons/social/instagram.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item mr-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="assets/img/icons/social/facebook.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item mr-3">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="assets/img/icons/social/twitter.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
-              <li class="list-inline-item list-social-item">
-                <a href="#!" class="text-decoration-none">
-                  <img
-                    src="assets/img/icons/social/pinterest.svg"
-                    class="list-social-icon"
-                    alt="..."
-                  />
-                </a>
-              </li>
+      
             </ul>
           </div>
           <div class="col-6 col-md-4 col-lg-2">
@@ -65,21 +30,7 @@
 
             <!-- List -->
             <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset">text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li>
-                <a href="#!" class="text-reset"> text </a>
-              </li>
+
             </ul>
           </div>
           <div class="col-6 col-md-4 col-lg-2">
@@ -90,18 +41,7 @@
 
             <!-- List -->
             <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li>
-                <a href="#!" class="text-reset">text </a>
-              </li>
+ 
             </ul>
           </div>
           <div class="col-6 col-md-4 offset-md-4 col-lg-2 offset-lg-0">
@@ -112,27 +52,7 @@
 
             <!-- List -->
             <ul class="list-unstyled text-muted mb-0">
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li>
-                <a href="#!" class="text-reset"> text </a>
-              </li>
+             
             </ul>
           </div>
           <div class="col-6 col-md-4 col-lg-2">
@@ -141,15 +61,7 @@
 
             <!-- List -->
             <ul class="list-unstyled text-muted mb-0">
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li class="mb-3">
-                <a href="#!" class="text-reset"> text </a>
-              </li>
-              <li>
-                <a href="#!" class="text-reset"> text </a>
-              </li>
+              
             </ul>
           </div>
         </div>

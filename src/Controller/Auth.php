@@ -72,12 +72,16 @@ class Auth extends Controller
         $modelUser = new UserModel();
        
         $result = $modelUser->getRow('administrateur');
-
-        
+        $this->session->start();
+        $token = $this->token->getTokenFromSession();
+       dump($token);
+       dump($this->token->isTokenValidInSession('OjX1vg5fEZPcsQWJ1CBmOiT8DiOwI8ZVvFsgk5EPfVVoqV8BRQQ!'));
+       dump($this->token->removeTokenFromSessionIfExists($token));
+        dump($_POST['token']);
         dump($result);
            
            
-        if ($result['email'] === isset($_POST['email']) && $result['password'] === isset($_POST['password'])) {
+        if ($result['email'] === isset($_POST['email']) && $result['password'] === isset($_POST['password'])&& $this->token->getTokenFromSession() === isset($_POST['token'])) {
             $this->session->set_session('admin', true);
             $redirection = new RedirectResponse('dashboard', 302);
             return $redirection->send();

@@ -20,6 +20,7 @@ Sluzhba KGB </title>
 
 <!-- CSS
 ++++++++++++++++++++++++++++++++++++++ -->
+
 <link rel="stylesheet" href=<?php echo staticPath("assets/css/switcher.css"); ?> />
 <link rel="stylesheet" href=<?php echo staticPath("assets/css/bootstrap.min.css");?> />
 <link rel="stylesheet" href=<?php echo staticPath("assets/css/owl.carousel.min.css");?> />
