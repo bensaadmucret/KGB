@@ -4,6 +4,13 @@ namespace mzb\Db;
 
 use mzb\Db\Connection;
 
+/**
+ * Class QueryBuilder
+ *
+ * @package mzb\Db
+ * àautor Mohammed Bensaad
+ */
+
 class QueryBuilder
 {
     private $connection;

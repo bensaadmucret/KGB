@@ -4,7 +4,10 @@
 namespace mzb\Db;
 
 /**
- * Represent the Connection
+ * Class Connection
+ * @package mzb\Db
+ * A simple wrapper for PDO
+ * @author Mohammed Bensaad
  */
 class Connection
 {
@@ -33,8 +36,8 @@ class Connection
             "mysql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
             $params['host'],
             $params['port'],
-            $params['database'],
-            $params['user'],
+            $params['dbname'],
+            $params['username'],
             $params['password']
         );
 

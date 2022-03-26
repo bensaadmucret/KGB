@@ -3,7 +3,7 @@
 namespace mzb\Services;
 
 use mzb\Forms\Form;
-use mzb\Security\Csrf;
+use mzb\Session\Csrf;
 
 class LoginForm
 {

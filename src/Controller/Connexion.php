@@ -5,7 +5,7 @@ namespace mzb\controller;
 
 use mzb\Forms\Form;
 use mzb\Controller\Controller;
-use mzb\Security\Csrf;
+use mzb\Session\Csrf;
 use Nette\Http\RequestFactory;
 use Nette\Http\Response;
 

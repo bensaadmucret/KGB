@@ -7,6 +7,12 @@ use mzb\Model\UserModel;
 
 use mzb\Db\Connection as DbConnection;
 
+/**
+ * BaseModel
+ *
+ * @author Mohammed Bensaad
+ */
+
 abstract class BaseModel
 {
     protected $db;

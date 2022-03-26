@@ -2,23 +2,23 @@
 
 use Symfony\Component\HttpFoundation\Request;
 
-
-if(!defined('DS')){ define('DS',DIRECTORY_SEPARATOR); }
-if(!defined('ROOT')){define("ROOT", $_SERVER['DOCUMENT_ROOT']);}
-
-// create a function static  absolute path for css, js, image
-function staticPath($path)
-{
-  
-    $httpRequest  = Request::createFromGlobals();
-
-    //$baseUrl = $httpRequest->getPathInfo();
-    $baseUrl = $httpRequest->server->get('HTTP_HOST');
-    $baseUrl = 'http://'.$baseUrl;
- 
-  
-    return $baseUrl .DS. $path;
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+}
+if (!defined('ROOT')) {
+    define("ROOT", dirname($_SERVER['DOCUMENT_ROOT']));
+}
+if (!defined('APP_PATH')) {
+    define("APP_PATH", ROOT . DS);
 }
 
 
+// absolute path for css, js, image
+function assets($path)
+{
+    $httpRequest  = Request::createFromGlobals();
+    $baseUrl = $httpRequest->server->get('HTTP_HOST');
+    $baseUrl = 'http://'.$baseUrl;
+    return $baseUrl . $path;
+}
 

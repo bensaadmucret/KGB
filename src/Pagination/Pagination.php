@@ -2,80 +2,87 @@
 
 namespace mzb\Pagination;
 
-class Pagination
-{
-    private $_items;
+/**
+ * Pagination class
+ *
+ * @package mzb\Pagination
+ */
 
- 
-    private $_itemsPerPage;
+// Create a new class pagination
+ Class Pagination
+ {
+     // Create a new property
+     protected $total;
+     protected $perPage;
+     protected $currentPage;
+     protected $url;
 
-   
-    private $_currentPage;
+     // Create a new method
+     public function __construct($total, $perPage, $currentPage, $url)
+     {
+         $this->total = $total;
+         $this->perPage = $perPage;
+         $this->currentPage = $currentPage;
+         $this->url = $url;
+     }
 
+     // Create a new method
+     public function get()
+     {
+         // Get the total number of pages
+         $pages = ceil($this->total / $this->perPage);
 
-    private $_pages;
+         // Get the current page
+         $currentPage = $this->currentPage;
 
-   
-    private $itemsPerPage;
+         // Create an array for the pagination items
+         $items = [];
 
-   
-    private $itemsPerPage;
+         // Create a first page
+         $items[] = $this->createItem(1, 'First');
 
-    /**
-     *
-     *
-     * @param [type] $items
-     * @param [type] $itemsPerPage
-     */
-    public function __construct($items, $itemsPerPage)
-    {
-        $this->items = $items;
-        $this->itemsPerPage = $itemsPerPage;
-    }
-    
-    /**
-     * getting the number of pages
-     * calculate the number of pages
-     *
-     * @return void
-     */
-    public function getPages()
-    {
-        $this->pages = ceil($this->items / $this->itemsPerPage);
-        return $this->pages;
-    }
+         // Create a previous page
+         if ($currentPage > 1) {
+             $items[] = $this->createItem($currentPage - 1, 'Previous');
+         }
 
-    /**
-     * getting the current page
-     *
-     * @return void
-     */
-    public function getCurrentPage()
-    {
-        $this->currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-    
-        
-        return $this->currentPage;
-    }
-    
-    
-    public function getOffset()
-    {
-        $this->getCurrentPage();
-        
-       
-        $offset = ($this->currentPage - 1) * $this->itemsPerPage;
-        
-        
-        return $offset;
-    }
-    
-    /**
-     *
-     * @return void
-     */
-    public function getLimit()
-    {
-        return $this->itemsPerPage;
-    }
-}
+         // Create the pagination items
+         for ($i = 1; $i <= $pages; $i++) {
+             $items[] = $this->createItem($i, $i);
+         }
+
+         // Create a next page
+         if ($currentPage < $pages) {
+             $items[] = $this->createItem($currentPage + 1, 'Next');
+         }
+
+         // Create a last page
+         $items[] = $this->createItem($pages, 'Last');
+
+         // Create an array for the pagination
+         $pagination = [
+             'items' => $items,
+             'total' => $this->total,
+             'perPage' => $this->perPage,
+             'currentPage' => $this->currentPage,
+             'url' => $this->url,
+         ];
+
+         // Return the pagination array
+         return $pagination;
+     }
+
+     // Create a new method
+     protected function createItem($page, $text)
+     {
+         // Create an array for the pagination item
+         $item = [
+             'page' => $page,
+             'text' => $text,
+             'url' => $this->url . $page,
+         ];
+
+         // Return the pagination item array
+         return $item;
+     }
+ }

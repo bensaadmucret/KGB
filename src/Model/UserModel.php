@@ -4,6 +4,12 @@
 namespace mzb\Model;
 use mzb\Model\BaseModel;
 
+/**
+ * User Model
+ *
+ * @package mzb\Model
+ * @author  Mohammed Bensaad
+ */
 class UserModel extends BaseModel{
 
     /**
