@@ -1,6 +1,6 @@
 <!-- Navbar Dark -->
 <div id="wrapper">
-	<header id="header" class="color-scheme-13 switcher-item-1">
+	<header id="header" class="color-scheme-10 switcher-item-1">
 		<div class="container">
 			<div class="row">
 				<nav class="col-xs-4 hidden-xs hidden-sm">
@@ -11,7 +11,8 @@
 					</ul>
 				</nav>
 				<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-0">
-					<a href="#" id="logo" class="tada animated"><img src=<?php echo staticPath("assets/images/logos/kgb.png")?> alt=""></a>
+					<a href="#" id="logo" class="tada animated">
+                        <img src=<?php echo assets("/assets/images/logos/KGB.png")?> alt="logo KGB"></a>
 				</div>
 				<nav class="col-xs-4 hidden-xs hidden-sm">
 					<ul class="nav right">

@@ -4,7 +4,6 @@ namespace mzb;
 
 use mzb\Container\Container;
 use Mzb\Router\Router;
-
 class Application
 {
 

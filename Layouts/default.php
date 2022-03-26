@@ -1,7 +1,8 @@
 <?php
 
-include 'Header.php'; ?>
+include 'Header.php';
+include 'Navigation.php';
 
-            <?php echo $content; ?>
+echo $content;
 
-<?php include 'Footer.php'; ?>
+include 'Footer.php';
