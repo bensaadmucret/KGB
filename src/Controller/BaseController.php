@@ -3,7 +3,8 @@
 
 namespace mzb\Controller;
 
-use mzb\Container\Container;
+use mzb\Application;
+use mzb\Flash\Flash;
 
 /**
  * Class Controller
@@ -11,14 +12,15 @@ use mzb\Container\Container;
  * @author Mohammed Bensaad
  */
 
-class Controller
+class BaseController
 {
     protected $container;
     /**
      * @var Container
      */
     public function __construct() {
-        $this->container = new Container();
+        $this->container = Application::getContainer();
+       // dump($this->container);
     }
 
 
@@ -29,14 +31,14 @@ class Controller
      * @param string|null $message
      * @return bool
      */
-    public function redirect(string $url, int $statusCode, string $key, string $message = null): bool
+    public function redirect(string $url, int $statusCode): bool
     {
         try {
             /* Redirection vers une page différente du même dossier */
             $host  = $_SERVER['HTTP_HOST'];
             $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
             $extra = $url;
-            Flash::setMessage($key, $message);
+
             header("Location: http://$host$uri/$extra", TRUE, $statusCode);
             exit;
         } catch (\Exception $e) {

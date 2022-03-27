@@ -12,33 +12,57 @@ use mzb\Session\Session;
 
 class  Flash
 {
-    static $session;
+    private $session;
 
+    /**
+     * Constructor
+     *
+     * @param Session $session
+     */
     public function __construct()
     {
-        self::$session = new Session();
-        self::$session->start();
+        $this->session = new Session();
+        $this->session->start();
 
     }
 
-    public static function setMessage($key, $value)
+    /**
+     * Set flash message
+     *
+     * @param string $message
+     * @param string $type
+     * @return void
+     */
+    public function setMessage($key, $value)
     {
-        self::$session->set($key, $value);
+        $this->session->set($key, $value);
 
     }
 
-    public static function getMessage($key)
+    /**
+     * Get flash message
+     *
+     * @param string $key
+     * @return string
+     */
+    public function getMessage($key)
     {
-        if(self::$session->has($key))
+        if($this->session->has($key))
         {
-            $value = self::$session->get($key);
-            self::$session->remove($key);
+            $value = $this->session->get($key);
+            $this->session->remove($key);
             return $value;
         }
     }
 
-    public static function removeMessage($key)
+    /**
+     * Check if flash message exists
+     *
+     * @param string $key
+     * @return bool
+     */
+    public function removeMessage($key)
     {
-        self::$session->remove($key);
+        $this->session->remove($key);
     }
 }

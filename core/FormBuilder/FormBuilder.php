@@ -1,30 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace mzb\Form;
-
-
-use mzb\Form;
-
-/**
- * Class FormBuilder
- * @package mzb\Form
- * @author Mohammed Bensaad
- */
+namespace Core\FormBuilder;
 
 class FormBuilder
 {
     private $form = '';
-
+   
 
     /**
      * create form
+     *
      * @return void
      */
     public function create()
     {
         return $this->form;
     }
-
+    
 
     /**
      * Début de la balise form
@@ -51,7 +43,7 @@ class FormBuilder
         $this->form .= '<input type="hidden" name="token" value="' . $token . '">';
         return $this;
     }
-
+    
     /**
      * Ajoute les attributs du formulaire
      *
@@ -62,7 +54,7 @@ class FormBuilder
     {
         $attribute_data='';
         $short_attributes = ['autocomplete', 'autofocus', 'checked', 'disabled',
-            'list', 'multiple', 'readonly', 'required'];
+        'list', 'multiple', 'readonly', 'required'];
         foreach ($attributes as $key => $value) {
             if (in_array($key, $short_attributes)) {
                 $attribute_data .= " $key ";
@@ -72,7 +64,7 @@ class FormBuilder
         }
         return  $attribute_data;
     }
-
+       
     /**
      * add input
      *
@@ -146,7 +138,7 @@ class FormBuilder
         $this->form .='<textarea name="' . $name . '">' . $value . '</textarea>';
         return $this;
     }
-
+    
     /**
      * add Sélect
      *
@@ -166,7 +158,7 @@ class FormBuilder
         $this->form .='</select>';
         return $this;
     }
-
+    
     /**
      * addCheckbox
      *
@@ -181,7 +173,7 @@ class FormBuilder
         $this->form .= $checked  ? 'checked=checked />' : '/>';
         return $this;
     }
-
+    
     /**
      * addRadio
      *
@@ -198,7 +190,7 @@ class FormBuilder
         }
         return $this;
     }
-
+    
     /**
      * addHidden
      *
@@ -211,7 +203,7 @@ class FormBuilder
         $this->form .='<input type="hidden" name="' . $name . '" value="' . $value . '" />';
         return $this;
     }
-
+    
     /**
      * addFile
      *
@@ -239,7 +231,7 @@ class FormBuilder
         $this->form .= ">$texte</label>";
         return $this;
     }
-
+   
     /**
      * addAttributes
      *
@@ -251,8 +243,8 @@ class FormBuilder
         return $this->form;
     }
 
-
-
+    
+    
     /**
      * close form
      *

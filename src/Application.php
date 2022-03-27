@@ -13,16 +13,18 @@ class Application
     public static function run()
     {
         $router = new Router();
-        Router::setNameSpace('mzb\\Controller\\');
+        $router::setNameSpace('mzb\\Controller\\');
 
-        $router->add('GET', '/', 'HomeController@index', 'home');
-        /*$router->add('POST', '/login', 'AuthController@login', 'login');
-        $router->add('GET', '/login', 'AuthController@login', 'login');
-        $router->add('GET', '/dashboard', 'AuthController@dashboard', 'dashboard');
+        $router->add('GET','/', 'HomeController@index', 'home');
+        $router->add( 'GET','/login', 'AuthController@login', 'login');
+        $router->add('POST', '/login', 'AuthController@login', 'login');
+        $router->add('GET', '/logout', 'AuthController@logout', 'logout');
+
+      /*  $router->add('GET', '/dashboard', 'AuthController@dashboard', 'dashboard');
         $router->add('POST', '/dashboard', 'AuthController@dashboard', 'dashboard');
         $router->add('GET', '/logout', 'AuthController@logout', 'logout');
-        */
-        $router->dispatch();
+        $router->add('GET', '/register', 'AuthController@register', 'register');*/
+        $router->run();
     }
 
 
@@ -31,11 +33,13 @@ class Application
 
         $container =  new Container();
         $container->set('Session', new \mzb\Session\Session);
-        $container->set('Auth', new \mzb\Auth\LoginFormAuthenticator);
         $container->set('Database', new \mzb\Db\Connection);
-        $container->set('Router', new \Mzb\Router\Router);
+        $container->set('Router', new \mzb\Router\Router);
         $container->set('Validator', new \mzb\Validator\Validator);
         $container->set('Flash', new \mzb\Flash\Flash);
+        $container->set('Request', new \Symfony\Component\HttpFoundation\Request);
+        $container->set('Formfactory', new \mzb\Form\Formfactory);
+
 
 
         $container->get('Session')->start();

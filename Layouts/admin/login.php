@@ -1,27 +1,24 @@
-<?php declare(strict_types=1);
-?>
+<section class="section section-last priority-11 color-scheme-1 switcher-item-8">
+    <div class="container">
+        <h2 class="wow zoomIn"><?php echo $title ?? 'Login' ?></h2>
+        <h5 class="wow zoomIn">
+            <?php echo $message ?? 'Please login to access the admin area' ?>
+        </h5>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <?php if ($error): ?>
+                    <div alert-error class="alert alert-danger" ng-show="error">
+                        <h5 class="wow zoomIn"><strong style="color: #AA625E;">Error!</strong> <?php echo $error ?></h5>
+                    </div>
+                <?php endif ?>
+                <?php echo $form; ?>
+            </div>
 
-
-
-<section class="section section-last priority-6 color-scheme-1 switcher-item-9">
-	<div class="container">
-  <div class="row">
-
-
-    <main class="col-md-12 ms-sm-auto col-lg-12 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-     
-     
-
-
-      <h1 class="h2">Login</h1>
-            <h4><?php echo $session->get_flash('error'); ?></h4>
-            <?php echo $form->create();?>
-      </div>
-
-      
-
-    </main>
-  </div>
-</div>	
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <footer>© KGB </footer>
+            </div>
+        </div>
+    </div>
 </section>

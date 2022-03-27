@@ -1,35 +1,28 @@
 {
-    "name": "mzb/kgb",
+    "name": "kgb",
     "authors": [
         {
             "name": "mohammedBensaad",
             "email": "bensaadmucret@gmail.com"
         }
     ],
-    "description": "L’objectif est de créer un site internet permettant la gestion des données du KGB.",
     "license": "MIT",
-    "keywords": [
-        "gestion",
-        "KGB"        
-    ],      
-    "version": "1.0.0",
-    "minimum-stability": "stable",
-    "require": {
-        "symfony/http-foundation": "^5.3",
-        "robmorgan/phinx": "^0.12.9",
-        "mzb/php-router-matcher": "^1.0"
-    },
     "autoload": {
-        "files":["src/Helper.php"],
+        "files":["start/boostrap.php"],
         "psr-4": {
-            "mzb\\": "src/",
-            "tests\\": "tests/"
-           
+            "App\\": "app/",
+            "Core\\": "core/",
+            "App\\Test\\": "tests/"
         }
-
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/http-foundation": "6.1.x-dev",
+        "robmorgan/phinx": "9999999-dev",
+        "psr/container": "2.0.x-dev"
     },
     "require-dev": {
-        "symfony/var-dumper": "^5.3",
-        "phpunit/phpunit": "^8"
+        "symfony/var-dumper": "6.1.x-dev",
+        "phpunit/phpunit": "10.0.x-dev"
     }
 }

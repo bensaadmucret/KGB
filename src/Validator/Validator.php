@@ -6,7 +6,7 @@ namespace mzb\Validator;
 class Validator
 {
 
-    public static function clear(string $string )
+    public function clear(string $string )
     {
         return trim(strip_tags($string));
     }
@@ -16,7 +16,7 @@ class Validator
      * @param [type] $email
      * @return boolean
      */
-    public  static function is_email(string $email)
+    public function is_email(string $email)
     {
         
 
@@ -74,7 +74,7 @@ class Validator
         return true;
     }
 
-    public static function is_password(string $password)
+    public function is_password(string $password)
     {
         if (strlen($password) < 6) {
             return false;
@@ -89,7 +89,7 @@ class Validator
      * @param [type] $phone
      * @return boolean
      */
-    public static function is_phone(int $phone)
+    public function is_phone(int $phone)
     {
         if (strlen($phone) < 10) {
             return false;
@@ -106,7 +106,7 @@ class Validator
      * @param [type] $code_postal
      * @return boolean
      */
-    public static function is_code_postal(int $code_postal)
+    public function is_code_postal(int $code_postal)
     {
         if (strlen($code_postal) < 5) {
             return false;
@@ -124,7 +124,7 @@ class Validator
      * @param [type] $date
      * @return boolean
      */
-    public static function is_date(int $date)
+    public function is_date(int $date)
     {
         if (strlen($date) < 10) {
             return false;
@@ -142,7 +142,7 @@ class Validator
      * @return bool
      */
 
-    public static function validate_form(array $form, array $fields)
+    public function validate_form(array $form, array $fields)
     {
         $errors = [];
         foreach ($fields as $field) {

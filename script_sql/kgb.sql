@@ -142,7 +142,7 @@
         PRIMARY KEY (id_administrateur)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO administrateur (nom, prenom, email, password_admin) VALUES ('admin', 'admin', 'mohammed@itga.fr', 'admin');
+INSERT INTO administrateur (nom, prenom, email, password_admin) VALUES ('admin', 'admin', 'admin@admin.fr', 'admin');
 
 
 

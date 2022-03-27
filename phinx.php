@@ -1,12 +1,9 @@
 <?php
 
-use mzb\Db\Connection;
+use Core\Database\Connection;
 
-try {
-    $db =   Connection::get()->connect(); 
-  } catch (\PDOException $e) {
-      echo $e->getMessage();
-  }
+$db = Connection::get()->connect();
+
 
 return
 [
@@ -31,10 +28,10 @@ return
             'host' => 'localhost',
             'name' => 'development_db',
             'connection' => $db,
-            //'user' => 'root',
-            //'pass' => '',
+           // 'user' => 'root',
+           // 'pass' => '',
            // 'port' => '3306',
-           // 'charset' => 'utf8',
+            'charset' => 'utf8',
         ],
         'testing' => [
             'adapter' => 'mysql',
