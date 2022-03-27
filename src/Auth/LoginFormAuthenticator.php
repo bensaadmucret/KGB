@@ -32,7 +32,7 @@ class LoginFormAuthenticator
 
         $form->start('login-form', 'login', 'POST')
             ->addFor( 'Email', 'Votre email')
-            ->addEmail('email',  $email ?? '', ['label' => 'Email', 'required', 'class'=> 'form-text', 'autofocus', 'placeholder' => 'exemple@domain.com'])
+            ->addEmail('email',  $email ?? '', ['label' => 'Email', 'required' => true, 'class'=> 'form-text', 'autofocus', 'placeholder' => 'exemple@domain.com'])
             ->addFor( 'Password', 'Mot de passe')
             ->addPassword('password', 'password', ['label' => 'Password', 'required',  'class'=> 'form-text', 'placeholder' => 'votre mot de passe'])
             ->addToken( $token)

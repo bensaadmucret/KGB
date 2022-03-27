@@ -1,4 +1,4 @@
-<section class="section section-last priority-11 color-scheme-1 switcher-item-8">
+<section class="section  color-scheme-2">
     <div class="container">
         <h2 class="wow zoomIn"><?php echo $title ?? 'Login' ?></h2>
         <h5 class="wow zoomIn">
