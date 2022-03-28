@@ -25,6 +25,8 @@
 <link rel="stylesheet" href=<?php echo assets("/assets/css/swipebox.min.css");?> />
 <link rel="stylesheet" href=<?php echo assets("/assets/style.css");?> />
 
+
+
 <!-- Google fonts
 ++++++++++++++++++++++++++++++++++++++ -->
 <link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700,700italic' rel='stylesheet' type='text/css' />

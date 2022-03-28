@@ -1,186 +1,438 @@
-(function($) {
-    jQuery(document).ready(function($) {
+/* JS Document */
 
-        /* Creation of additional elements
-	    ================================================== */
-        $('.section').wrapInner('<div class="contents"></div>');
-        $('.section').append('<div class="half-pattern left"><div class="rotate"></div></div><div class="half-pattern right"><div class="rotate"></div></div>');
-        $('.next-section').wrapInner('<span></span>');
-        $('h2,h3').wrapInner('<div class="headline"></div>');
-        $('.headline').append('<div class="pattern-left"><span class="icon-polygon"></span></div><div class="pattern-right"><span class="icon-polygon"></span></div>');
-        $('.grid .item div.wow').wrapInner('<div class="rotate-left"></div>').wrapInner('<div class="rotate-right"></div>').wrapInner('<div class="filter-item"></div>');
-        $('.vertical-separator').wrapInner('<span></span>');
-        $('.vertical-separator').each(function(i) {
-            var height = $(this).parents(".row").height();
-            $('span', this).css('height', height - 50);
-        });
-        $('.entry-meta-details span').append('<div class="line-decoration hidden-xs"></div>');
-        $('.progress-bar').each(function(i) {
-            var value = $(this).data('value');
-            $('span', this).css('width', value+'%');
-        });
+/******************************
 
-        /* Default settings: scrollbox
-	    ================================================== */
-        $('.scrollbox').scrollbox({
+[Table of Contents]
 
-            direction: 'h',
-            linear: true,
-            step: 1,
-            delay: 0,
-            speed: 50
+1. Vars and Inits
+2. Set Header
+3. Init Menu
+4. Init Timer
+5. Init Favorite
+6. Init Fix Product Border
+7. Init Isotope Filtering
+8. Init Slider
 
-        });
 
-        /* Default settings: owl carousel
-	    ================================================== */
-        $(".owl-carousel").owlCarousel({
+******************************/
 
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true
+jQuery(document).ready(function($)
+{
+	"use strict";
 
-        });
+	/* 
 
-        /* Up arrow when scrolling
-        ================================================== */
-        var offset = 220;
-        var duration = 500;
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > offset) {
-                $('.back-to-top').fadeIn(duration);
-            } else {
-                $('.back-to-top').fadeOut(duration);
-            }
-        });
-        
-        $('.back-to-top').click(function(event) {
-            event.preventDefault();
-            $('html, body').animate({scrollTop: 0}, duration);
-            return false;
-        });
+	1. Vars and Inits
 
-        /* initialize shuffle plugin (jquery.shuffle.min.js)
-	    ================================================== */
-        var $grid = $('.grid');
+	*/
 
-        $grid.shuffle({
-            itemSelector: '.item' // the selector for the items in the grid
-        });
+	var header = $('.header');
+	var topNav = $('.top_nav')
+	var mainSlider = $('.main_slider');
+	var hamburger = $('.hamburger_container');
+	var menu = $('.hamburger_menu');
+	var menuActive = false;
+	var hamburgerClose = $('.hamburger_close');
+	var fsOverlay = $('.fs_menu_overlay');
 
-        $('.filter a').click(function(e) { // the navigation for the items in the grid
+	setHeader();
 
-            e.preventDefault();
-            $('.filter a').removeClass('active');
-            $(this).addClass('active');
-            var groupName = $(this).attr('data-group');
-            $grid.shuffle('shuffle', groupName);
+	$(window).on('resize', function()
+	{
+		initFixProductBorder();
+		setHeader();
+	});
 
-        });
+	$(document).on('scroll', function()
+	{
+		setHeader();
+	});
 
-        // contact form
-        $("#ajax-contact-form").submit(function() {
-            var str = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                url: "php/contact-form.php",
-                data: str,
-                success: function(msg) {
-                    if(msg == 1) {
-                        result = '<div class="alert success fade in">Your message has been sent. Thank you!<a href="#" class="close-alert" data-dismiss="alert"></a></div>';
-                        $("#ajax-contact-form").hide();
-                    } else {result = msg;}
-                    $('#form-message').hide();
-                    $('#form-message').html(result);
-                    $('#form-message').fadeIn("slow");
-                    $('html, body').animate({ 
-                        scrollTop: $('#form-message').offset().top - 130 
-                    },1500);
-                }
-            });
-            return false;
-        });
+	initMenu();
+	initTimer();
+	initFavorite();
+	initFixProductBorder();
+	initIsotopeFiltering();
+	initSlider();
 
-    });
-    $(function() {
-        /* Position header
-	    ================================================== */
-        var scroll = $(document).scrollTop();
-        var headerHeight = $('#header').outerHeight();
+	/* 
 
-        $(window).scroll(function() {
-            // scrolled is new position just obtained
-            var scrolled = $(document).scrollTop();
+	2. Set Header
 
-            // optionally emulate non-fixed positioning behaviour
+	*/
 
-            if (scrolled > headerHeight) {
-                $('#header').addClass('off-canvas');
-            } else {
-                $('#header').removeClass('off-canvas');
-            }
+	function setHeader()
+	{
+		if(window.innerWidth < 992)
+		{
+			if($(window).scrollTop() > 100)
+			{
+				header.css({'top':"0"});
+			}
+			else
+			{
+				header.css({'top':"0"});
+			}
+		}
+		else
+		{
+			if($(window).scrollTop() > 100)
+			{
+				header.css({'top':"-50px"});
+			}
+			else
+			{
+				header.css({'top':"0"});
+			}
+		}
+		if(window.innerWidth > 991 && menuActive)
+		{
+			closeMenu();
+		}
+	}
 
-            if (scrolled > scroll) {
-                // scrolling down
-                $('#header').removeClass('fixed');
-            } else {
-                //scrolling up
-                $('#header').addClass('fixed');
-            }
+	/* 
 
-            scroll = $(document).scrollTop();
-        });
+	3. Init Menu
 
-        /* Navigation
-        ================================================== */
-        $('.nav a,.next-section').on('click', function(e) {
-            
-            e.preventDefault();
-            $link = $(this).attr('href');
- 
-            $('html, body').animate({ 
-                scrollTop: $($link).offset().top - 130 
-            },1500);
-                
-            var panelSecondConfig = {latency: 100};
-            $(window).on('scrollstop', panelSecondConfig, function() {
-                $('#header').addClass('fixed');
-            }); 
+	*/
 
-        });
+	function initMenu()
+	{
+		if(hamburger.length)
+		{
+			hamburger.on('click', function()
+			{
+				if(!menuActive)
+				{
+					openMenu();
+				}
+			});
+		}
 
-        /* Decorative line in the blog post
-	    ================================================== */
-        $(window).load(function() {
-            $('.entry-meta-details').each(function(i) {
-                var width = $(this).width();
-                var width_details = $('span', this).width();
-                var width_comments = $('.entry-comments').width();
-                $('.line-decoration', this).css('width', width - width_details - width_comments - 10);
-            });
-        });
+		if(fsOverlay.length)
+		{
+			fsOverlay.on('click', function()
+			{
+				if(menuActive)
+				{
+					closeMenu();
+				}
+			});
+		}
 
-    });
+		if(hamburgerClose.length)
+		{
+			hamburgerClose.on('click', function()
+			{
+				if(menuActive)
+				{
+					closeMenu();
+				}
+			});
+		}
 
-    /* Initialize swipebox plugin (jQuery lightbox plugin)
-    ================================================== */
-    $( '.swipebox' ).swipebox( {
-        useCSS : false, // false will force the use of jQuery for animations
-        useSVG : false, // false to force the use of png for buttons
-        initialIndexOnArray : 0, // which image index to init when a array is passed
-        hideCloseButtonOnMobile : false, // true will hide the close button on mobile devices
-        hideBarsDelay : 0, // delay before hiding bars on desktop
-        videoMaxWidth : 1140, // videos max widthg
-        afterOpen: null, // called after opening
-        loopAtEnd: false // true will return to the first image after the last image is reached
-    } );
+		if($('.menu_item').length)
+		{
+			var items = document.getElementsByClassName('menu_item');
+			var i;
 
-    /* WOW plugin triggers animation.css on scroll
-    ================================================== */
-    new WOW({
-        boxClass: 'wow', // animated element css class (default is wow)
-        offset: 0, // distance to the element when triggering the animation (default is 0)
-        mobile: false // trigger animations on mobile devices (true is default)
-    }).init();
+			for(i = 0; i < items.length; i++)
+			{
+				if(items[i].classList.contains("has-children"))
+				{
+					items[i].onclick = function()
+					{
+						this.classList.toggle("active");
+						var panel = this.children[1];
+					    if(panel.style.maxHeight)
+					    {
+					    	panel.style.maxHeight = null;
+					    }
+					    else
+					    {
+					    	panel.style.maxHeight = panel.scrollHeight + "px";
+					    }
+					}
+				}	
+			}
+		}
+	}
 
-})(jQuery);
+	function openMenu()
+	{
+		menu.addClass('active');
+		// menu.css('right', "0");
+		fsOverlay.css('pointer-events', "auto");
+		menuActive = true;
+	}
+
+	function closeMenu()
+	{
+		menu.removeClass('active');
+		fsOverlay.css('pointer-events', "none");
+		menuActive = false;
+	}
+
+	/* 
+
+	4. Init Timer
+
+	*/
+
+	function initTimer()
+    {
+    	if($('.timer').length)
+    	{
+    		// Uncomment line below and replace date
+	    	// var target_date = new Date("Dec 7, 2017").getTime();
+
+	    	// comment lines below
+	    	var date = new Date();
+	    	date.setDate(date.getDate() + 3);
+	    	var target_date = date.getTime();
+	    	//----------------------------------------
+	 
+			// variables for time units
+			var days, hours, minutes, seconds;
+
+			var d = $('#day');
+			var h = $('#hour');
+			var m = $('#minute');
+			var s = $('#second');
+
+			setInterval(function ()
+			{
+			    // find the amount of "seconds" between now and target
+			    var current_date = new Date().getTime();
+			    var seconds_left = (target_date - current_date) / 1000;
+			 
+			    // do some time calculations
+			    days = parseInt(seconds_left / 86400);
+			    seconds_left = seconds_left % 86400;
+			     
+			    hours = parseInt(seconds_left / 3600);
+			    seconds_left = seconds_left % 3600;
+			     
+			    minutes = parseInt(seconds_left / 60);
+			    seconds = parseInt(seconds_left % 60);
+
+			    // display result
+			    d.text(days);
+			    h.text(hours);
+			    m.text(minutes);
+			    s.text(seconds); 
+			 
+			}, 1000);
+    	}	
+    }
+
+    /* 
+
+	5. Init Favorite
+
+	*/
+
+    function initFavorite()
+    {
+    	if($('.favorite').length)
+    	{
+    		var favs = $('.favorite');
+
+    		favs.each(function()
+    		{
+    			var fav = $(this);
+    			var active = false;
+    			if(fav.hasClass('active'))
+    			{
+    				active = true;
+    			}
+
+    			fav.on('click', function()
+    			{
+    				if(active)
+    				{
+    					fav.removeClass('active');
+    					active = false;
+    				}
+    				else
+    				{
+    					fav.addClass('active');
+    					active = true;
+    				}
+    			});
+    		});
+    	}
+    }
+
+    /* 
+
+	6. Init Fix Product Border
+
+	*/
+
+    function initFixProductBorder()
+    {
+    	if($('.product_filter').length)
+    	{
+			var products = $('.product_filter:visible');
+    		var wdth = window.innerWidth;
+
+    		// reset border
+    		products.each(function()
+    		{
+    			$(this).css('border-right', 'solid 1px #e9e9e9');
+    		});
+
+    		// if window width is 991px or less
+
+    		if(wdth < 480)
+			{
+				for(var i = 0; i < products.length; i++)
+				{
+					var product = $(products[i]);
+					product.css('border-right', 'none');
+				}
+			}
+
+    		else if(wdth < 576)
+			{
+				if(products.length < 5)
+				{
+					var product = $(products[products.length - 1]);
+					product.css('border-right', 'none');
+				}
+				for(var i = 1; i < products.length; i+=2)
+				{
+					var product = $(products[i]);
+					product.css('border-right', 'none');
+				}
+			}
+
+    		else if(wdth < 768)
+			{
+				if(products.length < 5)
+				{
+					var product = $(products[products.length - 1]);
+					product.css('border-right', 'none');
+				}
+				for(var i = 2; i < products.length; i+=3)
+				{
+					var product = $(products[i]);
+					product.css('border-right', 'none');
+				}
+			}
+
+    		else if(wdth < 992)
+			{
+				if(products.length < 5)
+				{
+					var product = $(products[products.length - 1]);
+					product.css('border-right', 'none');
+				}
+				for(var i = 3; i < products.length; i+=4)
+				{
+					var product = $(products[i]);
+					product.css('border-right', 'none');
+				}
+			}
+
+			//if window width is larger than 991px
+			else
+			{
+				if(products.length < 5)
+				{
+					var product = $(products[products.length - 1]);
+					product.css('border-right', 'none');
+				}
+				for(var i = 4; i < products.length; i+=5)
+				{
+					var product = $(products[i]);
+					product.css('border-right', 'none');
+				}
+			}	
+    	}
+    }
+
+    /* 
+
+	7. Init Isotope Filtering
+
+	*/
+
+    function initIsotopeFiltering()
+    {
+    	if($('.grid_sorting_button').length)
+    	{
+    		$('.grid_sorting_button').click(function()
+	    	{
+	    		// putting border fix inside of setTimeout because of the transition duration
+	    		setTimeout(function()
+		        {
+		        	initFixProductBorder();
+		        },500);
+
+		        $('.grid_sorting_button.active').removeClass('active');
+		        $(this).addClass('active');
+		 
+		        var selector = $(this).attr('data-filter');
+		        $('.product-grid').isotope({
+		            filter: selector,
+		            animationOptions: {
+		                duration: 750,
+		                easing: 'linear',
+		                queue: false
+		            }
+		        });
+
+		        
+		         return false;
+		    });
+    	}
+    }
+
+    /* 
+
+	8. Init Slider
+
+	*/
+
+    function initSlider()
+    {
+    	if($('.product_slider').length)
+    	{
+    		var slider1 = $('.product_slider');
+
+    		slider1.owlCarousel({
+    			loop:false,
+    			dots:false,
+    			nav:false,
+    			responsive:
+				{
+					0:{items:1},
+					480:{items:2},
+					768:{items:3},
+					991:{items:4},
+					1280:{items:5},
+					1440:{items:5}
+				}
+    		});
+
+    		if($('.product_slider_nav_left').length)
+    		{
+    			$('.product_slider_nav_left').on('click', function()
+    			{
+    				slider1.trigger('prev.owl.carousel');
+    			});
+    		}
+
+    		if($('.product_slider_nav_right').length)
+    		{
+    			$('.product_slider_nav_right').on('click', function()
+    			{
+    				slider1.trigger('next.owl.carousel');
+    			});
+    		}
+    	}
+    }
+});

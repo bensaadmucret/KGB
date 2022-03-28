@@ -26,6 +26,9 @@ $stmt -> execute();
 echo 'User created';
 
 
+echo 'User created';
+
+
 
 
 

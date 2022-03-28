@@ -1,4 +1,4 @@
-# KGB
+# Small-Business
 
 ## Déscription du projet :  e-boutique sans framework
 ### Accès sur 3 points :

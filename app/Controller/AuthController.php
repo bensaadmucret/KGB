@@ -5,12 +5,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-
-use Core\Flash\Flash;
 use Core\Controller\BaseController;
+use Symfony\Component\HttpFoundation\Request;
 use Core\Auth\LoginFormAuthenticator as Authenticator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Core\Token\Token;
+
 
 
 class AuthController extends BaseController
@@ -33,39 +32,42 @@ class AuthController extends BaseController
     {
         if($this->session->has('user')) {  
             if($this->isAdmin($this->session->get('user'))) {
-                return $this->redirect('dashboard', 302, 'success', 'Vous êtes déjà connecté');
-            }
-            return $this->redirect('dashboard', 302, 'success', 'Vous êtes déjà connecté');
+                echo '<h1>Vous êtes connecté en tant qu\'administrateur</h1>';
+            }            
         }
 
         if($this->request->isMethod('post')){  
             $email = $this->request->get('email');
             $password = $this->request->get('password');
-            $user = $this->getUserDB($email, $password);
+            $user = $this->getUserDB($email, $password);           
+            $this->loginPost($user);  
            
-            $this->loginPost($user);   
          }
 
+         if($this->request->isMethod('get')) {
+            $this->render('auth/login',
+            [
+                'title' => 'Login',
+                'message' => 'Veuillez vous connecter pour accéder à la zone d\'administration..',
+                'form' => Authenticator::form(),          
+            ], 'admin-login');
+         }
          
-         $this->render('auth/login',
-         [
-             'title' => 'Login',
-             'message' => 'Cher(e) Camarade ! Veuillez vous connecter pour accéder à la zone d\'administration...',
-             'form' => Authenticator::form(),          
-         ], 'admin-login');
         
     }
 
     public function loginPost($user)
-    {  
-       
-         
+    {    $token = $this-> container->get('Token');
+         $session = $this->container->get('Session');
+        
+      
         if(!$user) {           
             return $this->redirect('login', 302, 'error', 'Invalid credentials.');
           }
            
-       $token = $this->request->get('token');      
-       if(Token::isTokenValidInSession( $token, $this->session) && $this->postIsValide()) {        
+           
+       if($token->isTokenValidInSession($session->get('csrf_token')) && $this->postIsValide()) {   
+           
             $this->session->set('user', $user);
              $message = 'You are now logged in.';
                 return $this->redirect('dashboard', 302, 'success', $message);   
@@ -110,9 +112,7 @@ class AuthController extends BaseController
       $session = $this->session;          
       $session->remove('user');
       $session->remove('admin');
-      $redirection = new RedirectResponse('login', 302);
-      return $redirection->send();
-           
+      $this->redirect('login', 302);            
     }
     
 
@@ -143,14 +143,12 @@ class AuthController extends BaseController
      */
     private function getUserDB($email, $password)
     {
-        $db =  $this->connection;            
-        $query = $db->prepare('SELECT * FROM administrateur WHERE email = :email');               
-        $query->execute([
-            'email' => $email,
-        ]);
-
-        $user = $query->fetch();
-   
+        $db =  $this->connection; 
+        $sql = "SELECT * FROM administrateur WHERE email = :email";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':email', $email);       
+        $stmt->execute();
+        $user = $stmt->fetch();  
 
         if($user) {
             if(password_verify($password, $user['password_admin'])) {
@@ -165,7 +163,6 @@ class AuthController extends BaseController
     {
         $email = $this->request->get('email');
         $password = $this->request->get('password'); 
-  
 
         if($email == '' || $password == '') {           
             return false;

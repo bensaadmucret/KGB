@@ -3,6 +3,7 @@
 namespace Core\Controller;
 
 
+use App\Application;
 use Core\Flash\Flash;
 use Core\Session\Session;
 use Core\Database\Connection;
@@ -26,27 +27,20 @@ abstract class BaseController
         $this->request = Request::createFromGlobals();
         $this->connection = Connection::get()->connect();
         $this->formBuilder = new FormBuilder(); 
-        $this->session = new Session();
-        $this->session->start();
+        $this->session = new Session();       
         $this->flash = new Flash();
+        $this->container = Application::getContainer();
        
     }
 
+
         
     
-    public function redirect( string $url, int $statusCode, string $key, string $message = null): bool
+    public function redirect( string $url, int $statusCode): bool
     {
-        try {
-           /* Redirection vers une page différente du même dossier */
-            $host  = $_SERVER['HTTP_HOST'];
-            $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-            $extra = $url;
-            Flash::setMessage($key, $message);
-            header("Location: http://$host$uri/$extra", TRUE, $statusCode);
-            exit;
-        } catch (\Exception $e) {
-            return false;
-        }
+        $response = new RedirectResponse($url, $statusCode);
+        $response->send();
+       
     }
 
     

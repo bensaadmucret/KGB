@@ -6,42 +6,48 @@ use Core\Session\Session;
 
 class Token
 {
-    private static $token = '';
+    private  $token = '';
 
-    public static function generateToken(Session $session): string
+    public function __construct()
+    {
+        $this->session = new Session();
+    }
+
+    public function generateToken(): string
     {
         $token = '';
-        $token .= bin2hex(random_bytes(32));       
-        $_SESSION['csrf_token'] = $token;
-        self::$token = $token;
+        $token .= bin2hex(random_bytes(32));
+        $this->session->set('csrf_token', $token);       
+        //$_SESSION['csrf_token'] = $token;
+        $this->token = $token;
        
         return $token;
         
     }
     
-    public static function getToken(): string
+    public function getToken(): string
     {
-        return self::$token;
+        return $this->token;
     }
     
     
    
-    public static function getTokenFromSession(): string
+    public function getTokenFromSession(): string
     {
         return $_SESSION['csrf_token'];
     }
     
-    public static function isTokenValidInSession(string $token): bool
+    public function isTokenValidInSession(string $token): bool
     {
         return $token === $_SESSION['csrf_token'];
     }
     
-    public static function removeTokenFromSession(): void
+    public function removeTokenFromSession(): void
     {
         unset($_SESSION['csrf_token']);
     }
     
-    public static function removeTokenFromSessionIfExists(): void
+    public function removeTokenFromSessionIfExists(): void
     {
         if (isset($_SESSION['csrf_token'])) {
             unset($_SESSION['csrf_token']);
@@ -52,6 +58,6 @@ class Token
 
     public function __toString()
     {
-        return self::generateToken();
+        return $this->generateToken();
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Core\Auth;
 
-use Core\Flash\Flash;
+
 use Core\Token\Token;
-use Core\Session\Session;
 use Core\FormBuilder\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class LoginFormAuthenticator 
 {   
@@ -18,19 +18,19 @@ class LoginFormAuthenticator
      */
     public static function form()
     { 
-        $session = new Session();
-        $token = Token::generateToken($session);
-       
-        $request = new Request;      
+        $request = Request::createFromGlobals();
+        $token = new Token();
+        $token->generateToken();      
+     
         $email = $request->get('email');
         $form = new FormBuilder();
 
         
-        $form->startForm('/login', 'POST', 'login-form');
+        $form->startForm('login', 'POST', 'login-form');
         $form->addFor( 'Email', 'Votre email')
-        ->addEmail('email',  $email ?? '', ['label' => 'Email', 'class'=>'form-text', 'required' => true, 'autofocus', 'placeholder' => 'exemple@domain.com'])
+        ->addEmail('email',  $email ?? '', ['label' => 'Email', 'required' => true, 'class'=>'form-text', 'autofocus', 'placeholder' => 'exemple@domain.com'])
         ->addFor( 'Password', 'Mot de passe')
-        ->addPassword('password', 'password', ['label' => 'Password','class'=>'form-text', 'required'=> true, 'placeholder' => 'votre mot de passe'])
+        ->addPassword('password', '', ['label' => 'Password', 'required'=> true, 'class'=>'form-text', 'placeholder' => 'votre mot de passe'])
         ->addToken( $token)
         ->addBouton('Envoyer', ['class'=>'btn-primary btn mb-3 mt-3 form-button wow fadeInUp animated'])
         ->endForm();
