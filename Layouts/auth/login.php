@@ -1,22 +1,18 @@
 <?php use Core\Flash\Flash; ?>
-<section class="section section-last priority-10 color-scheme-1 switcher-item-9 ">
-		<div class="container">
-			<h2  class="wow zoomIn">Login</h2>
-			<h5 class="wow zoomIn"> 
-				<?php echo $message ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aecenas ac augue at erat hendrerit dictum.' ?> </h5>
+
+<section class="section section-last color-scheme-3">
+		<div class="container">			
 			<div class="row">
-				<div class="col-xs-12 col-md-12">
-                <div id="form-message">
-					<?php Flash::getMessage('error'); ?>
-				</div>
-	                    <?php echo $form ?>					
-				</div>
-				
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<footer>© KGB</footer>
+				<div class="col-xs-10 col-xs-offset-1">
+                <?php echo '<h2>' . $title ?? 'Connexion</h2>';
+                    echo '<h3>' . $message ?? ' Connexion </h3>';
+                    echo'<div class="bg-red-500 text-gray-100 text-center ">'. 
+                    Flash::getMessage('error') . '</div>'; ?>  
+
+                    <?php echo $form; ?>
 				</div>
 			</div>
 		</div>
 	</section>
+
+

@@ -1,5 +1,5 @@
-<?php include_once('Header-admin.php'); ?>
-<?php //include_once('Navigation-admin.php'); ?>
-<?php echo $content; ?>
-<?php include_once('Footer.php'); ?>
-
+<?php
+include 'header.html';
+include 'navbar-admin.html';
+ echo $content; 
+ include 'footer.html';

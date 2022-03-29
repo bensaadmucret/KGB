@@ -1,11 +1,75 @@
-<?php include 'header.html'; ?>
-<body>
+<!DOCTYPE html>
+<html lang="fr">
 
+<!-- Mirrored from oldschool-html.russian-themes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Oct 2017 14:22:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<!-- Basic Page Needs
+++++++++++++++++++++++++++++++++++++++ -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- Title
+++++++++++++++++++++++++++++++++++++++ -->
+<title>Old School 1980 - Retina One-Page Theme</title>
+
+<!-- CSS
+++++++++++++++++++++++++++++++++++++++ -->
+
+<link rel="stylesheet" href="<?php echo assets('/assets/css/bootstrap.min.css');?>" />
+<link rel="stylesheet" href="<?php echo assets('/assets/css/owl.carousel.min.css');?>" />
+<link rel="stylesheet" href="<?php echo assets('/assets/css/animate.min.css');?>" />
+<link rel="stylesheet" href="<?php echo assets('/assets/css/swipebox.min.css');?>" />
+<link rel="stylesheet" href="<?php echo assets('/assets/css/style.css');?>">
+
+<!-- Google fonts
+++++++++++++++++++++++++++++++++++++++ -->
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+
+<!-- Favicons
+++++++++++++++++++++++++++++++++++++++ -->
+<link rel="shortcut icon" href="images/favicon.html">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.html">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.html">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.html">
+
+
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+</head>
+<body >
+
+<?php echo $content; ?>
+	
 <div id="wrapper">
-<?php include 'navbar.html'; ?>
+	<header id="header" class="color-scheme-13 switcher-item-1">
+		<div class="container">
+			<div class="row">
+				<nav class="col-xs-4 hidden-xs hidden-sm">
+					<ul class="nav">
+						<li><a href="#home">HOME</a></li>
+						<li><a href="#work">WORK</a></li>
+						<li><a href="#services">SERVICES</a></li>
+					</ul>
+				</nav>
+				<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-0">
+					<a href="#" id="logo" class="tada animated"><img src="images/logo.png" alt=""></a>
+				</div>
+				<nav class="col-xs-4 hidden-xs hidden-sm">
+					<ul class="nav right">
+						<li><a href="#about">ABOUT</a></li>
+						<li><a href="#blog">BLOG</a></li>
+						<li><a href="#contacts">CONTACTS</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
 	<section class="section section-first priority-1 color-scheme-1 transition-form switcher-item-2">
 		<div class="container">
-			<h2 id="home" class="big-heading">KGB</h2>
+			<h2 id="home" class="big-heading">Welcome</h2>
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
 					<blockquote>The Old School is an HTML5 one-page template designed in vintage style. The template is fully ready to work and includes everything you need to build an HTML website. With our template you can easily create and customize your online portfolio, describe your team, illustrate your professional skills and manage your personal or company blog. The Old School is provided with a contact form.</blockquote>
@@ -19,7 +83,7 @@
 				<div class="col-xs-12">
 					<div class="owl-carousel">
 						<div class="item">
-							<img src="images/slides/illustration-kgb.png" alt="The Last of us">
+							<img src="<?php echo assets('/assets/images/slides/kgb.jpg');?>" alt="The Last of us">
 							<span class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus semper dignissim. Proin et quam ut neque egestas vulputate quis ut quam. Sed a quam luctus mauris commodo euismod. Donec condimentum, elit vitae eleifend adipiscing, velit ligula gravida turpis, ac ultrices odio orci sed dui.</span>
 						</div>
 						<div class="item">
@@ -481,4 +545,21 @@
 		</div>
 	</section>
 </div>
-<?php include 'footer.html'; ?>
+<div class="back-to-top hidden-xs hidden-sm">TOP</div>
+<script src="<?php echo assets('/assets/js/jquery-1.11.1.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/modernizr.custom.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/retina.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/SmoothScroll.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/owl.carousel.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/jquery.shuffle.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/jquery.scrollbox.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/wow.min.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/jquery.scrollstop.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/jquery.swipebox.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/custom.js');?>" type="text/javascript"></script>
+<script src="<?php echo assets('/assets/js/switcher.js');?>" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from oldschool-html.russian-themes.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Oct 2017 14:24:26 GMT -->
+</html>
