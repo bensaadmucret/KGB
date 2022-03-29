@@ -1,9 +1,13 @@
 <?php  declare(strict_types=1);
 
+namespace Core\QueryBuilder;
+
+
 /**
  * @author  : Mohammed Bensaad
- * 
+ * @package : QueryBuilder
  **/
+
 class QueryBuilder
 {
     /**
@@ -70,7 +74,7 @@ class QueryBuilder
      * @param string $field
      * @return self
      */
-    public function select(string ...$field): self
+    public function select(string $field): self
     {
         $this->fields[] = $field;
         return $this;

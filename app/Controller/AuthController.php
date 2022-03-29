@@ -6,11 +6,13 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
+
 use Core\Flash\Flash;
+use Core\Token\Token;
 use Core\Controller\BaseController;
+use Core\QueryBuilder\QueryBuilder;
 use Core\Auth\LoginFormAuthenticator as Authenticator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Core\Token\Token;
 
 
 class AuthController extends BaseController
@@ -31,6 +33,8 @@ class AuthController extends BaseController
      */
     public function login()
     {
+      
+
         if($this->session->has('user')) {  
             if($this->isAdmin($this->session->get('user'))) {
                 return $this->redirect('dashboard', 302, 'success', 'Vous êtes déjà connecté');
@@ -143,13 +147,17 @@ class AuthController extends BaseController
      */
     private function getUserDB($email, $password)
     {
-        $db =  $this->connection;            
-        $query = $db->prepare('SELECT * FROM administrateur WHERE email = :email');               
-        $query->execute([
-            'email' => $email,
-        ]);
+     
+        $pdo =  $this->connection; 
+        $query = (new QueryBuilder())
+        ->select('*')->from('administrateur')->where('email = :email');
+        $pdoStatement = $pdo->prepare($query->getQuery());
+        $pdoStatement->execute([
+                    'email' => $email
+                ]);
 
-        $user = $query->fetch();
+        $user = $pdoStatement->fetch(\PDO::FETCH_ASSOC); 
+        
 
         if($user) {
             if(password_verify($password, $user['password_admin'])) {
@@ -163,8 +171,7 @@ class AuthController extends BaseController
     private function postIsValide()
     {
         $email = $this->request->get('email');
-        $password = $this->request->get('password'); 
-  
+        $password = $this->request->get('password');  
 
         if($email == '' || $password == '') {           
             return false;
