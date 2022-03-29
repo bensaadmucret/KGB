@@ -30,7 +30,7 @@ class LoginFormAuthenticator
         $form->addFor( 'Email', 'Votre email')
         ->addEmail('email',  $email ?? '', ['label' => 'Email', 'required' => true, 'class'=>'form-text', 'autofocus', 'placeholder' => 'exemple@domain.com'])
         ->addFor( 'Password', 'Mot de passe')
-        ->addPassword('password', 'password', ['label' => 'Password', 'required'=> true,  'class'=>'form-text','placeholder' => 'votre mot de passe'])
+        ->addPassword('password', '', ['label' => 'Password', 'required'=> true,  'class'=>'form-text','placeholder' => 'votre mot de passe'])
         ->addToken( $token)
         ->addBouton('Envoyer', ['class'=>'btn-primary btn mb-3 mt-3 form-button wow fadeInUp animated'])
         ->endForm();
