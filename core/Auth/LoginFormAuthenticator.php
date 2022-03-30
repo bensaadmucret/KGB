@@ -16,7 +16,7 @@ class LoginFormAuthenticator
      *
      * @return form
      */
-    public static function form()
+    public static function login()
     { 
         $session = new Session();
         $token = Token::generateToken($session);
@@ -27,10 +27,38 @@ class LoginFormAuthenticator
 
         
         $form->startForm('/login', 'POST', 'login-form');
-        $form->addFor( 'Email', 'Votre email')
+        $form->addFor( 'Email', '<h4>Votre email</h4>')
         ->addEmail('email',  $email ?? '', ['label' => 'Email', 'required' => true, 'class'=>'form-text', 'autofocus', 'placeholder' => 'exemple@domain.com'])
-        ->addFor( 'Password', 'Mot de passe')
+        ->addFor( 'Password', '<h4>Mot de passe</h4>')
         ->addPassword('password', '', ['label' => 'Password', 'required'=> true,  'class'=>'form-text','placeholder' => 'votre mot de passe'])
+        ->addToken( $token)
+        ->addBouton('Envoyer', ['class'=>'btn-primary btn mb-3 mt-3 form-button wow fadeInUp animated'])
+        ->endForm();
+        return $form;
+    }
+
+    public static function createAgent()
+    {
+        $session = new Session();
+        $token = Token::generateToken($session); 
+        
+        $form = new FormBuilder();
+
+
+        
+        $form->startForm('create-agent', 'POST', 'create form');
+        $form->addFor( 'Nom', '<h4>Nom</h4>')
+        ->addText('nom', '', ['label' => 'Nom', 'required' => true, 'class'=>'form-text', 'autofocus', 'placeholder' => 'имя'])
+        ->addFor( 'Prenom', '<h4>Prenom</h4>')
+        ->addText('prenom', '', ['label' => 'Prenom', 'required'=> true,  'class'=>'form-text','placeholder' => 'Имя'])
+        ->addFor( 'Date de naissance', '<h4>Date de naissance</h4>')
+        ->addDate('date_naissance', '', ['label' => 'Date de naissance', 'required'=> true,  'class'=>'form-text','placeholder' => 'Дата рождения'])
+        ->addFor( 'Code d\'identification', '<h4>Code d\'identification</h4>')
+        ->addNumber('code_identification', '', ['label' => 'Code d\'identification', 'required'=> true,  'class'=>'form-text','placeholder' => 'закодированный'])
+        ->addFor( 'Nationalité', '<h4>Nationalité</h4>')
+        ->addText('nationalite', '', ['label' => 'Nationalité', 'required'=> true,  'class'=>'form-text','placeholder' => 'Национальность'])
+        ->addFor( 'Spécialité', '<h4>Spécialité</h4>')
+        ->addText('specialite', '', ['label' => 'Spécialité', 'required'=> true,  'class'=>'form-text','placeholder' => 'специальность'])
         ->addToken( $token)
         ->addBouton('Envoyer', ['class'=>'btn-primary btn mb-3 mt-3 form-button wow fadeInUp animated'])
         ->endForm();

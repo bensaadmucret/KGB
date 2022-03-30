@@ -6388,3 +6388,12 @@ header#header ul.right {
     }
   }
 }
+
+
+.bg-red-500 {
+  background-color: #F44336!important;
+}
+
+.text-gray-100 {
+  color: #f5f5f5!important;
+}

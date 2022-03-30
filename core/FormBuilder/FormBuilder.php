@@ -231,6 +231,40 @@ class FormBuilder
         $this->form .= ">$texte</label>";
         return $this;
     }
+
+    /**
+     * add inpute type date
+     *
+     * @param string $name
+     * @param string $value
+     * @param array $attributs
+     * @return self
+     */
+    public function addDate(string $name, string $value = '', array $attributs = []): self
+    {
+        $this->form .= '<input type="date" name="' . $name . '" value="' . $value . '"';
+        $this->form .= $attributs ? $this->addAttributes($attributs) : '';
+        $this->form .= ' />';
+        return $this;
+    }
+
+    /**
+     * Add inpute type number
+     *
+     * @param string $name
+     * @param string $value
+     * @param array $attributs
+     * @return self
+     */
+    public function addNumber(string $name, string $value = '', array $attributs = []): self
+    {
+        $this->form .= '<input type="number" name="' . $name . '" value="' . $value . '"';
+        $this->form .= $attributs ? $this->addAttributes($attributs) : '';
+        $this->form .= ' />';
+        return $this;
+    }
+
+
    
     /**
      * addAttributes

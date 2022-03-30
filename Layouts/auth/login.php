@@ -4,10 +4,12 @@
 		<div class="container">			
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
-                <?php echo '<h2>' . $title ?? 'Connexion</h2>';
+                <?php echo '<h2>' . $title ?? 'Login</h2>';
                     echo '<h3>' . $message ?? ' Connexion </h3>';
-                    echo'<div class="bg-red-500 text-gray-100 text-center ">'. 
-                    Flash::getMessage('error') . '</div>'; ?>  
+					
+					echo'<h4 style=color:#9b2f32;>'. Flash::getMessage('error') . '</h4>';
+				
+                    ?>  
 
                     <?php echo $form; ?>
 				</div>

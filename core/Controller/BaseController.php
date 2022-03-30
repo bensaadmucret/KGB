@@ -3,8 +3,10 @@
 namespace Core\Controller;
 
 
+use App\Application;
 use Core\Flash\Flash;
 use Core\Session\Session;
+use Core\Container\Container;
 use Core\Database\Connection;
 use Core\FormBuilder\FormBuilder;
 use Symfony\Component\HttpClient\HttpClient;
@@ -20,6 +22,7 @@ abstract class BaseController
     protected $formBuilder;
     protected $session;
     protected $flash;
+    protected $container;
   
 
     public function __construct() {
@@ -29,6 +32,7 @@ abstract class BaseController
         $this->session = new Session();
         $this->session->start();
         $this->flash = new Flash();
+        $this->container = Application::getContainer();
        
     }
 

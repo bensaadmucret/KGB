@@ -56,6 +56,11 @@ class QueryBuilder
      */
     private $set = [];
 
+    /**
+     * @var array<string>
+     */
+    private $update = [];
+
 
     public function __construct()
     {
@@ -68,6 +73,7 @@ class QueryBuilder
         $this->limit = [];
         $this->join = [];
         $this->set = [];
+        $this->update = [];
     }
 
     /**
@@ -152,6 +158,18 @@ class QueryBuilder
         return $this;
     }
 
+
+    /**
+     * @param string $field
+     * @param string $value
+     * @return self
+     */
+    public function update(string $table): self
+    {
+        $this->update[] = $table;     
+        return $this;
+    }
+
     /**
      * @param string $field
      * @param string $value
@@ -163,15 +181,21 @@ class QueryBuilder
         return $this;
     }
 
+  
     /**
      * @return string
      */
     public function __toString(): string
     {
+       
         $query = 'SELECT ' . implode(', ', $this->fields) . ' FROM ' . implode(', ', $this->from);
+
+        
         if ($this->conditions) {
             $query .= ' WHERE ' . implode(' AND ', $this->conditions);
         }
+        
+      
         if ($this->groupBy) {
             $query .= ' GROUP BY ' . implode(', ', $this->groupBy);
         }

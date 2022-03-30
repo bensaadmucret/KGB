@@ -33,9 +33,7 @@ class AuthController extends BaseController
      */
     public function login()
     {
-      
-
-        if($this->session->has('user')) {  
+          if($this->session->has('user')) {  
             if($this->isAdmin($this->session->get('user'))) {
                 return $this->redirect('dashboard', 302, 'success', 'Vous êtes déjà connecté');
             }
@@ -52,10 +50,9 @@ class AuthController extends BaseController
 
          
          $this->render('auth/login',
-         [
-             'title' => 'Login',
+         [   'title' => 'Login',
              'message' => 'Veuillez vous connecter pour accéder à la zone d\'administration..',
-             'form' => Authenticator::form(),          
+             'form' => Authenticator::login(),          
          ], 'admin-login');
         
     }
@@ -65,7 +62,7 @@ class AuthController extends BaseController
        
          
         if(!$user) {           
-            return $this->redirect('login', 302, 'error', 'Invalid credentials.');
+            return $this->redirect('login', 302, 'error', ' Identification invalides.');
           }
            
        $token = $this->request->get('token');      
@@ -189,7 +186,10 @@ class AuthController extends BaseController
         [
             'session' => $this->session->get('admin'),
             'title' => 'Dashboard',
-            'message' => 'Welcome to your dashboard.',
+            'message' => 'Добро пожаловать в вашу панель управления.',
+            'sous_titre' => 'Bienvenue dans votre espace d\'administration.',
+            'user' => $this->session->get('user'),
+            'form_agent' => Authenticator::createAgent(),
         ], 'admin');
     }
     
