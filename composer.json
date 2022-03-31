@@ -19,7 +19,8 @@
     "require": {
         "symfony/http-foundation": "6.1.x-dev",
         "robmorgan/phinx": "9999999-dev",
-        "psr/container": "2.0.x-dev"
+        "psr/container": "2.0.x-dev",
+        "vlucas/phpdotenv": "5.4.x-dev"
     },
     "require-dev": {
         "symfony/var-dumper": "6.1.x-dev",

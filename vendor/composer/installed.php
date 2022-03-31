@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '50f43276881f52ec76920d6debef24dc48b0cc6b',
+    'reference' => 'a6f5997f551ada573ed1932723838b6db850f6c9',
     'name' => 'ben/e-boutique',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '50f43276881f52ec76920d6debef24dc48b0cc6b',
+      'reference' => 'a6f5997f551ada573ed1932723838b6db850f6c9',
     ),
     'cakephp/core' => 
     array (
@@ -65,6 +65,16 @@
       ),
       'reference' => '10dcfce151b967d20fde1b34ae6640712c3891bc',
     ),
+    'graham-campbell/result-type' => 
+    array (
+      'pretty_version' => '1.0.x-dev',
+      'version' => '1.0.9999999.9999999-dev',
+      'aliases' => 
+      array (
+        0 => '9999999-dev',
+      ),
+      'reference' => 'ec4daa4b45faf6a683c9c0acf92fe1377d695a54',
+    ),
     'myclabs/deep-copy' => 
     array (
       'pretty_version' => '1.x-dev',
@@ -102,6 +112,16 @@
       array (
       ),
       'reference' => '4f7fd7836c6f332bb2933569e566a0d6c4cbed74',
+    ),
+    'phpoption/phpoption' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '1.8.x-dev',
+      ),
+      'reference' => '5f59b1b59025b3c66cf1ca0898247d9de39c6200',
     ),
     'phpunit/php-code-coverage' => 
     array (
@@ -440,6 +460,15 @@
       ),
       'reference' => '0abb51d2f102e00a4eefcf46ba7fec406d245825',
     ),
+    'symfony/polyfill-php80' => 
+    array (
+      'pretty_version' => 'v1.25.0',
+      'version' => '1.25.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4407588e0d3f1f52efb65fbe92babe41f37fe50c',
+    ),
     'symfony/service-contracts' => 
     array (
       'pretty_version' => 'dev-main',
@@ -476,6 +505,16 @@
       array (
       ),
       'reference' => '34a41e998c2183e22995f158c581e7b5e755ab9e',
+    ),
+    'vlucas/phpdotenv' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '5.4.x-dev',
+      ),
+      'reference' => 'dd46c263f277573244c517bac125a78f67b83a98',
     ),
   ),
 );

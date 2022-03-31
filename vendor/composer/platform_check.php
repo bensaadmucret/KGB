@@ -12,6 +12,7 @@ $missingExtensions = array();
 extension_loaded('dom') || $missingExtensions[] = 'dom';
 extension_loaded('json') || $missingExtensions[] = 'json';
 extension_loaded('libxml') || $missingExtensions[] = 'libxml';
+extension_loaded('pcre') || $missingExtensions[] = 'pcre';
 extension_loaded('phar') || $missingExtensions[] = 'phar';
 extension_loaded('tokenizer') || $missingExtensions[] = 'tokenizer';
 extension_loaded('xml') || $missingExtensions[] = 'xml';

@@ -5,6 +5,7 @@ namespace Core\Database;
 
 use Core\DotEnv;
 
+
 /**
  * Represent the Connection
  */
@@ -26,7 +27,7 @@ class Connection
     {
         
 
-        (new DotEnv(__DIR__ . DS .'.env'))->load();
+       (new DotEnv(__DIR__ . DS .'.env'))->load();
 
         $conStr = sprintf(
             "mysql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
