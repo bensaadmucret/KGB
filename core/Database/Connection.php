@@ -3,6 +3,8 @@
 
 namespace Core\Database;
 
+use Core\DotEnv;
+
 /**
  * Represent the Connection
  */
@@ -22,24 +24,26 @@ class Connection
      */
     public function connect()
     {
+        
 
-        // read parameters in the ini configuration file
-        $params = parse_ini_file(__DIR__. DIRECTORY_SEPARATOR .'database.ini');
-        if ($params === false) {
-            throw new \Exception("Error reading database configuration file");
-        }
-    
+        (new DotEnv(__DIR__ . DS .'.env'))->load();
+
         $conStr = sprintf(
             "mysql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
-            $params['Host'],
-            $params['Port'],
-            $params['dbname'],
-            $params['username'],
-            $params['password']
+            getenv('Host'),
+            getenv('Port'),
+            getenv('dbname'),
+            getenv('username'),
+            getenv('password')
+           
         );
-
-        $pdo = new \PDO($conStr);
-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        \var_dump($conStr);    
+        try {
+            $pdo = new \PDO($conStr);
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e) {
+            throw new \Exception("Error connecting to the database: " . $e->getMessage());
+        }     
         
 
         return $pdo;
