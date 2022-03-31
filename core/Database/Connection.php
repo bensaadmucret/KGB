@@ -31,8 +31,8 @@ class Connection
     
         $conStr = sprintf(
             "mysql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
-            $params['host'],
-            $params['port'],
+            $params['Host'],
+            $params['Port'],
             $params['dbname'],
             $params['username'],
             $params['password']
