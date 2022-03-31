@@ -12,8 +12,8 @@ if (!defined('APP_PATH')) {
     define("APP_PATH", ROOT . DS);
 }
 
-dump($_SERVER);
-dump(dirname(__DIR__));
+var_dump($_SERVER);
+var_dump(dirname(__DIR__));
 
 // absolute path for css, js, image
 function assets($path)
