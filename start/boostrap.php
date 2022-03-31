@@ -13,6 +13,7 @@ if (!defined('APP_PATH')) {
 }
 
 
+
 // absolute path for css, js, image
 function assets($path)
 {
