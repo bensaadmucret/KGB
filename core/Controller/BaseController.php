@@ -68,10 +68,10 @@ abstract class BaseController
         ob_start();
      
 
-        require_once( DS . __DIR__ . DS . 'Layouts'. DS . $tpl . '.php');
+        require_once( DS .'app' . DS . 'Layouts'. DS . $tpl . '.php');
         $content = ob_get_clean();
         $view =  $model ?? 'default';
-        require_once(DS . __DIR__ . DS . 'Layouts'. DS . $view . '.php');
+        require_once(DS . 'app' . DS . 'Layouts'. DS . $view . '.php');
         
     }
 
