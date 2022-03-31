@@ -13,23 +13,26 @@ try {
 }*/
 
 
-($username = $argv[1]) || die('Please provide a username');
-($password = $argv[2]) || die('Please provide a password');
+($lastname = $argv[1]) || die('Please provide a username');
+($firstname = $argv[2]) || die('Please provide a username');
 ($email = $argv[3]) || die('Please provide a email');
-($role = $argv[4]) || die('Please provide a role');
-
-$query = $db->prepare('INSERT INTO users (username, password, email, role, created_at, updated_at) VALUES (:username, :password, :email, :role, NOW(), NOW())');
-$query->execute([
-    'username' => $username,
-    'password' => password_hash($password, PASSWORD_DEFAULT),
+($password = $argv[4]) || die('Please provide a password');
+($role = $argv[5]) || die('Please provide a role');
+$date = date('Y-m-d H:i:s');
+$password = password_hash($password, PASSWORD_DEFAULT);
+var_dump($date);
+/* requete prepare avec $sth->bindValue*/
+$sth = $db->prepare("INSERT INTO administrateur (nom, prenom, mail, password, role, date_creation) VALUES (:lastname, :firstname, :email, :password, :role, :date)");
+$sth->execute( [
+    'lastname' => $lastname,
+    'firstname' => $firstname,
     'email' => $email,
+    'password' => $password,
     'role' => $role,
-    
-    
+    'date' => $date
 ]);
 
-
-echo 'User created';
+echo "Admin created successfully";
 
 
 

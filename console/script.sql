@@ -102,7 +102,8 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
   `prenom` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL UNIQUE,
   `password` varchar(255) NOT NULL,
-  `date_creation` date NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `date_creation` datetime NOT NULL, 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
