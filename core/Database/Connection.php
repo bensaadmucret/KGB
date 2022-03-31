@@ -37,7 +37,7 @@ class Connection
             getenv('password')
            
         );
-        \var_dump($conStr);    
+      
         try {
             $pdo = new \PDO($conStr);
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
