@@ -20,8 +20,8 @@ try {
 ($role = $argv[5]) || die('Please provide a role');
 $date = date('Y-m-d H:i:s');
 $password = password_hash($password, PASSWORD_DEFAULT);
-var_dump($date);
-/* requete prepare avec $sth->bindValue*/
+
+
 $sth = $db->prepare("INSERT INTO administrateur (nom, prenom, mail, password, role, date_creation) VALUES (:lastname, :firstname, :email, :password, :role, :date)");
 $sth->execute( [
     'lastname' => $lastname,

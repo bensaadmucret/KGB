@@ -7,11 +7,10 @@
                 <?php echo '<h2>' . $title ?? 'Login</h2>';
                     echo '<h3>' . $message ?? ' Connexion </h3>';
 					
-					echo'<h4 style=color:#9b2f32;>'. Flash::getMessage('error') . '</h4>';
+					echo'<h4 class="h6 mb-0 fw-bold text-warning-dark" style=color:#9b2f32;>'. Flash::getMessage('error') . '</h4>';
 				
-                    ?>  
-
-                    <?php echo $form; ?>
+                    ?> 
+				                    <?php echo $form; ?>
 				</div>
 			</div>
 		</div>

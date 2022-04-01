@@ -2,10 +2,7 @@
 use Core\Flash\Flash;
 ?>
 
-<section class="section section-last color-scheme-3">
-		<div class="container">			
-			<div class="row">
-				<div class="col-xs-10 col-lg-12">
+	
                 <?php echo '<h2>' . $title ?? 'Connexion</h2>';
                     echo '<h3>' . $message ?? ' Connexion </h3>';
 					echo '<p>' .  $sous_titre ?? '' . '</p>';
@@ -13,21 +10,12 @@ use Core\Flash\Flash;
                     dump($user);
                     
 					echo'<div class="bg-green-500 text-gray-100 text-center ">'. Flash::getMessage('success') . '</div>';
-					echo'<div class="bg-red-500 text-gray-100 text-center ">'. Flash::getMessage('error') . '</div>';
-					
-            
-           
-            
-				  
+					echo'<div class="bg-red-500 text-gray-100 text-center ">'. Flash::getMessage('error') . '</div>';	
 
                     
                     ?>  
 
-                   
-				</div>
-			</div>
-		</div>
-	</section>
+
 
 
 	<section class="section section-last priority-6 color-scheme-1 switcher-item-9"><div class="contents">
@@ -45,9 +33,32 @@ use Core\Flash\Flash;
 					<p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt dolorem aliquid vero vel neque asperiores consectetur. Distinctio illo corporis esse dolor, dicta beatae! Eum iste facere et aspernatur, accusamus sapiente.
 					</p>
 				</div>
+				<table id="table_id" class="display">
+				<thead>
+					<tr>
+						<th>Column 1</th>
+						<th>Column 2</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Row 1 Data 1</td>
+						<td>Row 1 Data 2</td>
+					</tr>
+					<tr>
+						<td>Row 2 Data 1</td>
+						<td>Row 2 Data 2</td>
+					</tr>
+				</tbody>
+			</table>
 				
 			</div>
-			<div class="row">
+			<script>
+				$(document).ready(function() {
+					$('#table_id').DataTable();
+				} );
+			</script>
+				<div class="row">
 				<div class="col-xs-12">
 					<footer>© 2012 Old School Lorem ipsum dolor sit amet.</footer>
 				</div>

@@ -147,17 +147,17 @@ class AuthController extends BaseController
      
         $pdo =  $this->connection; 
         $query = (new QueryBuilder())
-        ->select('*')->from('administrateur')->where('email = :email');
+        ->select('*')->from('administrateur')->where('mail = :mail');
         $pdoStatement = $pdo->prepare($query->getQuery());
         $pdoStatement->execute([
-                    'email' => $email
+                    'mail' => $email
                 ]);
 
         $user = $pdoStatement->fetch(\PDO::FETCH_ASSOC); 
         
 
         if($user) {
-            if(password_verify($password, $user['password_admin'])) {
+            if(password_verify($password, $user['password'])) {
                 return $user;
             }
         }
@@ -182,7 +182,7 @@ class AuthController extends BaseController
         if(!$this->session->get('user')) {           
             return $this->redirect('login', 302, 'error', 'Vous devez être connecté pour accéder à cette page.');
         }
-        $this->render('auth/admin-dashboard',
+        $this->render('auth/admin-dashboard-2',
         [
             'session' => $this->session->get('admin'),
             'title' => 'Dashboard',
@@ -190,7 +190,7 @@ class AuthController extends BaseController
             'sous_titre' => 'Bienvenue dans votre espace d\'administration.',
             'user' => $this->session->get('user'),
             'form_agent' => Authenticator::createAgent(),
-        ], 'admin');
+        ], 'dashboard');
     }
     
 }
