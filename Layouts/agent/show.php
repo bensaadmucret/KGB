@@ -39,12 +39,18 @@
 													<div class="d-flex">   
                                                     <form action="agent-edit/<?php echo $agent['id'] ?? '';?>" method="POST">
                                                         <input  name="id" type="hidden" value="<?php echo $agent['id'] ?? '';?>">
-                                                        <input type="submit" class="btn btn-primary shadow btn-xs sharp mr-1"  value="Editer" > <i class="fa fa-pencil"></i>                                          
+                                                        <input type="submit" class="btn btn-primary shadow btn-xs sharp mr-1"  value="Edit" >                                           
                                                     
                                                     </form>
-                                                     
+                                                    <form class="agent-delete" action="agent-delete/<?php echo $agent['id'] ?? '';?>" method="POST">
+                                                      
+                                                        <input  class="btn btn-danger btn-xs sharp" name="id" type="hidden" value="<?php echo $agent['id'] ?? '';?>">
+                                                        <input  class="btn btn-danger  btn-xs sharp" type="submit"   value="Sup" >
+                                                    
+                                                    </form>
+                                                    
                                               
-													<a  href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												
 													</div>												
 												</td>												
                                             </tr>
@@ -55,10 +61,33 @@
                             </div>
                         </div>
                     </div>
-             
+                    
+                                        
 			
 			
-			
+                    <script>
+                        const form = document.querySelector('.agent-delete');
+                        form.addEventListener('click', function (e) {                       
+                            e.preventDefault();                          
+                           
+                            Swal.fire({
+                                title: 'Vous êtes sûr?',
+                                text: "Vous ne pourrez pas revenir en arrière!",
+                                type: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Oui, supprimer!'
+                            }).then((result) => {
+                                if (result.value) {
+                                    document.querySelector('.agent-delete').submit();
+                                }
+                            })
+                        
+                      
+                    });
+                        
+                    </script>
 			
       
    

@@ -115,7 +115,7 @@ class Model
      * @throws \PDOException
      * @author : Mohammed Bensaad
      */
-    public function delete($id, $table)
+    public function delete( $table, $id)
     {       try{
             $query = $this->connexion->prepare('DELETE FROM '. $table .' WHERE id = :id');
             $query->execute([

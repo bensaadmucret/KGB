@@ -120,5 +120,16 @@ class AgentController extends BaseController
             return $this->redirect('agent-show', 302, 'error', 'Une erreur est survenue');
      
     }
+
+    public function delete()
+    {
+        check_is_logged_in();
+        if($this->request->isMethod('post')){
+            $id = $this->request->get('id');
+            $this->model->delete('agent', $id);
+            return $this->redirect('agent-show', 302, 'success', 'Agent supprimé avec succès');
+        }
+        return $this->redirect('agent-show', 302, 'error', 'Une erreur est survenue');
+    }
     
 }

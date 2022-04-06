@@ -18,6 +18,7 @@
     <link href="<?php echo assets('/ressources/css/style.css');?>"  rel="stylesheet">
 	<link href="<?php echo assets('/ressources/vendor/jquery-steps/css/jquery.steps.css');?>"  rel="stylesheet">
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+	<link href="<?php echo  assets('/ressources/vendor/sweetalert2/dist/sweetalert2.min.css'); ?>"  rel="stylesheet">
 	<link href="<?php echo assets('/style.css');?>"  rel="stylesheet">
 
 </head>
@@ -811,7 +812,7 @@
     <script src="<?php echo assets('/ressources/js/custom.min.js' );?>"></script>
 	<script src="<?php echo assets('/ressources/js/formulaire.js' );?>"></script>
 	<script src="<?php echo assets('/ressources/js/deznav-init.js' );?>"></script>
-	
+	<script src="<?php echo assets('/ressources/vendor/sweetalert2/dist/sweetalert2.min.js' );?>"></script>
     <!-- Datatable -->
     <script src="<?php echo assets('/ressources/vendor/datatables/js/jquery.dataTables.min.js' );?>"></script>
     <script src="<?php echo assets('/ressources/js/plugins-init/datatables.init.js');?>"></script>
