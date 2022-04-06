@@ -22,7 +22,7 @@ $date = date('Y-m-d H:i:s');
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 
-$sth = $db->prepare("INSERT INTO administrateur (nom, prenom, mail, password, role, date_creation) VALUES (:lastname, :firstname, :email, :password, :role, :date)");
+$sth = $db->prepare("INSERT INTO administrateur (nom, prenom, email, password, role, created_at) VALUES (:lastname, :firstname, :email, :password, :role, :date)");
 $sth->execute( [
     'lastname' => $lastname,
     'firstname' => $firstname,

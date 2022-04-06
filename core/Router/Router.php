@@ -2,11 +2,16 @@
 
 namespace Core\Router;
 
-\define('ABSOLUTE_PATH', $_SERVER['HTTP_HOST']);
+
+
+
+if (!empty($_SERVER['HTTP_HOST'])) {
+    define('ABSOLUTE_PATH', $_SERVER['HTTP_HOST']);
+}
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 class Router
 {
     private string $url;
@@ -14,13 +19,13 @@ class Router
     public static $namespace;
     public $callable;
     private string $method;
-    public string $generateUri;
+  
 
     public function __construct()
     {
         $request = Request::createFromGlobals();
         $this->url = $request->getPathInfo();
-        $this->method = $request->getMethod();
+        $this->method = $request->getMethod();     
        
         
     }
@@ -36,9 +41,17 @@ class Router
     public function add(string $method, string $path, $callable, string $name)
     {
         $route = new Route($method, $path, $callable, $name);     
-        $this->routes[] = [$route]; 
+        $this->routes[] = [$route];
+  
          
             
+    }
+    
+
+    /*Utilisez la méthode PUT pour mettre à jour ou insérer une ressource. Une demande de mise à jour doit fournir l'ID unique de la ressource. Pour mettre à jour une ressource de structure d'objet, l'ID de l'objet principal est requis.*/
+    public function put(string $path, $callable, string $name)
+    {
+        $this->add('PUT', $path, $callable, $name);
     }
 
     
@@ -62,6 +75,9 @@ class Router
         }
         throw new \Exception('No route found for this url');
     }
+
+
+  
    
     /**
      * retourne la méthode courante
@@ -75,9 +91,7 @@ class Router
         }
         throw new \Exception('No method found');
     }
-    
-    
-        
+      
 
 
     /**
@@ -96,6 +110,20 @@ class Router
         throw new \Exception('No route found for this url');
     }
 
+
+
+
+    public function getRouteByName($name)
+    {
+        foreach ($this->routes as $route) {
+            foreach ($route as $r) {
+                if ($r->name === $name):
+                return '/' . $r->path;
+                endif;
+            }
+        }
+        throw new \Exception('No route found for this url');
+    }
 
     /**
      * retourne l'url courante

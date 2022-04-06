@@ -68,7 +68,7 @@ class AuthController extends BaseController
        $token = $this->request->get('token');      
        if(Token::isTokenValidInSession( $token, $this->session) && $this->postIsValide()) {        
             $this->session->set('user', $user);
-             $message = 'You are now logged in.';
+             $message = 'Vous êtes maintenant connecté...';
                 return $this->redirect('dashboard', 302, 'success', $message);   
           }   
                  
@@ -147,10 +147,10 @@ class AuthController extends BaseController
      
         $pdo =  $this->connection; 
         $query = (new QueryBuilder())
-        ->select('*')->from('administrateur')->where('mail = :mail');
+        ->select('*')->from('administrateur')->where('email = :email');
         $pdoStatement = $pdo->prepare($query->getQuery());
         $pdoStatement->execute([
-                    'mail' => $email
+                    'email' => $email
                 ]);
 
         $user = $pdoStatement->fetch(\PDO::FETCH_ASSOC); 
@@ -182,7 +182,7 @@ class AuthController extends BaseController
         if(!$this->session->get('user')) {           
             return $this->redirect('login', 302, 'error', 'Vous devez être connecté pour accéder à cette page.');
         }
-        $this->render('auth/admin-dashboard-2',
+        $this->render('auth/admin-dashboard',
         [
             'session' => $this->session->get('admin'),
             'title' => 'Dashboard',
@@ -193,4 +193,20 @@ class AuthController extends BaseController
         ], 'dashboard');
     }
     
+
+    public function profile()
+    {
+        if(!$this->session->get('user')) {           
+            return $this->redirect('login', 302, 'error', 'Vous devez être connecté pour accéder à cette page.');
+        }
+        $this->render('auth/profile',
+        [
+            'session' => $this->session->get('admin'),
+            'title' => 'Profile',
+            'message' => 'Добро пожаловать в вашу панель управления.',
+            'sous_titre' => 'Bienvenue dans votre espace d\'administration.',
+            'user' => $this->session->get('user'),
+            'form_agent' => Authenticator::createAgent(),
+        ], 'dashboard');
+    }
 }

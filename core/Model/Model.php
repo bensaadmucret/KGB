@@ -2,6 +2,8 @@
 
 namespace Core\Model;
 
+use Core\Database\Connection;
+
 
 class Model
 {
@@ -9,7 +11,7 @@ class Model
     private $connection;
     public function __construct()
     {
-        $this->connexion = Connection::get()->connect();
+        $this->connexion =  Connection::get()->connect();
     }
   
 
@@ -42,7 +44,7 @@ class Model
      * @throws \PDOException
      * @author : Mohammed Bensaad
      */
-    public function getOne($id, $table){
+    public function find($table, $id){
         try {
             $query = $this->connexion->prepare("SELECT * FROM $table WHERE id = :id");
             $query->execute([
@@ -65,10 +67,11 @@ class Model
      * @throws \PDOException
      * @author : Mohammed Bensaad
      */
-    public function insert($data, $table)
+    public function insert($table, $data )
     {
         try {
         $query = $this->connexion->prepare('INSERT INTO '. $table .'('. implode(',', array_keys($data)) .') VALUES (:'. implode(', :', array_keys($data)) .')');
+        
         $query->execute($data);
         return $this->connexion->lastInsertId();
         } catch (\PDOException $e) {
@@ -87,17 +90,21 @@ class Model
      * @throws \PDOException
      * @author : Mohammed Bensaad
      */
-    public function update($data, $table, $id)
-    {
+    public function update(string $table, array $data){
+
         try {
-            $query = $this->connexion->prepare('UPDATE '. $table .' SET '. implode(' = :', array_keys($data)) .' = :'. implode(' = :', array_keys($data)) .' WHERE id = :id');
+            $query = $this->connexion->prepare('UPDATE '. $table .' SET '. implode(',', array_map(function($k){
+                return $k . ' = :' . $k;
+            }, array_keys($data))) .' WHERE id = :id');
             $query->execute($data);
-            return $this->connexion->lastInsertId();
+            return $query->rowCount();
         } catch (\PDOException $e) {
             throw new \Exception("Error connecting to the database: " . $e->getMessage());
         }
-  
+           
+       
     }
+    
 
     /**
      * delete a row in the database

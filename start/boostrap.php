@@ -28,6 +28,23 @@ function UpercaseFirst($string)
     return ucfirst($string);
 }
 
+function check_is_logged_in()
+{
+    $session = new \Core\Session\Session;
+    if (!$session->get('user')) {
+        header('Location: /login');
+        exit();
+    }
+   
+}
+
+
+function dateFormate($date){
+$originalDate = $date;
+$timestamp = strtotime($originalDate); 
+$newDate = date("m-d-Y", $timestamp );
+return $newDate;
+}
 
 function get_flash_message_error(){
     if (!empty( $_SESSION['error'])):?>

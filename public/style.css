@@ -970,10 +970,12 @@ header#header ul.right {
   top: 2px;
 }
 .section .contents form .form-text {
-  padding: 20px;
+  padding: 10px;
   width: 100%;
   margin-bottom: 40px;
   border: 0;
+  font-size: 16px;
+  letter-spacing: .2rem;
 }
 .section .contents form .form-textarea {
   padding: 20px;
@@ -987,6 +989,7 @@ header#header ul.right {
   margin-bottom: 40px;
   border: 0;
   font-family: 'KenyanCoffeeRg';
+
 }
 .section .contents .alert {
   padding: 15px;

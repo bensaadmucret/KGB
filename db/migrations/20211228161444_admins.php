@@ -18,14 +18,13 @@ final class Admins extends AbstractMigration
      */
     public function change(): void
     {
-        $this->table('users')
-            ->addColumn('username', 'string', ['limit' => 255])
+        $this->table('administrateur')
+            ->addColumn('nom', 'string', ['limit' => 255])
+            ->addColumn('prenom', 'string', ['limit' => 255])
             ->addColumn('email', 'string', ['limit' => 255], ['unique' => true])
             ->addColumn('password', 'string', ['limit' => 255])
-            ->addColumn('role', 'string', ['limit' => 255])
-            ->addColumn('status', 'boolean', ['default' => true])
-            ->addColumn('created_at', 'datetime')
-            ->addColumn('updated_at', 'datetime', ['null' => true])      
+            ->addColumn('role', 'string', ['limit' => 255])            
+            ->addColumn('created_at', 'datetime')                
             ->create();
 
     }
@@ -35,6 +34,6 @@ final class Admins extends AbstractMigration
      */
     public function down()
     {
-        $this->dropTable('users');
+        $this->dropTable('administrateur');
     }
 }

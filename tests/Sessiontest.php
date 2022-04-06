@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Sessiontest;
+namespace Stack\tests\Sessiontest;
 
 use Core\Session\Session;
 use PHPUnit\Framework\TestCase;

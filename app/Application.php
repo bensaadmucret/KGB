@@ -11,16 +11,32 @@ class Application
     public static function run()
     {
         $router = new Router();
-        Router::setNameSpace('App\\Controller\\');
-        
+        Router::setNameSpace('App\\Controller\\');        
         $router->add('GET', '/', 'HomeController@index', 'home');
         $router->add('POST', '/login', 'AuthController@login', 'login');    
         $router->add('GET', '/login', 'AuthController@login', 'login');
         $router->add('GET', '/logout', 'AuthController@logout', 'logout');
         $router->add('GET', '/dashboard', 'AuthController@dashboard', 'dashboard');
         $router->add('POST', '/dashboard', 'AuthController@dashboard', 'dashboard');
-        $router->add('GET', '/create-agent', 'CreateAgentController@store', 'create-agent');
-        $router->add('POST', '/create-agent', 'CreateAgentController@store', 'create-agent');
+       
+        /** route profile admin */
+        $router->add('GET', '/profile', 'AuthController@profile', 'profile');
+
+        /** route create agent */
+        $router->add('GET', '/agent-add', 'AgentController@add', 'agent.add');
+        $router->add('POST', '/agent-add', 'AgentController@add', 'agent.add');
+        
+        /** voir tous les agents*/
+        $router->add('GET', '/agent-show', 'AgentController@show', 'agent.show');
+
+        $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');       
+
+        $router->add('POST', '/agent-edit/agent-update/:id', 'AgentController@update', 'agent.update');
+
+        $router->add('GET', '/agent-delete/:id', 'AgentController@delete', 'agent.delete');
+
+        $router->add('GET', '/agent-show/:id', 'AgentController@show', 'agent.show');
+
         $router->dispatch();
     }
     
@@ -34,6 +50,7 @@ class Application
         $container->set('Router', new \Core\Router\Router);
         $container->set('Flash', new \Core\Flash\Flash);
         $container->set('Request', new \Symfony\Component\HttpFoundation\Request);
+        $container->set('Model', new \Core\Model\Model);
 
 
         $container->get('Session')->start();

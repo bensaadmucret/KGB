@@ -7,10 +7,12 @@ CREATE TABLE `agent` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `dateNaissance` date NOT NULL,
-  `codeIdentification` varchar(255) NOT NULL,
+  `date_naissance` date NOT NULL,
+  `code_identification` varchar(255) NOT NULL, UNIQUE KEY `code_identification` (`code_identification`),
   `nationalite` varchar(255) NOT NULL,
   `specialite` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23,8 +25,8 @@ CREATE TABLE `cible` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `dateNaissance` date NOT NULL,
-  `codeIdentification` varchar(255) NOT NULL,
+  `date_naissance` date NOT NULL,
+  `code_identification` varchar(255) NOT NULL, UNIQUE KEY `code_identification` (`code_identification`),
   `nationalite` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -38,8 +40,8 @@ CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `dateNaissance` date NOT NULL,
-  `codeIdentification` varchar(255) NOT NULL,
+  `date_naissance` date NOT NULL,
+  `code_identification` varchar(255) NOT NULL, UNIQUE KEY `code_identification` (`code_identification`),
   `nationalite` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -52,7 +54,7 @@ CREATE TABLE `contact` (
 
 CREATE TABLE `planque` (
   `id` int(11) NOT NULL,
-  `code` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL, UNIQUE KEY `code` (`code`),
   `adresse` varchar(255) NOT NULL,
   `pays` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
@@ -100,10 +102,10 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL UNIQUE,
+  `email` varchar(255) NOT NULL UNIQUE,
   `password` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
-  `date_creation` datetime NOT NULL, 
+  `created_at` datetime NOT NULL, 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

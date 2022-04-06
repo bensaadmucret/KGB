@@ -46,22 +46,24 @@ class LoginFormAuthenticator
 
 
         
-        $form->startForm('create-agent', 'POST', 'create form');
-        $form->addFor( 'Nom', '<h4>Nom</h4>')
-        ->addText('nom', '', ['label' => 'Nom', 'required' => true, 'class'=>'form-text', 'autofocus', 'placeholder' => 'имя'])
-        ->addFor( 'Prenom', '<h4>Prenom</h4>')
-        ->addText('prenom', '', ['label' => 'Prenom', 'required'=> true,  'class'=>'form-text','placeholder' => 'Имя'])
-        ->addFor( 'Date de naissance', '<h4>Date de naissance</h4>')
-        ->addDate('date_naissance', '', ['label' => 'Date de naissance', 'required'=> true,  'class'=>'form-text','placeholder' => 'Дата рождения'])
-        ->addFor( 'Code d\'identification', '<h4>Code d\'identification</h4>')
-        ->addNumber('code_identification', '', ['label' => 'Code d\'identification', 'required'=> true,  'class'=>'form-text','placeholder' => 'закодированный'])
-        ->addFor( 'Nationalité', '<h4>Nationalité</h4>')
-        ->addText('nationalite', '', ['label' => 'Nationalité', 'required'=> true,  'class'=>'form-text','placeholder' => 'Национальность'])
-        ->addFor( 'Spécialité', '<h4>Spécialité</h4>')
-        ->addText('specialite', '', ['label' => 'Spécialité', 'required'=> true,  'class'=>'form-text','placeholder' => 'специальность'])
+        $form->startForm('agent-add', 'POST', 'create form');
+        $form->addFor( 'Nom', '<h4 class="m-3">Nom</h4>')
+        ->addText('nom', '', ['label' => 'Nom', 'required' => true, 'class'=>'form-control ', 'autofocus', 'placeholder' => 'имя'])
+        ->addFor( 'Prenom', '<h4 class="m-3">Prenom</h4>')
+        ->addText('prenom', '', ['label' => 'Prenom', 'required'=> true,  'class'=>'form-control','placeholder' => 'Имя'])
+        ->addFor( 'Date de naissance', '<h4 class="m-3">Date de naissance</h4>')
+        ->addDate('date_naissance', '', ['label' => 'Date de naissance', 'required'=> true,  'class'=>'form-control','placeholder' => 'Дата рождения'])
+        ->addFor( 'Code d\'identification', '<h4 class="m-3">Code d\'identification</h4>')
+        ->addNumber('code_identification', '', ['label' => 'Code d\'identification', 'required'=> true,  'class'=>'form-control','placeholder' => 'закодированный'])
+        ->addFor( 'Nationalité', '<h4 class="m-3">Nationalité</h4>')
+        ->addText('nationalite', '', ['label' => 'Nationalité', 'required'=> true,  'class'=>'form-control','placeholder' => 'Национальность'])
+        ->addFor( 'Spécialité', '<h4 class="m-3">Spécialité</h4>')
+        ->addText('specialite', '', ['label' => 'Spécialité', 'required'=> true,  'class'=>'form-control','placeholder' => 'специальность'])
         ->addToken( $token)
         ->addBouton('Envoyer', ['class'=>'btn-primary btn mb-3 mt-3 form-button wow fadeInUp animated'])
         ->endForm();
         return $form;
     }
+
+    
 }

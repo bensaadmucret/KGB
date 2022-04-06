@@ -23,29 +23,33 @@ abstract class BaseController
     protected $session;
     protected $flash;
     protected $container;
+    protected $model;
   
 
     public function __construct() {
         $this->request = Request::createFromGlobals();
         $this->connection = Connection::get()->connect();
         $this->formBuilder = new FormBuilder(); 
-        $this->session = new Session();
-        $this->session->start();
+        $this->session = new Session();       
         $this->flash = new Flash();
         $this->container = Application::getContainer();
+        $this->model = new \Core\Model\Model;
        
     }
 
         
     
-    public function redirect( string $url, int $statusCode, string $key, string $message = null): bool
+    public function redirect( string $url, int $statusCode, string $key=null, string $message = null): bool
     {
         try {
            /* Redirection vers une page différente du même dossier */
             $host  = $_SERVER['HTTP_HOST'];
             $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
             $extra = $url;
-            Flash::setMessage($key, $message);
+            if($key && $message){
+                Flash::setMessage($key, $message);
+            }
+           
             header("Location: http://$host$uri/$extra", TRUE, $statusCode);
             exit;
         } catch (\Exception $e) {
