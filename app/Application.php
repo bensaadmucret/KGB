@@ -37,6 +37,13 @@ class Application
 
         $router->add('GET', '/agent-show/:id', 'AgentController@show', 'agent.show');
 
+        /**ROUTE MISION */
+        $router->add('GET', '/mision-add', 'MissionController@add', 'mision.add');
+        $router->add('POST', '/mision-add', 'MissionController@add', 'mision.add');
+
+        $router->add('GET', '/mision-show', 'MissionController@show', 'mision.show');
+
+
         $router->dispatch();
     }
     

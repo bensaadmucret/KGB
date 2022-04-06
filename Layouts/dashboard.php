@@ -719,7 +719,7 @@
 				<ul class="metismenu" id="menu">
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-networking"></i>
-							<span class="nav-text">Dashboard</span>
+							<span class="nav-text">Agents</span>
 						</a>
                         <ul aria-expanded="false">
 							<li><a href="dashboard">Dashboard</a></li>
@@ -727,7 +727,20 @@
 							<li><a href="agent-add">Créer un agent</a></li>
 						
 						</ul>
-                    </li>                   
+                    </li>
+					<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-381-controls-3"></i>
+							<span class="nav-text">Missions</span>
+						</a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="./chart-flot.html">Flot</a></li>
+                            <li><a href="./chart-morris.html">Morris</a></li>
+                            <li><a href="./chart-chartjs.html">Chartjs</a></li>
+                            <li><a href="./chart-chartist.html">Chartist</a></li>
+                            <li><a href="./chart-sparkline.html">Sparkline</a></li>
+                            <li><a href="./chart-peity.html">Peity</a></li>
+                        </ul>
+                    </li>                  
                 </ul>
             
 				

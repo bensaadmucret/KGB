@@ -133,9 +133,11 @@ class FormBuilder
      * @param string $value
      * @return self
      */
-    public function addTextarea(string $name, string $value = ''): self
+    public function addTextarea(string $name,  array $attributs = []): self
     {
-        $this->form .='<textarea name="' . $name . '">' . $value . '</textarea>';
+        $this->form .='<textarea name="' . $name . '"';
+        $this->form .= $attributs ? $this->addAttributes($attributs).'>' : '>';
+        $this->form .= '</textarea>';
         return $this;
     }
     

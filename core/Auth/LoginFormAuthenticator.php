@@ -65,5 +65,37 @@ class LoginFormAuthenticator
         return $form;
     }
 
-    
+    /**create form with titre,description, nom de code, pays, agents, contacts, cibles, type de mission :surveillance, assassinat, infiltration */
+
+    public static function createMission()
+    {
+        $session = new Session();
+        $token = Token::generateToken($session); 
+        
+        $form = new FormBuilder();
+
+        $form->startForm('mission-add', 'POST', 'create form');
+        $form->addFor( 'Titre', '<h4 class="m-3">Titre</h4>')
+        ->addText('titre', '', ['label' => 'Titre', 'required'=> true,  'class'=>'form-control','placeholder' => 'Название'])
+        ->addFor( 'Description', '<h4 class="m-3">Description</h4>')
+        ->addTextarea('description', ['label' => 'Description', 'rows'=>"10",  'class'=>'form-control summernote','placeholder' => 'Описание'])
+        ->addFor( 'Nom de code', '<h4 class="m-3">Nom de code</h4>')
+        ->addText('nom_code', '', ['label' => 'Nom de code', 'required'=> true,  'class'=>'form-control','placeholder' => 'Имя кода'])
+        ->addFor( 'Pays', '<h4 class="m-3">Pays</h4>')
+        ->addText('pays', '', ['label' => 'Pays', 'required'=> true,  'class'=>'form-control','placeholder' => 'Страна'])
+        ->addFor( 'Agents', '<h4 class="m-3">Agents</h4>')
+        ->addText('agents', '', ['label' => 'Agents', 'required'=> true,  'class'=>'form-control','placeholder' => 'Агенты'])
+        ->addFor( 'Contacts', '<h4 class="m-3">Contacts</h4>')
+        ->addText('contacts', '', ['label' => 'Contacts', 'required'=> true,  'class'=>'form-control','placeholder' => 'Контакты'])
+        ->addFor( 'Cibles', '<h4 class="m-3">Cibles</h4>')
+        ->addText('cibles', '', ['label' => 'Cibles', 'required'=> true,  'class'=>'form-control','placeholder' => 'Цели'])
+        ->addFor( 'Type de mission', '<h4 class="m-3">Type de mission</h4>')
+        ->addText('type_mission', '', ['label' => 'Type de mission', 'required'=> true,  'class'=>'form-control','placeholder' => 'Тип миссии'])
+        ->addToken( $token)
+        ->addBouton('Envoyer', ['class'=>'btn-primary btn mb-3 mt-3 form-button wow fadeInUp animated'])
+        ->endForm();
+        return $form;
+    }
+
+
 }
