@@ -94,7 +94,7 @@ class Model
 
         try {
             $query = $this->connexion->prepare('UPDATE '. $table .' SET '. implode(',', array_map(function($k){
-                return $k . ' = :' . $k;
+                return $k . ' = :'. $k;
             }, array_keys($data))) .' WHERE id = :id');
             $query->execute($data);
             return $query->rowCount();

@@ -8,10 +8,11 @@ php:
 before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction
+  - phpenv config-rm xdebug.ini
 
-# Commands you want to run that will verify your build.
+# Commands you want to run that will verify your build.s
 script:
-  - mkdir -p build/logs
+  - mkdir -p logs/logs
   - php vendor/bin/phpunit -c phpunit.xml.dist
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 

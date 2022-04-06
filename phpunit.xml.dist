@@ -3,7 +3,7 @@
          cacheResult="false" stderr="true">
     <testsuites>
         <testsuite name="Tests">
-            <directory>tests</directory>
+            <directory>tests/Sessiontest.php</directory>
         </testsuite>
     </testsuites>
 </phpunit>

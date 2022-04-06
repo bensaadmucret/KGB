@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '6508edc615e2c486802ca840f249a9b16fe1f414',
+    'reference' => '2811373ac29c0bca3307c11ff2a031bf24413b26',
     'name' => 'ben/e-boutique',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '6508edc615e2c486802ca840f249a9b16fe1f414',
+      'reference' => '2811373ac29c0bca3307c11ff2a031bf24413b26',
     ),
     'cakephp/core' => 
     array (
@@ -188,7 +188,7 @@ private static $installed = array (
       array (
         0 => '10.0.x-dev',
       ),
-      'reference' => '439a89077118826bbee0913c43da23d2a2d3087b',
+      'reference' => '5b50fa6b0f973417820296392c6dd3e3a63d0eeb',
     ),
     'psr/container' => 
     array (
@@ -418,7 +418,7 @@ private static $installed = array (
       array (
         0 => '3.1.x-dev',
       ),
-      'reference' => '893fd20d9ae41a0bae2b9cbdd581ac0cf3917de3',
+      'reference' => '07f1b9cc2ffee6aaafcf4b710fbc38ff736bd918',
     ),
     'symfony/filesystem' => 
     array (
@@ -446,7 +446,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '859043accca044e53dcd5cd90565565ab9107834',
+      'reference' => '1a4f708e4e87f335d1b1be6148060739152f0bd5',
     ),
     'symfony/http-client-implementation' => 
     array (
@@ -526,7 +526,7 @@ private static $installed = array (
       array (
         0 => '3.1.x-dev',
       ),
-      'reference' => 'bc0a2247c72d29241b5a06fb60dc1c9d9acf2a3a',
+      'reference' => '77ca81f6ddb67beb5202614c1b92faf27dca7661',
     ),
     'symfony/string' => 
     array (

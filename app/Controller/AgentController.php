@@ -110,16 +110,11 @@ class AgentController extends BaseController
                 'nationalite' => strip_tags($nationalite),
                 'specialite' => strip_tags($specialite),              
                 'updated_at' => (new \DateTime())->format('Y-m-d'),
-                'id' => $id,
-                
-                              
-
-                               
+                'id' => $id,                               
             ];
             $this->model->update('agent', $datas);
             return $this->redirect('agent-show', 302, 'success', 'Agent modifié avec succès');
-            
-                      
+                                 
         
         }
             return $this->redirect('agent-show', 302, 'error', 'Une erreur est survenue');
