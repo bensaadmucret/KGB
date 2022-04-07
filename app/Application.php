@@ -28,7 +28,10 @@ class Application
         
         /** voir tous les agents*/
         $router->add('GET', '/agent-show', 'AgentController@show', 'agent.show');
-        $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');
+
+        $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit'); 
+        $router->add('POST', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');      
+
         $router->add('POST', '/agent-edit/agent-update/:id', 'AgentController@update', 'agent.update');
         $router->add('GET', '/agent-delete/:id', 'AgentController@delete', 'agent.delete');
         $router->add('GET', '/agent-show/:id', 'AgentController@show', 'agent.show');
@@ -37,8 +40,16 @@ class Application
         $router->add('GET', '/mission-add', 'MissionController@add', 'mision.add');
         $router->add('POST', '/mission-add', 'MissionController@add', 'mision.add');
         $router->add('GET', '/mission-show', 'MissionController@show', 'mision.show');
+        $router->add('POST', '/mission-show', 'MissionController@show', 'mision.show');
 
         /**ROUTE CIBLE */
+        $router->add('GET', '/cible-add', 'CibleController@add', 'mision.add');
+        $router->add('POST', '/cible-add', 'CibleController@add', 'mision.add');
+        $router->add('GET', '/cible-show', 'CibleController@show', 'mision.show');
+        $router->add('POST', '/cible-show', 'CibleController@show', 'mision.show');
+        $router->add('GET', '/cible-edit/:id', 'CibleController@edit', 'mision.edit');
+        $router->add('POST', '/cible-edit/:id', 'CibleController@edit', 'mision.edit');
+        $router->add('POST', '/cible-edit/cible-update/:id', 'CibleController@update', 'cible.update');
 
 
         $router->dispatch();
@@ -57,7 +68,7 @@ class Application
         $container->set('Model', new \Core\Model\Model);
 
 
-        $container->get('Session')->start();
+       
                
         
         return $container;

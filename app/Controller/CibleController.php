@@ -91,8 +91,8 @@ class CibleController extends BaseController
     public function update()
     {
         check_is_logged_in();
-        dump($this->request);
-        if($this->request->isMethod('get')){
+        $token = $this->request->get('token');
+        if($this->request->isMethod('get') && Token::isTokenValidInSession( $token)){
             $this->redirect('cible-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
         }
         $token = $this->request->get('token');

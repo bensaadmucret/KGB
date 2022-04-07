@@ -1,4 +1,6 @@
+CREATE DATABASE IF NOT EXISTS KGB;
 
+USE KGB;
 
 
 CREATE TABLE IF NOT EXISTS agent (
@@ -70,11 +72,6 @@ dateFin date NOT NULL,
   FOREIGN KEY (cible) REFERENCES cible( id ),
   FOREIGN KEY (planque) REFERENCES planque( id)
 );
-
-
-
-
-
 
 
 CREATE TABLE IF NOT EXISTS administrateur (

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use Core\Model\Model;
+use Core\Token\Token;
 use Core\Controller\BaseController;
 use Core\Auth\LoginFormAuthenticator as Authenticator;
 
@@ -19,13 +21,13 @@ class AgentController extends BaseController
     {   
             
        $agents = $this->model->getAll('agent'); 
-       dump($agents);
-            $this->render('agent/show', [        
+       
+            $this->render('agent/show', [      
             
             'title' => 'Dashboard | liste des agents',
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),  
-            'agents' => $agents,          
+            'agents' => $agents,                      
         ], 'dashboard');
     }
 
@@ -34,15 +36,15 @@ class AgentController extends BaseController
     public function add()
     {
         check_is_logged_in();
-
-        if($this->request->isMethod('post')){  
+        $token = $this->request->get('token');
+        if($this->request->isMethod('post') && Token::isTokenValidInSession( $token)){  
             $nom = $this->request->get('nom');
             $prenom = $this->request->get('prenom');
             $date_naissance     = $this->request->get('date_naissance');
             $code_identification    = $this->request->get('code_identification');
             $nationalite   = $this->request->get('nationalite');
             $specialite  = $this->request->get('specialite');
-            $token = $this->request->get('token');
+           
             $datas = [
                 'nom' => strip_tags($nom),
                 'prenom' => strip_tags($prenom),
@@ -80,7 +82,8 @@ class AgentController extends BaseController
             'title' => 'Dashboard | Ajouter un agent',
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),
-            'agent'=>$agent,           
+            'agent'=>$agent,  
+                   
             
         ], 'dashboard');
         
@@ -91,7 +94,12 @@ class AgentController extends BaseController
     public function update()
     {
         check_is_logged_in();
-       
+        if($this->request->isMethod('get')){
+            $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
+        }
+        
+        $token = $this->request->get('token');
+        
         if($this->request->isMethod('post')){ 
             
             $id = $this->request->get('id'); 
@@ -112,7 +120,10 @@ class AgentController extends BaseController
                 'updated_at' => (new \DateTime())->format('Y-m-d'),
                 'id' => $id,                               
             ];
-            $this->model->update('agent', $datas);
+          $this->model->update('agent', $datas);
+         /* $pdo = $this->connection->prepare('UPDATE agent SET nom = :nom, prenom = :prenom, date_naissance = :date_naissance, code_identification = :code_identification, nationalite = :nationalite, specialite = :specialite, updated_at = :updated_at WHERE id = :id');
+          $pdo->execute($datas);*/
+           
             return $this->redirect('agent-show', 302, 'success', 'Agent modifié avec succès');
                                  
         

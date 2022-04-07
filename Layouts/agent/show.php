@@ -38,16 +38,16 @@
                                                 <td>
 													<div class="d-flex">   
                                                     <form action="agent-edit/<?php echo $agent['id'] ?? '';?>" method="POST">
-                                                        <input  name="id" type="hidden" value="<?php echo $agent['id'] ?? '';?>">
-                                                        <input  name="token" type="hidden" value="<?php echo $token ?? '';?>">
-                                                        <input type="submit" class="btn btn-primary shadow btn-xs sharp mr-1"  value="Edit" >                                           
+                                                        <input  name="id" type="hidden" value="<?php echo $agent['id'] ?? '';?>">                                                      
+                                                        <input type="submit" class="btn btn-primary  btn-xs sharp mr-1"  value="Edit" >                                           
                                                     
                                                     </form>
-                                                    <form class="deleteForm" action="agent-delete/<?php echo $agent['id'] ?? '';?>" method="POST">
+                                                    </div>
+                                                    <div class="d-flex"> 
+                                                    <form action="agent-delete/<?php echo $agent['id'] ?? '';?>" method="POST">
                                                       
-                                                        <input  class="btn btn-danger btn-xs sharp" name="id" type="hidden" value="<?php echo $agent['id'] ?? '';?>">
-                                                        <input  name="token" type="hidden" value="<?php echo $token ?? '';?>">
-                                                        <input  class="btn btn-danger   btn-xs sharp" type="submit"   value="Sup" onclick="return confirm('Êtes-vous sûr de votre choix ?')" >
+                                                        <input  class="btn btn-danger btn-xs sharp" name="id" type="hidden" value="<?php echo $agent['id'] ?? '';?>">                                                       
+                                                        <input type="submit"  class="btn btn-danger  btn-xs sharp"   value="Sup" onclick="return confirm('Êtes-vous sûr de votre choix ?')" >
                                                     
                                                     </form>
                                                     
