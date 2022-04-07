@@ -762,17 +762,10 @@
                         <div class="welcome-text">
 							<h3>Управление миссией</h3>
                             <h4> Привет<i>(Bienvenue)</i>, <?php echo UpercaseFirst($user['nom']) ; ?></h4>
-							<?php if (!empty( $_SESSION['success'])):?>
-								<div class="alert alert-success">
-									<?php echo Flash::getMessage('success'); ?>
-								</div>
-							<?php endif; ?>
-							
-							<?php if (!empty( $_SESSION['error'])):?>
-								<div class="alert alert-danger">
-									<?php echo Flash::getMessage('error'); ?>
-								</div>
-							<?php endif; ?>
+
+                            <?php get_flash_message_error(); ?>
+							<?php get_flash_message_success(); ?>
+
 							
                         </div>
                     </div>
@@ -806,15 +799,15 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <!-- Required vendors -->
-    <script src="<?php echo assets('/ressources/vendor/global/global.min.js' );?>"></script>
-	<script src="<?php echo assets('/ressources/vendor/bootstrap-select/dist/js/bootstrap-select.min.js' );?>"></script>
+    <!-- Required bases -->
+    <script src="<?php echo assets('/ressources/base/global/global.min.js' );?>"></script>
+	<script src="<?php echo assets('/ressources/base/bootstrap-select/dist/js/bootstrap-select.min.js' );?>"></script>
     <script src="<?php echo assets('/ressources/js/custom.min.js' );?>"></script>
 	<script src="<?php echo assets('/ressources/js/formulaire.js' );?>"></script>
 	<script src="<?php echo assets('/ressources/js/deznav-init.js' );?>"></script>
-	<script src="<?php echo assets('/ressources/vendor/sweetalert2/dist/sweetalert2.min.js' );?>"></script>
+	<script src="<?php echo assets('/ressources/base/sweetalert2/dist/sweetalert2.min.js' );?>"></script>
     <!-- Datatable -->
-    <script src="<?php echo assets('/ressources/vendor/datatables/js/jquery.dataTables.min.js' );?>"></script>
+    <script src="<?php echo assets('/ressources/base/datatables/js/jquery.dataTables.min.js' );?>"></script>
     <script src="<?php echo assets('/ressources/js/plugins-init/datatables.init.js');?>"></script>
 
 </body>

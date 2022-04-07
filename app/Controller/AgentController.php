@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Core\Controller\BaseController;
 use Core\Auth\LoginFormAuthenticator as Authenticator;
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
 class AgentController extends BaseController
@@ -73,11 +73,11 @@ class AgentController extends BaseController
             $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
         }       
         $id = $this->request->get('id');
-        $agent = $this->model->find('agent', $this->request->get('id'));
+        $agent = $this->model->find('agent', $id);
         
         $this->render('agent/edition', [       
           
-            'title' => 'Dashboard | Ajouter un agent',
+            'title' => "Dashboard | Mise à jour d'un agent",
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),
             'agent'=>$agent,           
@@ -113,14 +113,15 @@ class AgentController extends BaseController
                 'id' => $id,                               
             ];
             $this->model->update('agent', $datas);
-            return $this->redirect('agent-show', 302, 'success', 'Agent modifié avec succès');
+           return $this->redirect('agent-show', 302, 'success', 'Agent mis à jour avec succès');
                                  
         
         }
-            return $this->redirect('agent-show', 302, 'error', 'Une erreur est survenue');
-     
+        
+        return $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!'); 
+    
     }
-
+    
     public function delete()
     {
         check_is_logged_in();
@@ -129,7 +130,6 @@ class AgentController extends BaseController
             $this->model->delete('agent', $id);
             return $this->redirect('agent-show', 302, 'success', 'Agent supprimé avec succès');
         }
-        return $this->redirect('agent-show', 302, 'error', 'Une erreur est survenue');
+        return $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
     }
-    
 }

@@ -28,7 +28,7 @@ class Application
         
         /** voir tous les agents*/
         $router->add('GET', '/agent-show', 'AgentController@show', 'agent.show');
-
+        
         $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');       
 
         $router->add('POST', '/agent-edit/agent-update/:id', 'AgentController@update', 'agent.update');

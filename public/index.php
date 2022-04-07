@@ -4,19 +4,14 @@ ini_set("display_errors", 1);
 
 require __DIR__ . '/../vendor/autoload.php';
 use App\factory\AppFactory;
-//use Core\Database\Connection;
 
 
     
 $app = AppFactory::create();
 
 $container = $app::getContainer();
-$container->get('Database')->connect();
+$container->get('Session')->start();
 
-
-
-//dump($container->get('Router')->getPath());
-//dump($container->get('Router'));
 
 
 
