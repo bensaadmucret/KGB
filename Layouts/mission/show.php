@@ -25,20 +25,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach($misions as $mision): ?>
+                                        <?php   foreach($missions as $mission): ?>
                                             <tr>
                                                 <td></td>
                                                
-                                                <td><?php echo $mision['nom'] ?? '';?></td>
-                                                <td><?php echo $mision['prenom'] ?? '';?></td>
+                                                <td><?php echo $mission['nom'] ?? '';?></td>
+                                                <td><?php echo $mission['prenom'] ?? '';?></td>
                                                 <td><?php echo dateFormate($mision['date_naissance']) ?? '';?></td>
                                                 <td><?php echo $mision['code_identification'] ?? '';?></td>
-                                                <td><a href="javascript:void(0);"><strong><?php echo $mision['nationalite'] ?? '';?></strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong><?php echo $mision['specialite'] ?? '';?></strong></a></td>                                               
+                                                <td><a href="javascript:void(0);"><strong><?php echo $mission['nationalite'] ?? '';?></strong></a></td>
+                                                <td><a href="javascript:void(0);"><strong><?php echo $mission['specialite'] ?? '';?></strong></a></td>                                               
                                                 <td>
 													<div class="d-flex">   
-                                                    <form action="agent-edit/<?php echo $mision['id'] ?? '';?>" method="POST">
-                                                        <input  name="id" type="hidden" value="<?php echo $mision['id'] ?? '';?>">
+                                                    <form action="agent-edit/<?php echo $mission['id'] ?? '';?>" method="POST">
+                                                        <input  name="id" type="hidden" value="<?php echo $mission['id'] ?? '';?>">
                                                         <input type="submit" class="btn btn-primary shadow btn-xs sharp mr-1"  value="Editer" > <i class="fa fa-pencil"></i>                                          
                                                     
                                                     </form>

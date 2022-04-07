@@ -145,13 +145,15 @@ class FormBuilder
      * add Sélect
      *
      * @param string $name
+     * @param array $attributs
      * @param array $options
      * @param string $selected
      * @return self
      */
-    public function addSelect(string $name, array $options, string $selected = ''): self
+    public function addSelect(string $name, array $attributs, array $options, string $selected = ''): self
     {
-        $this->form .='<select name="' . $name . '">';
+        $this->form .='<select name="' . $name .  '"';
+        $this->form .= $attributs ? $this->addAttributes($attributs).'>' : '>';
         foreach ($options as $key => $value) {
             $this->form .= '<option value="' . $key . '"';
             $this->form .= $key == $selected ? ' selected="selected >' : '>';

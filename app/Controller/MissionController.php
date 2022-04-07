@@ -18,7 +18,7 @@ class MissionController extends BaseController
     public function show()
     {  
        $missions = $this->model->getAll('mission'); 
-       dump($missions);
+       
             $this->render('mission/show', [        
             
             'title' => 'Dashboard | liste des missions',
@@ -46,26 +46,24 @@ class MissionController extends BaseController
             $datas = [
                 'titre' => strip_tags($titre),
                 'description' => strip_tags($description),
-                'nom_code' => strip_tags($nom_code),
+                'code' => strip_tags($nom_code),
                 'pays' => strip_tags($pays),
-                'agents' => strip_tags($agents),
-                'contacts' => strip_tags($contacts),
-                'cibles' => strip_tags($cibles),
-                'type_mission' => strip_tags($type_mission),
-                'created_at' => date('Y-m-d H:i:s'),                
+                'agent' => strip_tags($agents),
+                'contact' => strip_tags($contacts),
+                'cible' => strip_tags($cibles),
+                'type' => strip_tags($type_mission),
+                'Date' => date('Y-m-d H:i:s'),                
             ];
             $this->model->insert('mission', $datas);
             return $this->redirect('mission-show', 302, 'success', 'Mission ajouté avec succès');
         }
 
-        $this->render('mission/add', [        
-            
-
+        $this->render('mission/add', [
             'title' => 'Dashboard | liste des missions',
             'message' => 'Добро пожаловать в вашу панель управления.',           
-            'user' => $this->session->get('user'),  
-            'missions' => $missions,
-            'form' => Authenticator::createMission(),
+            'user' => $this->session->get('user'),
+            'form' => Authenticator::createMission(),  
+                     
         ], 'dashboard');
     }
 

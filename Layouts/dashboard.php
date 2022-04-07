@@ -734,14 +734,24 @@
 							<span class="nav-text">Missions</span>
 						</a>
                         <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="./chart-flot.html">Flot</a></li>
-                            <li><a href="./chart-morris.html">Morris</a></li>
-                            <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="./chart-chartist.html">Chartist</a></li>
-                            <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="./chart-peity.html">Peity</a></li>
+                            <li><a href="dashboard">Dashboard</a></li>
+                            <li><a href="mission-add">Ajouter une mission</a></li>
+                            <li><a href="mission-show">Voir toute les missions</a></li>
+                          
                         </ul>
-                    </li>                  
+                    </li>
+					<li class=""><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-381-internet"></i>
+							<span class="nav-text">Cible</span>
+						</a>
+                        <ul aria-expanded="false" class="mm-collapse" style="height: 16px;">
+							<li><a href="dashboard">Dashboard</a></li>
+                            <li><a href="cible-add">Ajouter une cible</a></li>
+                            <li><a href="cible-show">Voir toute les cibles</a></li>
+
+
+                        </ul>
+                    </li>                 
                 </ul>
             
 				

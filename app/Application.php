@@ -28,20 +28,17 @@ class Application
         
         /** voir tous les agents*/
         $router->add('GET', '/agent-show', 'AgentController@show', 'agent.show');
-
-        $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');       
-
+        $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');
         $router->add('POST', '/agent-edit/agent-update/:id', 'AgentController@update', 'agent.update');
-
         $router->add('GET', '/agent-delete/:id', 'AgentController@delete', 'agent.delete');
-
         $router->add('GET', '/agent-show/:id', 'AgentController@show', 'agent.show');
 
-        /**ROUTE MISION */
-        $router->add('GET', '/mision-add', 'MissionController@add', 'mision.add');
-        $router->add('POST', '/mision-add', 'MissionController@add', 'mision.add');
+        /**ROUTE MISSION */
+        $router->add('GET', '/mission-add', 'MissionController@add', 'mision.add');
+        $router->add('POST', '/mission-add', 'MissionController@add', 'mision.add');
+        $router->add('GET', '/mission-show', 'MissionController@show', 'mision.show');
 
-        $router->add('GET', '/mision-show', 'MissionController@show', 'mision.show');
+        /**ROUTE CIBLE */
 
 
         $router->dispatch();
