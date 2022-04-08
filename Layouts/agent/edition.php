@@ -2,7 +2,7 @@
     <form action="agent-update/<?php echo $agent['id']; ?>" method="POST">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Ajouter un agent</h4>
+                <h4 class="card-title">Mise à un agent</h4>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -48,7 +48,7 @@
                     </div> 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="hidden" class="form-control" id="token" name="token" value="<?php echo $token; ?>">
+                            <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $agent['id']; ?>" required>
                         </div> 
                     </div>        
                 
@@ -58,4 +58,3 @@
                 <input class="btn btn-primary" type="submit" value="Mise à jour">
     </form>
 </div>
-

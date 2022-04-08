@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
-use Core\Model\Model;
-use Core\Token\Token;
 use Core\Controller\BaseController;
 use Core\Auth\LoginFormAuthenticator as Authenticator;
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
 class AgentController extends BaseController
@@ -21,13 +19,13 @@ class AgentController extends BaseController
     {   
             
        $agents = $this->model->getAll('agent'); 
-       
-            $this->render('agent/show', [      
+       dump($agents);
+            $this->render('agent/show', [        
             
             'title' => 'Dashboard | liste des agents',
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),  
-            'agents' => $agents,                      
+            'agents' => $agents,          
         ], 'dashboard');
     }
 
@@ -36,15 +34,15 @@ class AgentController extends BaseController
     public function add()
     {
         check_is_logged_in();
-        $token = $this->request->get('token');
-        if($this->request->isMethod('post') && Token::isTokenValidInSession( $token)){  
+
+        if($this->request->isMethod('post')){  
             $nom = $this->request->get('nom');
             $prenom = $this->request->get('prenom');
             $date_naissance     = $this->request->get('date_naissance');
             $code_identification    = $this->request->get('code_identification');
             $nationalite   = $this->request->get('nationalite');
             $specialite  = $this->request->get('specialite');
-           
+            $token = $this->request->get('token');
             $datas = [
                 'nom' => strip_tags($nom),
                 'prenom' => strip_tags($prenom),
@@ -75,15 +73,14 @@ class AgentController extends BaseController
             $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
         }       
         $id = $this->request->get('id');
-        $agent = $this->model->find('agent', $this->request->get('id'));
+        $agent = $this->model->find('agent', $id);
         
         $this->render('agent/edition', [       
           
-            'title' => 'Dashboard | Ajouter un agent',
+            'title' => "Dashboard | Mise à jour d'un agent",
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),
-            'agent'=>$agent,  
-                   
+            'agent'=>$agent,           
             
         ], 'dashboard');
         
@@ -94,12 +91,7 @@ class AgentController extends BaseController
     public function update()
     {
         check_is_logged_in();
-        if($this->request->isMethod('get')){
-            $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
-        }
-        
-        $token = $this->request->get('token');
-        
+       
         if($this->request->isMethod('post')){ 
             
             $id = $this->request->get('id'); 
@@ -120,18 +112,16 @@ class AgentController extends BaseController
                 'updated_at' => (new \DateTime())->format('Y-m-d'),
                 'id' => $id,                               
             ];
-          $this->model->update('agent', $datas);
-         /* $pdo = $this->connection->prepare('UPDATE agent SET nom = :nom, prenom = :prenom, date_naissance = :date_naissance, code_identification = :code_identification, nationalite = :nationalite, specialite = :specialite, updated_at = :updated_at WHERE id = :id');
-          $pdo->execute($datas);*/
-           
-            return $this->redirect('agent-show', 302, 'success', 'Agent modifié avec succès');
+            $this->model->update('agent', $datas);
+           return $this->redirect('agent-show', 302, 'success', 'Agent mis à jour avec succès');
                                  
         
         }
-            return $this->redirect('agent-show', 302, 'error', 'Une erreur est survenue');
-     
+        
+        return $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!'); 
+    
     }
-
+    
     public function delete()
     {
         check_is_logged_in();
@@ -140,7 +130,6 @@ class AgentController extends BaseController
             $this->model->delete('agent', $id);
             return $this->redirect('agent-show', 302, 'success', 'Agent supprimé avec succès');
         }
-        return $this->redirect('agent-show', 302, 'error', 'Une erreur est survenue');
+        return $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
     }
-    
 }

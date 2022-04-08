@@ -96,34 +96,14 @@ class Model
             $query = $this->connexion->prepare('UPDATE '. $table .' SET '. implode(',', array_map(function($k){
                 return $k . ' = :'. $k;
             }, array_keys($data))) .' WHERE id = :id');
-           
             $query->execute($data);
-
-            
+            return $query->rowCount();
         } catch (\PDOException $e) {
             throw new \Exception("Error connecting to the database: " . $e->getMessage());
         }
            
        
     }
-
-
-    public function update2(string $table, array $data){
-            
-            try {
-                $query = $this->connexion->prepare('UPDATE '. $table .' SET '. implode(',', array_map(function($k){
-                    return $k . ' = :'. $k;
-                }, array_keys($data))) .' WHERE id = :id');
-            
-                $query->execute($data);
-    
-                
-            } catch (\PDOException $e) {
-                throw new \Exception("Error connecting to the database: " . $e->getMessage());
-            }
-            
-        
-        }
     
 
     /**
