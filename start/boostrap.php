@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-use Symfony\Component\HttpFoundation\Request;
 use Core\Flash\Flash;
+use Core\Model\Model;
+use Symfony\Component\HttpFoundation\Request;
 
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
@@ -60,4 +61,24 @@ function get_fkash_message_success(){
             <?php echo Flash::getMessage('success'); ?>
         </div>
    <?php endif; 
+}
+
+
+function listeAgent() {
+    $model = new Model();
+    return $model->getAll('agent');
+ 
+}
+
+
+function listeContact() {
+    $model = new Model();
+    return $model->getAll('contact');
+ 
+}
+
+function listeCible() {
+    $model = new Model();
+    return $model->getAll('cible');
+ 
 }

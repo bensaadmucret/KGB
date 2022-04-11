@@ -8,7 +8,7 @@ use Core\Auth\LoginFormAuthenticator as Authenticator;
 
 
 
-class CibleController extends BaseController
+class ContactController extends BaseController
 {
     public function __construct()
     {
@@ -19,13 +19,13 @@ class CibleController extends BaseController
     public function show()
     {   
             
-       $cibles = $this->model->getAll('cible'); 
-           $this->render('cible/show', [        
+       $contacts = $this->model->getAll('contact'); 
+           $this->render('contact/show', [        
             
-            'title' => 'Dashboard | liste des cibles',
+            'title' => 'Dashboard | liste des contacts',
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),  
-            'cibles' => $cibles, 
+            'contacts' => $contacts, 
             'token' => Token::generateToken($this->session),            
         ], 'dashboard');
     }
@@ -51,16 +51,16 @@ class CibleController extends BaseController
                 'nationalite' => strip_tags($nationalite)              
                           
             ];
-            $this->model->insert('cible', $datas);
-            return $this->redirect('cible-show', 302, 'success', 'cible ajouté avec succès');
+            $this->model->insert('contact', $datas);
+            return $this->redirect('contact-show', 302, 'success', 'contact ajouté avec succès');
         }
 
-        $this->render('cible/add', [        
+        $this->render('contact/add', [        
             
-            'title' => 'Dashboard | Ajouter un cible',
+            'title' => 'Dashboard | Ajouter un contact',
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),
-            'form' => Authenticator::createCible(),  
+            'form' => Authenticator::createcontact(),  
         ], 'dashboard');
     }
     
@@ -70,17 +70,17 @@ class CibleController extends BaseController
     {   check_is_logged_in();  
         
         if($this->request->isMethod('get')){
-            $this->redirect('cible-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
+            $this->redirect('contact-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
         }       
         $id = $this->request->get('id');
-        $cible = $this->model->find('cible', $this->request->get('id'));
+        $contact = $this->model->find('contact', $this->request->get('id'));
         
-        $this->render('cible/edition', [       
+        $this->render('contact/edition', [       
           
-            'title' => 'Dashboard | Mise à jour d\'une cible',
+            'title' => 'Dashboard | Mise à jour d\'une contact',
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),
-            'cible'=>$cible, 
+            'contact'=>$contact, 
                  
             
         ], 'dashboard');
@@ -93,7 +93,7 @@ class CibleController extends BaseController
         check_is_logged_in();
        
         if($this->request->isMethod('get')){
-            $this->redirect('cible-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
+            $this->redirect('contact-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
         }
         
         if($this->request->isMethod('post')){ 
@@ -111,12 +111,12 @@ class CibleController extends BaseController
                 'nationalite' => strip_tags($nationalite),              
                 'id' => $id,                               
             ];
-            $this->model->update('cible', $datas);
-            return $this->redirect('cible-show', 302, 'success', 'cible modifié avec succès');
+            $this->model->update('contact', $datas);
+            return $this->redirect('contact-show', 302, 'success', 'contact modifié avec succès');
           
         }
        
-        return $this->redirect('cible-show', 302, 'error', 'Une erreur est survenue');   
+        return $this->redirect('contact-show', 302, 'error', 'Une erreur est survenue');   
      
     }
 
@@ -127,10 +127,10 @@ class CibleController extends BaseController
         $token = $this->request->get('token');
         if($this->request->isMethod('post')  && Token::isTokenValidInSession( $token)){
             $id = $this->request->get('id');
-            $this->model->delete('cible', $id);
-            return $this->redirect('cible-show', 302, 'success', 'cible supprimé avec succès');
+            $this->model->delete('contact', $id);
+            return $this->redirect('contact-show', 302, 'success', 'contact supprimé avec succès');
         }
-        return $this->redirect('cible-show', 302, 'error', 'Une erreur est survenue');
+        return $this->redirect('contact-show', 302, 'error', 'Une erreur est survenue');
     }
     
 }

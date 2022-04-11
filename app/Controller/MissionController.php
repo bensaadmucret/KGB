@@ -6,7 +6,6 @@ use Core\Controller\BaseController;
 use Core\Auth\LoginFormAuthenticator as Authenticator;
 
 
-
 class MissionController extends BaseController
 {
     public function __construct()
@@ -16,9 +15,10 @@ class MissionController extends BaseController
     }
 
     public function show()
-    {  
+    {   
+            
        $missions = $this->model->getAll('mission'); 
-       
+       dump($missions);
             $this->render('mission/show', [        
             
             'title' => 'Dashboard | liste des missions',
@@ -28,43 +28,113 @@ class MissionController extends BaseController
         ], 'dashboard');
     }
 
-     /**createfunction add with titre,description, nom de code, pays, agents, contacts, cibles, type de mission :surveillance, assassinat, infiltration */
+
+
     public function add()
     {
         check_is_logged_in();
-
+        
+        if($this->request->get('cibles')){
+           $_SESSION['cibles'] = $this->request->get('cibles');
+           echo 'ok';
+        }
+       
+       
         if($this->request->isMethod('post')){  
-            $titre = $this->request->get('titre');
-            $description = $this->request->get('description');
-            $nom_code = $this->request->get('nom_code');
-            $pays = $this->request->get('pays');
-            $agents = $this->request->get('agents');
-            $contacts = $this->request->get('contacts');
-            $cibles = $this->request->get('cibles');
-            $type_mission = $this->request->get('type_mission');
+            $nom = $this->request->get('nom');
+            $prenom = $this->request->get('prenom');
+            $date_naissance     = $this->request->get('date_naissance');
+            $code_identification    = $this->request->get('code_identification');
+            $nationalite   = $this->request->get('nationalite');
+            $specialite  = $this->request->get('specialite');
             $token = $this->request->get('token');
             $datas = [
-                'titre' => strip_tags($titre),
-                'description' => strip_tags($description),
-                'code' => strip_tags($nom_code),
-                'pays' => strip_tags($pays),
-                'agent' => strip_tags($agents),
-                'contact' => strip_tags($contacts),
-                'cible' => strip_tags($cibles),
-                'type' => strip_tags($type_mission),
-                'Date' => date('Y-m-d H:i:s'),                
+                'nom' => strip_tags($nom),
+                'prenom' => strip_tags($prenom),
+                'date_naissance' => strip_tags($date_naissance),
+                'code_identification' => strip_tags($code_identification),
+                'nationalite' => strip_tags($nationalite),
+                            
             ];
             $this->model->insert('mission', $datas);
-            return $this->redirect('mission-show', 302, 'success', 'Mission ajouté avec succès');
+            return $this->redirect('mission-show', 302, 'success', 'mission ajouté avec succès');
         }
-
-        $this->render('mission/add', [
-            'title' => 'Dashboard | liste des missions',
+    
+        $this->render('mission/add', [        
+            
+            'title' => 'Dashboard | Ajouter un mission',
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),
             'form' => Authenticator::createMission(),  
-                     
+           
         ], 'dashboard');
     }
+    
 
+
+    public function edit()
+    {
+        if($this->request->isMethod('get')){
+            $this->redirect('mission-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
+        }       
+        $id = $this->request->get('id');
+        $mission = $this->model->find('mission', $id);
+        
+        $this->render('mission/edition', [       
+          
+            'title' => "Dashboard | Mise à jour d'un mission",
+            'message' => 'Добро пожаловать в вашу панель управления.',           
+            'user' => $this->session->get('user'),
+            'mission'=>$mission,           
+            
+        ], 'dashboard');
+        
+
+    }
+
+
+    public function update()
+    {
+        check_is_logged_in();
+       
+        if($this->request->isMethod('post')){ 
+            
+            $id = $this->request->get('id'); 
+            $nom = (string)$this->request->get('nom');
+            $prenom =  (string)$this->request->get('prenom');
+            $date_naissance     = $this->request->get('date_naissance');
+            $code_identification    = (string) $this->request->get('code_identification');
+            $nationalite   = (string)$this->request->get('nationalite');
+            $specialite  = $this->request->get('specialite'); 
+            $updated_at = (new \DateTime())->format('Y-m-d');          
+            $datas = [
+                'nom' => strip_tags($nom),
+                'prenom' => strip_tags($prenom),
+                'date_naissance' => $date_naissance,
+                'code_identification' => strip_tags($code_identification),
+                'nationalite' => strip_tags($nationalite),
+                'specialite' => strip_tags($specialite),              
+                'updated_at' => (new \DateTime())->format('Y-m-d'),
+                'id' => $id,                               
+            ];
+            $this->model->update('mission', $datas);
+           return $this->redirect('mission-show', 302, 'success', 'mission mis à jour avec succès');
+                                 
+        
+        }
+        
+        return $this->redirect('mission-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!'); 
+    
+    }
+    
+    public function delete()
+    {
+        check_is_logged_in();
+        if($this->request->isMethod('post')){
+            $id = $this->request->get('id');
+            $this->model->delete('mission', $id);
+            return $this->redirect('mission-show', 302, 'success', 'mission supprimé avec succès');
+        }
+        return $this->redirect('mission-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
+    }
 }

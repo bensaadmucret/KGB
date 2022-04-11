@@ -64,6 +64,10 @@ class AuthController extends BaseController
         if(!$user) {           
             return $this->redirect('login', 302, 'error', ' Identification invalides.');
           }
+         
+          if( $this->session->get('verrouiller')){
+            return $this->redirect('login', 302, 'error', 'Votre compte est verrouillé.');
+          }
            
        $token = $this->request->get('token');      
        if(Token::isTokenValidInSession( $token, $this->session) && $this->postIsValide()) {        
@@ -179,8 +183,11 @@ class AuthController extends BaseController
 
     public function dashboard()
     {
+        if( $this->session->get('verrouiller')) {
+            return $this->redirect('lock-screen', 302, 'error', 'Votre compte est verrouillé.');
+          }
         if(!$this->session->get('user')) {           
-            return $this->redirect('login', 302, 'error', 'Vous devez être connecté pour accéder à cette page.');
+            return $this->redirect('lock-screen', 302, 'error', 'Vous devez être connecté pour accéder à cette page.');
         }
         $this->render('auth/admin-dashboard',
         [
@@ -208,5 +215,32 @@ class AuthController extends BaseController
             'user' => $this->session->get('user'),
             'form_agent' => Authenticator::createAgent(),
         ], 'dashboard');
+    }
+
+    public function verrouiller()
+    {  
+        if(!$this->session->get('user')) {           
+            return $this->redirect('login', 302, 'error', 'Vous devez être connecté pour accéder à cette page.');
+        } 
+       $this->session->set('verrouiller', true);
+       
+        if($this->request->get('password')) {
+            $password = $this->request->get('password');          
+            $user = $this->session->get('user');           
+            if(password_verify($password, $user['password'])) {
+                $this->session->remove('verrouiller');
+                return $this->redirect('dashboard', 302, 'success', 'Vous êtes maintenant connecté...');
+            }            
+            return $this->redirect('lock-screen', 302, 'error', 'Mot de passe invalide.');
+        }
+        if(!$this->session->get('user')) {           
+            return $this->redirect('login', 302, 'error', 'Vous devez être connecté pour accéder à cette page.');
+        }
+        $this->render('auth/verrouiller',
+        [            
+            'user' => $this->session->get('user'),
+        
+        ], 'lock');
+
     }
 }

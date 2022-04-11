@@ -19,7 +19,7 @@ class AgentController extends BaseController
     {   
             
        $agents = $this->model->getAll('agent'); 
-       dump($agents);
+      
             $this->render('agent/show', [        
             
             'title' => 'Dashboard | liste des agents',

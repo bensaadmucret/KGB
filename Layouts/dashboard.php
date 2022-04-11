@@ -14,12 +14,14 @@
     <link href="<?php echo assets('/ressources/base/datatables/css/jquery.dataTables.min.css');?>" rel="stylesheet">
 
     <!-- Custom Stylesheet -->
+
     <link href="<?php echo  assets('/ressources/base/bootstrap-select/dist/css/bootstrap-select.min.css');?>"  rel="stylesheet">
     <link href="<?php echo assets('/ressources/css/style.css');?>"  rel="stylesheet">
-	<link href="<?php echo assets('/ressources/base/jquery-steps/css/jquery.steps.css');?>"  rel="stylesheet">
+
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
-	<link href="<?php echo  assets('/ressources/base/sweetalert2/dist/sweetalert2.min.css'); ?>"  rel="stylesheet">
+
 	<link href="<?php echo assets('/style.css');?>"  rel="stylesheet">
+
 
 </head>
 
@@ -579,16 +581,7 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
-                            <div class="search_bar dropdown show">
-                                <div class="dropdown-menu p-0 m-0 show">
-                                    <form>
-                                        <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
-                                    </form>
-                                </div>
-								<span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.7871 22.7761L17.9548 16.9437C19.5193 15.145 20.4665 12.7982 20.4665 10.2333C20.4665 4.58714 15.8741 0 10.2333 0C4.58714 0 0 4.59246 0 10.2333C0 15.8741 4.59246 20.4665 10.2333 20.4665C12.7982 20.4665 15.145 19.5193 16.9437 17.9548L22.7761 23.7871C22.9144 23.9255 23.1007 24 23.2816 24C23.4625 24 23.6488 23.9308 23.7871 23.7871C24.0639 23.5104 24.0639 23.0528 23.7871 22.7761ZM1.43149 10.2333C1.43149 5.38004 5.38004 1.43681 10.2279 1.43681C15.0812 1.43681 19.0244 5.38537 19.0244 10.2333C19.0244 15.0812 15.0812 19.035 10.2279 19.035C5.38004 19.035 1.43149 15.0865 1.43149 10.2333Z" fill="#A4A4A4"/></svg>
-                                </span>
-                            </div>
+                       
                         </div>
 
                         <ul class="navbar-nav header-right">
@@ -715,48 +708,44 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="deznav color-scheme-7">
-            <div class="deznav-scroll">
-				<ul class="metismenu" id="menu">
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+        <div class="deznav color-scheme-3">
+            <div class="deznav-scroll mm-active ps ps--active-y">
+				<ul class="metismenu mm-show" id="menu">
+                    <li class="mm-active"><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="true">
 							<i class="flaticon-381-networking"></i>
-							<span class="nav-text">Agents</span>
+							<span class="nav-text">Dashboard</span>
 						</a>
-                        <ul aria-expanded="false">
-							<li><a href="dashboard">Dashboard</a></li>
+                        <ul aria-expanded="false" class="mm-collapse mm-show" style="">
+							<li><a href="/">Home</a></li>
+							<li><a href="agent-add">Ajouter un agent</a></li>
 							<li><a href="agent-show">Liste des agents</a></li>
-							<li><a href="agent-add">Créer un agent</a></li>
-						
+							<li><a href="cible-add">Ajouter une cible</a></li>
+							<li><a href="cible-show">Liste des cibles</a></li>
+							<li><a href="contact-add">Ajouter un contact</a></li>
+							<li><a href="contact-show">Liste des contacts</a></li>
+							<li><a href="mission-add">Ajouter und mission</a></li>
+							<li><a href="mission-show">Liste des missions</a></li>
+
 						</ul>
                     </li>
-					<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-381-controls-3"></i>
-							<span class="nav-text">Missions</span>
-						</a>
-                        <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="dashboard">Dashboard</a></li>
-                            <li><a href="mission-add">Ajouter une mission</a></li>
-                            <li><a href="mission-show">Voir toute les missions</a></li>
-                          
-                        </ul>
-                    </li>
-					<li class=""><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-381-internet"></i>
-							<span class="nav-text">Cible</span>
-						</a>
-                        <ul aria-expanded="false" class="mm-collapse" style="height: 16px;">
-							<li><a href="dashboard">Dashboard</a></li>
-                            <li><a href="cible-add">Ajouter une cible</a></li>
-                            <li><a href="cible-show">Voir toute les cibles</a></li>
+					<li>
+					
+						<ul aria-expanded="false" class="mm-collapse mm-show">
+							<li>
+						<a  href="lock-screen">
+						<button type="button" class="btn btn-light">
+							<i class="lni lni-lock-alt"></i> verrouiller</a></li>
+						</button>									
+						</ul>
+					</li>
 
-
-                        </ul>
-                    </li>                 
-                </ul>
             
-				
-				
-			</div>
+			
+				<div class="copyright">
+					<p><strong>KGB - Admin Dashboard</strong></p>
+					
+				</div>
+			<div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 884px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 773px;"></div></div></div>
         </div>
         <!--**********************************
             Sidebar end
@@ -772,17 +761,8 @@
                         <div class="welcome-text">
 							<h3>Управление миссией</h3>
                             <h4> Привет<i>(Bienvenue)</i>, <?php echo UpercaseFirst($user['nom']) ; ?></h4>
-							<?php if (!empty( $_SESSION['success'])):?>
-								<div class="alert alert-success">
-									<?php echo Flash::getMessage('success'); ?>
-								</div>
-							<?php endif; ?>
-							
-							<?php if (!empty( $_SESSION['error'])):?>
-								<div class="alert alert-danger">
-									<?php echo Flash::getMessage('error'); ?>
-								</div>
-							<?php endif; ?>
+							<?php get_fkash_message_success(); ?>							
+							<?php get_flash_message_error(); ?>
 							
                         </div>
                     </div>
@@ -826,6 +806,10 @@
     <!-- Datatable -->
     <script src="<?php echo assets('/ressources/base/datatables/js/jquery.dataTables.min.js' );?>"></script>
     <script src="<?php echo assets('/ressources/js/plugins-init/datatables.init.js');?>"></script>
+	
+	
+
+
 
 </body>
 </html>
