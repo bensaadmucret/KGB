@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require APP_PATH . DS . 'vendor' . DS . 'autoload.php';
+require_once(APP_PATH. 'vendor'. DS .'autoload.php');
 use App\factory\AppFactory;
 //use Core\Database\Connection;
 
