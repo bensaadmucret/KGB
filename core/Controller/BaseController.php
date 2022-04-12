@@ -72,7 +72,7 @@ abstract class BaseController
         ob_start();
      
 
-        require_once('https://app-mzb.herokuapp.com/Layouts'. DS . $tpl . '.php');
+        require_once('app-mzb.herokuapp.com/Layouts'. DS . $tpl . '.php');
         $content = ob_get_clean();
         $view =  $model ?? 'default';
         require_once(APP_PATH.'Layouts'. DS . $view . '.php');
