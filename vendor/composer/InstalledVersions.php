@@ -19,19 +19,19 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '29fbf64716afcf88815623a899ecfa734277b777',
-    'name' => 'ben/e-boutique',
+    'reference' => 'd7fb9d7a15eed117afd9846ca12a702971284e8e',
+    'name' => 'ben/kgb',
   ),
   'versions' => 
   array (
-    'ben/e-boutique' => 
+    'ben/kgb' => 
     array (
       'pretty_version' => 'dev-main',
       'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => '29fbf64716afcf88815623a899ecfa734277b777',
+      'reference' => 'd7fb9d7a15eed117afd9846ca12a702971284e8e',
     ),
     'doctrine/instantiator' => 
     array (

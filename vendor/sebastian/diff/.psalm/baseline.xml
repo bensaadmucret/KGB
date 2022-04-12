@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.x-dev@">
+  <file src="src/Differ.php">
+    <MissingParamType occurrences="1">
+      <code>$line</code>
+    </MissingParamType>
+  </file>
+  <file src="src/Exception/ConfigurationException.php">
+    <MissingParamType occurrences="1">
+      <code>$value</code>
+    </MissingParamType>
+  </file>
+  <file src="src/Output/StrictUnifiedDiffOutputBuilder.php">
+    <MissingParamType occurrences="2">
+      <code>$output</code>
+      <code>$output</code>
+    </MissingParamType>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$changed</code>
+    </PropertyNotSetInConstructor>
+    <PropertyTypeCoercion occurrences="1">
+      <code>$options['contextLines']</code>
+    </PropertyTypeCoercion>
+  </file>
+  <file src="src/Output/UnifiedDiffOutputBuilder.php">
+    <MissingParamType occurrences="2">
+      <code>$output</code>
+      <code>$output</code>
+    </MissingParamType>
+  </file>
+</files>

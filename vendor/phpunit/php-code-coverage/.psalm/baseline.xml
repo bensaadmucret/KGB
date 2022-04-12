@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.x-dev@">
+  <file src="src/CodeCoverage.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$unit[0]</code>
+    </ArgumentTypeCoercion>
+    <InternalMethod occurrences="8">
+      <code>asString</code>
+      <code>getName</code>
+      <code>getName</code>
+      <code>isLarge</code>
+      <code>isMedium</code>
+      <code>size</code>
+      <code>size</code>
+      <code>size</code>
+    </InternalMethod>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$currentId</code>
+    </PropertyNotSetInConstructor>
+    <RedundantCondition occurrences="1">
+      <code>is_array($linesToBeCovered)</code>
+    </RedundantCondition>
+    <TypeDoesNotContainType occurrences="1">
+      <code>!is_array($linesToBeCovered) &amp;&amp; $linesToBeCovered !== false</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/Driver/PcovDriver.php">
+    <UndefinedConstant occurrences="1">
+      <code>inclusive</code>
+    </UndefinedConstant>
+    <UndefinedFunction occurrences="5">
+      <code>clear()</code>
+      <code>collect(inclusive, $filesToCollectCoverageFor)</code>
+      <code>start()</code>
+      <code>stop()</code>
+      <code>waiting()</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/Data/ProcessedCodeCoverageData.php">
+    <PossiblyNullArgument occurrences="1">
+      <code>$this-&gt;functionCoverage[$file][$functionName]['branches'][$branchId]['hit']</code>
+    </PossiblyNullArgument>
+    <PossiblyNullArrayAccess occurrences="1">
+      <code>$this-&gt;functionCoverage[$file][$functionName]['branches']</code>
+    </PossiblyNullArrayAccess>
+    <PossiblyNullArrayAssignment occurrences="1">
+      <code>$this-&gt;functionCoverage[$file][$functionName]['branches']</code>
+    </PossiblyNullArrayAssignment>
+  </file>
+  <file src="src/Driver/XdebugDriver.php">
+    <UndefinedConstant occurrences="5">
+      <code>XDEBUG_CC_BRANCH_CHECK</code>
+      <code>XDEBUG_CC_DEAD_CODE</code>
+      <code>XDEBUG_CC_UNUSED</code>
+      <code>XDEBUG_FILTER_CODE_COVERAGE</code>
+      <code>XDEBUG_PATH_INCLUDE</code>
+    </UndefinedConstant>
+    <UndefinedFunction occurrences="1">
+      <code>xdebug_info('mode')</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/Filter.php">
+    <InvalidDocblockParamName occurrences="1">
+      <code>$files</code>
+    </InvalidDocblockParamName>
+  </file>
+  <file src="src/Node/Builder.php">
+    <EmptyArrayAccess occurrences="1">
+      <code>$pointer[$path[$i] . $type]</code>
+    </EmptyArrayAccess>
+  </file>
+  <file src="src/Node/Directory.php">
+    <PropertyTypeCoercion occurrences="2">
+      <code>$this-&gt;directories</code>
+      <code>$this-&gt;files</code>
+    </PropertyTypeCoercion>
+  </file>
+  <file src="src/Node/File.php">
+    <InvalidPropertyAssignmentValue occurrences="3">
+      <code>$this-&gt;codeUnitsByLine</code>
+      <code>$this-&gt;codeUnitsByLine</code>
+      <code>$this-&gt;codeUnitsByLine</code>
+    </InvalidPropertyAssignmentValue>
+  </file>
+  <file src="src/Node/Iterator.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;nodes[$this-&gt;position]</code>
+    </ArgumentTypeCoercion>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$position</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Report/Html/Renderer.php">
+    <InvalidScalarArgument occurrences="1"/>
+  </file>
+  <file src="src/Report/Html/Renderer/File.php">
+    <InvalidScalarArgument occurrences="1"/>
+  </file>
+  <file src="src/Report/Xml/BuildInformation.php">
+    <PossiblyNullReference occurrences="1">
+      <code>createElementNS</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/Report/Xml/Coverage.php">
+    <PossiblyNullReference occurrences="2">
+      <code>createDocumentFragment</code>
+      <code>replaceChild</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/Report/Xml/Facade.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>$project</code>
+      <code>$target</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Report/Xml/File.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$totalsContainer</code>
+    </ArgumentTypeCoercion>
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
+      <code>$context-&gt;ownerDocument</code>
+    </PossiblyNullPropertyAssignmentValue>
+  </file>
+  <file src="src/Report/Xml/Node.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$totalsContainer</code>
+    </ArgumentTypeCoercion>
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
+      <code>$context-&gt;ownerDocument</code>
+    </PossiblyNullPropertyAssignmentValue>
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>$contextNode</code>
+      <code>$dom</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Report/Xml/Report.php">
+    <MissingParamType occurrences="4">
+      <code>$name</code>
+      <code>$name</code>
+      <code>$name</code>
+      <code>$name</code>
+    </MissingParamType>
+  </file>
+  <file src="src/Report/Xml/Source.php">
+    <PossiblyNullArgument occurrences="1">
+      <code>$context-&gt;namespaceURI</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="2">
+      <code>importNode</code>
+      <code>replaceChild</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/Report/Xml/Tests.php">
+    <PossiblyNullReference occurrences="1">
+      <code>createElementNS</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/Report/Xml/Totals.php">
+    <PossiblyNullReference occurrences="1">
+      <code>createElementNS</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/Report/Xml/Unit.php">
+    <PossiblyNullReference occurrences="2">
+      <code>createElementNS</code>
+      <code>createElementNS</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/StaticAnalysis/CachingFileAnalyser.php">
+    <NullableReturnStatement occurrences="6">
+      <code>$this-&gt;cache[$filename]['classesIn']</code>
+      <code>$this-&gt;cache[$filename]['executableLinesIn']</code>
+      <code>$this-&gt;cache[$filename]['functionsIn']</code>
+      <code>$this-&gt;cache[$filename]['ignoredLinesFor']</code>
+      <code>$this-&gt;cache[$filename]['linesOfCodeFor']</code>
+      <code>$this-&gt;cache[$filename]['traitsIn']</code>
+    </NullableReturnStatement>
+    <PossiblyNullArrayAccess occurrences="6">
+      <code>$this-&gt;cache[$filename]['classesIn']</code>
+      <code>$this-&gt;cache[$filename]['executableLinesIn']</code>
+      <code>$this-&gt;cache[$filename]['functionsIn']</code>
+      <code>$this-&gt;cache[$filename]['ignoredLinesFor']</code>
+      <code>$this-&gt;cache[$filename]['linesOfCodeFor']</code>
+      <code>$this-&gt;cache[$filename]['traitsIn']</code>
+    </PossiblyNullArrayAccess>
+    <PossiblyUndefinedArrayOffset occurrences="6">
+      <code>$this-&gt;cache[$filename]</code>
+      <code>$this-&gt;cache[$filename]</code>
+      <code>$this-&gt;cache[$filename]</code>
+      <code>$this-&gt;cache[$filename]</code>
+      <code>$this-&gt;cache[$filename]</code>
+      <code>$this-&gt;cache[$filename]</code>
+    </PossiblyUndefinedArrayOffset>
+  </file>
+  <file src="src/StaticAnalysis/CodeUnitFindingVisitor.php">
+    <PossiblyInvalidOperand occurrences="1">
+      <code>$parameter-&gt;var-&gt;name</code>
+    </PossiblyInvalidOperand>
+    <PossiblyNullReference occurrences="2">
+      <code>toString</code>
+      <code>toString</code>
+    </PossiblyNullReference>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>toString</code>
+    </PossiblyUndefinedMethod>
+    <RedundantConditionGivenDocblockType occurrences="10">
+      <code>assert($node-&gt;namespacedName instanceof Name)</code>
+      <code>assert($node-&gt;namespacedName instanceof Name)</code>
+      <code>assert($node-&gt;namespacedName instanceof Name)</code>
+      <code>assert($parentNode-&gt;namespacedName instanceof Name)</code>
+      <code>assert($parentNode-&gt;namespacedName instanceof Name)</code>
+      <code>assert(isset($node-&gt;name))</code>
+      <code>assert(isset($node-&gt;namespacedName))</code>
+      <code>assert(isset($node-&gt;namespacedName))</code>
+      <code>assert(isset($parameter-&gt;var-&gt;name))</code>
+      <code>assert(isset($parentNode-&gt;namespacedName))</code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+</files>

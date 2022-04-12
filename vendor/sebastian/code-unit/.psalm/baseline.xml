@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.x-dev@">
+  <file src="src/CodeUnitCollection.php">
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$codeUnits</code>
+    </MixedArgumentTypeCoercion>
+  </file>
+  <file src="src/Mapper.php">
+    <ArgumentTypeCoercion occurrences="9">
+      <code>$firstPart</code>
+      <code>$firstPart</code>
+      <code>$firstPart</code>
+      <code>$secondPart</code>
+      <code>$unit</code>
+      <code>$unit</code>
+      <code>$unit</code>
+      <code>$unit</code>
+      <code>$unit</code>
+    </ArgumentTypeCoercion>
+  </file>
+</files>
