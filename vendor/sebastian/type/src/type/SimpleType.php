@@ -14,9 +14,7 @@ use function strtolower;
 final class SimpleType extends Type
 {
     private string $name;
-
     private bool $allowsNull;
-
     private mixed $value;
 
     public function __construct(string $name, bool $nullable, $value = null)
@@ -28,7 +26,7 @@ final class SimpleType extends Type
 
     public function isAssignable(Type $other): bool
     {
-        if ($this->allowsNull && $other->allowsNull()) {
+        if ($this->allowsNull && $other instanceof NullType) {
             return true;
         }
 

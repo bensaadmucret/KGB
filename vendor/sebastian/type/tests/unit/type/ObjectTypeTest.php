@@ -19,14 +19,12 @@ use SebastianBergmann\Type\TestFixture\ParentClass;
 
 #[CoversClass(ObjectType::class)]
 #[CoversClass(Type::class)]
-#[UsesClass(NullType::class)]
 #[UsesClass(SimpleType::class)]
 #[UsesClass(TypeName::class)]
 #[Small]
 final class ObjectTypeTest extends TestCase
 {
     private ObjectType $childClass;
-
     private ObjectType $parentClass;
 
     protected function setUp(): void

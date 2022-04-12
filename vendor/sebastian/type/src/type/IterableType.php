@@ -13,7 +13,6 @@ use function assert;
 use function class_exists;
 use function is_iterable;
 use ReflectionClass;
-use ReflectionException;
 
 final class IterableType extends Type
 {
@@ -29,7 +28,7 @@ final class IterableType extends Type
      */
     public function isAssignable(Type $other): bool
     {
-        if ($this->allowsNull && $other->allowsNull()) {
+        if ($this->allowsNull && $other instanceof NullType) {
             return true;
         }
 
@@ -43,19 +42,10 @@ final class IterableType extends Type
 
         if ($other instanceof ObjectType) {
             $className = $other->className()->qualifiedName();
+
             assert(class_exists($className));
 
-            try {
-                return (new ReflectionClass($className))->isIterable();
-                // @codeCoverageIgnoreStart
-            } catch (ReflectionException $e) {
-                throw new RuntimeException(
-                    $e->getMessage(),
-                    (int) $e->getCode(),
-                    $e
-                );
-                // @codeCoverageIgnoreEnd
-            }
+            return (new ReflectionClass($className))->isIterable();
         }
 
         return false;

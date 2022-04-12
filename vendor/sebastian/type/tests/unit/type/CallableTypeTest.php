@@ -19,7 +19,6 @@ use SebastianBergmann\Type\TestFixture\ClassWithInvokeMethod;
 
 #[CoversClass(CallableType::class)]
 #[CoversClass(Type::class)]
-#[UsesClass(NullType::class)]
 #[UsesClass(ObjectType::class)]
 #[UsesClass(SimpleType::class)]
 #[UsesClass(TypeName::class)]
@@ -136,7 +135,8 @@ final class CallableTypeTest extends TestCase
         $this->assertFalse(
             $this->type->isAssignable(
                 Type::fromValue(
-                    new class {
+                    new class
+                    {
                     },
                     false
                 )

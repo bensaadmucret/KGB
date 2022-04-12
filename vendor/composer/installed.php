@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '1d6c52f8fae597fe864de8576387c992af442ea6',
+    'reference' => '7c2e969de27e4f229484fc9558c76635ef552957',
     'name' => 'ben/kgb',
   ),
   'versions' => 
@@ -18,7 +18,43 @@
       'aliases' => 
       array (
       ),
-      'reference' => '1d6c52f8fae597fe864de8576387c992af442ea6',
+      'reference' => '7c2e969de27e4f229484fc9558c76635ef552957',
+    ),
+    'cakephp/core' => 
+    array (
+      'pretty_version' => '4.x-dev',
+      'version' => '4.9999999.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '499f17738d40560ec077d7d2039c9af4969c6b17',
+    ),
+    'cakephp/database' => 
+    array (
+      'pretty_version' => '4.x-dev',
+      'version' => '4.9999999.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0a32584763af097eaaba96cf062e2d5d31e6ea3b',
+    ),
+    'cakephp/datasource' => 
+    array (
+      'pretty_version' => '4.x-dev',
+      'version' => '4.9999999.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd9e88333a8c6832fddfc38d092f30efcab8cd34d',
+    ),
+    'cakephp/utility' => 
+    array (
+      'pretty_version' => '4.x-dev',
+      'version' => '4.9999999.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3d352060ca3e49c81c3fd2bdb092ee345d8f4e38',
     ),
     'doctrine/instantiator' => 
     array (
@@ -160,13 +196,38 @@
     ),
     'psr/log' => 
     array (
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ef29f6d262798707a9edd554e2b82517ef3a9376',
+    ),
+    'psr/log-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0|2.0|3.0',
+      ),
+    ),
+    'psr/simple-cache' => 
+    array (
+      'pretty_version' => '2.x-dev',
+      'version' => '2.9999999.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8707bf3cea6f710bf6ef05491234e3ab06f6432a',
+    ),
+    'robmorgan/phinx' => 
+    array (
       'pretty_version' => 'dev-master',
       'version' => 'dev-master',
       'aliases' => 
       array (
-        0 => '3.x-dev',
+        0 => '9999999-dev',
       ),
-      'reference' => 'fe5ea303b0887d5caefd3d431c3e61ad47037001',
+      'reference' => 'b5d884ea60ae70fd2844a8fed0689eb8970f74b1',
     ),
     'sebastian/cli-parser' => 
     array (
@@ -306,7 +367,7 @@
       array (
         0 => '4.0.x-dev',
       ),
-      'reference' => '73b89d46947edbcd7f8f0c3ad7c674d0d542c9dd',
+      'reference' => 'b449c53def8e5e400cf782b21adae86d87c052d8',
     ),
     'sebastian/version' => 
     array (
@@ -318,6 +379,24 @@
       ),
       'reference' => 'faceb449be60d7c072c0411b7eece6cc6a85bf9b',
     ),
+    'symfony/config' => 
+    array (
+      'pretty_version' => '6.1.x-dev',
+      'version' => '6.1.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '904e1774b896fa2b47ad24a836bfdc9a3cf60bd1',
+    ),
+    'symfony/console' => 
+    array (
+      'pretty_version' => '6.1.x-dev',
+      'version' => '6.1.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd95603b508917f47cf423c5f89122787e211b909',
+    ),
     'symfony/deprecation-contracts' => 
     array (
       'pretty_version' => 'dev-main',
@@ -327,6 +406,15 @@
         0 => '3.1.x-dev',
       ),
       'reference' => '07f1b9cc2ffee6aaafcf4b710fbc38ff736bd918',
+    ),
+    'symfony/filesystem' => 
+    array (
+      'pretty_version' => '6.1.x-dev',
+      'version' => '6.1.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2938239e4d04321ecdf2118546c9dd2595cff24c',
     ),
     'symfony/http-client' => 
     array (
@@ -362,6 +450,33 @@
       array (
       ),
       'reference' => '38a3244eb0c33fbb9ce87da1677cbbde488c3750',
+    ),
+    'symfony/polyfill-ctype' => 
+    array (
+      'pretty_version' => 'v1.25.0',
+      'version' => '1.25.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '30885182c981ab175d4d034db0f6f469898070ab',
+    ),
+    'symfony/polyfill-intl-grapheme' => 
+    array (
+      'pretty_version' => 'v1.25.0',
+      'version' => '1.25.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '81b86b50cf841a64252b439e738e97f4a34e2783',
+    ),
+    'symfony/polyfill-intl-normalizer' => 
+    array (
+      'pretty_version' => 'v1.25.0',
+      'version' => '1.25.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8590a5f561694770bdcd3f9b5c69dde6945028e8',
     ),
     'symfony/polyfill-mbstring' => 
     array (
@@ -399,6 +514,15 @@
         0 => '3.1.x-dev',
       ),
       'reference' => '77ca81f6ddb67beb5202614c1b92faf27dca7661',
+    ),
+    'symfony/string' => 
+    array (
+      'pretty_version' => '6.1.x-dev',
+      'version' => '6.1.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '20a20a4a64f02d5415a5c11e34ac451425e085dd',
     ),
     'symfony/var-dumper' => 
     array (

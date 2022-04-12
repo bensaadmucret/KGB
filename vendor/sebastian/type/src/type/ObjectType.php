@@ -15,7 +15,6 @@ use function strcasecmp;
 final class ObjectType extends Type
 {
     private TypeName $className;
-
     private bool $allowsNull;
 
     public function __construct(TypeName $className, bool $allowsNull)
@@ -26,7 +25,7 @@ final class ObjectType extends Type
 
     public function isAssignable(Type $other): bool
     {
-        if ($this->allowsNull && $other->allowsNull()) {
+        if ($this->allowsNull && $other instanceof NullType) {
             return true;
         }
 
