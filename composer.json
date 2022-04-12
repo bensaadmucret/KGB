@@ -1,5 +1,5 @@
 {
-    "name": "ben/e-boutique",
+    "name": "ben/kgb",
     "authors": [
         {
             "name": "mohammedBensaad",
@@ -17,7 +17,8 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "symfony/http-foundation": "6.1.x-dev",       
+        "symfony/http-foundation": "6.1.x-dev",
+        "robmorgan/phinx": "9999999-dev",
         "psr/container": "2.0.x-dev",
         "symfony/http-client": "9999999-dev"
        

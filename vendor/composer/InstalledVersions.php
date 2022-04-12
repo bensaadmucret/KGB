@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '50c36b9fcd8a16e23ac5a724da4d2fa97bdea8fc',
+    'reference' => '29fbf64716afcf88815623a899ecfa734277b777',
     'name' => 'ben/e-boutique',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '50c36b9fcd8a16e23ac5a724da4d2fa97bdea8fc',
+      'reference' => '29fbf64716afcf88815623a899ecfa734277b777',
     ),
     'doctrine/instantiator' => 
     array (
