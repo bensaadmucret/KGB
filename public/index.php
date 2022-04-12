@@ -14,8 +14,7 @@ if (!defined('APP_PATH')) {
 
 
 
-
-require dirname(__DIR__) . DS . 'vendor' . DS . 'autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\factory\AppFactory;
 
