@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '9c9d49e01f7b6e4f623883faf1ae61b7219ea648',
+    'reference' => 'ac5275c748ef9142c12d5d1f9364531c7a222cab',
     'name' => 'ben/e-boutique',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '9c9d49e01f7b6e4f623883faf1ae61b7219ea648',
+      'reference' => 'ac5275c748ef9142c12d5d1f9364531c7a222cab',
     ),
     'cakephp/core' => 
     array (
