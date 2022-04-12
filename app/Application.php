@@ -27,16 +27,8 @@ class Application
         /** route create agent */
         $router->add('GET', '/agent-add', 'AgentController@add', 'agent.add');
         $router->add('POST', '/agent-add', 'AgentController@add', 'agent.add');
-<<<<<<< HEAD
          $router->add('GET', '/agent-show', 'AgentController@show', 'agent.show');        
         $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');   
-=======
-        
-        /** voir tous les agents*/
-        $router->add('GET', '/agent-show', 'AgentController@show', 'agent.show');
-        
-        $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');       
->>>>>>> 4f15f660a5d91f97e7bcabf36a20f011169c9fb5
 
         $router->add('POST', '/agent-edit/agent-update/:id', 'AgentController@update', 'agent.update');
 

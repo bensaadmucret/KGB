@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "autoload": {
-        "files":["start/boostrap.php"],
+        "files":["Start/boostrap.php"],
         "psr-4": {
             "App\\": "app/",
             "Core\\": "core/",
