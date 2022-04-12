@@ -9,7 +9,6 @@ return array(
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
-    'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
     'PHPUnit\\Event\\Code\\ClassMethod' => $vendorDir . '/phpunit/phpunit/src/Event/Value/ClassMethod.php',
     'PHPUnit\\Event\\Code\\Phpt' => $vendorDir . '/phpunit/phpunit/src/Event/Value/Test/Phpt.php',
     'PHPUnit\\Event\\Code\\Test' => $vendorDir . '/phpunit/phpunit/src/Event/Value/Test/Test.php',

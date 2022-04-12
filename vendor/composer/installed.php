@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f95c62df7ac077466c611240176696687dbd61f1',
+    'reference' => 'c5ba7f0fe4235b4c0469476e535e1aeac85a210f',
     'name' => 'ben/project-kgb',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f95c62df7ac077466c611240176696687dbd61f1',
+      'reference' => 'c5ba7f0fe4235b4c0469476e535e1aeac85a210f',
     ),
     'doctrine/instantiator' => 
     array (
