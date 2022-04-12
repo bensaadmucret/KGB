@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require __DIR__ . '/../vendor/autoload.php';
+require APP_PATH . DS . 'vendor' . DS . 'autoload.php';
 use App\factory\AppFactory;
 //use Core\Database\Connection;
 
@@ -12,11 +12,6 @@ $app = AppFactory::create();
 
 $container = $app::getContainer();
 $container->get('Database')->connect();
-
-
-
-//dump($container->get('Router')->getPath());
-//dump($container->get('Router'));
 
 
 
