@@ -50,7 +50,7 @@ abstract class BaseController
                 Flash::setMessage($key, $message);
             }
            
-            header("Location: https://app-mzb.herokuapp.com/", TRUE, $statusCode);
+            header("Location: https://$host$uri/$extra", TRUE, $statusCode);
             exit;
         } catch (\Exception $e) {
             return false;
