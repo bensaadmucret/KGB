@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87b842cab5c3b20a0887cb9dae9c5fa3",
+    "content-hash": "128a5c2104a36075badb3206ed61fe6f",
     "packages": [
         {
             "name": "cakephp/core",
@@ -3483,9 +3483,7 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "ext-pdo_sqlite": "*"
-    },
+    "platform": [],
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
 }
