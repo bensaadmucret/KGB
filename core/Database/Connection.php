@@ -33,9 +33,9 @@ class Connection
             "mysql:host=%s;port=%d;dbname=%s;user=%s;password=%s",
             getenv('Host'),
             getenv('Port'),
-            getenv('dbname'),
-            getenv('username'),
-            getenv('password')
+            getenv('Database'),
+            getenv('Username'),
+            getenv('Password')
            
         );
       
