@@ -2,7 +2,7 @@
 
 
 <div class="col-12">
-    <?php  dump( $_SESSION['cibles'] ?? ''); ?>
+   
    
     <style>
      .page {
@@ -33,6 +33,7 @@
     <header class="header-form">
         
     </header>
+
     <form action="mission-add" method="post" id="missionAdd">
         <div class="page" id="page1">
             <div class="form-group">
@@ -49,7 +50,11 @@
             </div>
             <div class="form-group">
                 <label for="cibles">Cibles</label>
-                <input type="text" class="form-control" id="cibles" name="cibles" placeholder="Cibles">
+                <select class="form-control" id="cibles" name="cibles[]" multiple>
+                    <?php foreach($cible as $cible): ?>
+                        <option value="<?php echo $cible['id'] ?>"><?php echo $cible['nom'] ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="form-group">
                 <bouton type="button" id="suivant" class="btn btn-primary button-page">Suivant</bouton>
@@ -75,22 +80,30 @@
             
             <div class="form-group">
                 <label for="contacts">Contacts</label>
-                <input type="text" class="form-control" id="contacts" name="contacts" placeholder="Contacts">
+                <select class="form-control" id="contacts" name="contacts[]" multiple>
+                    <?php foreach($contact as $contact): ?>
+                        <option value="<?php echo $contact['id']; ?>"><?= $contact['nom']; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="form-group">
                 <bouton type="button" class="btn btn-primary button-page">Suivant</bouton>
             </div>
             <div class="form-group">
-                <bouton type="button" class="btn btn-primary button-page-precedent">precedent</bouton>
+                <bouton type="button" class="btn btn-primary button-page-precedent">Precedent</bouton>
             </div>
 
         </div>
         <div class="page" id="page3">
             <div class="form-group">
                 <label for="type_mission">Type de mission</label>
-                <input type="text" class="form-control" id="type_mission" name="type_mission"
-                    placeholder="Type de mission">
+                <select class="form-control" id="type_mission" name="type_mission">
+                    <option value="1">Mission de recherche</option>
+                    <option value="2">Mission de mission</option>
+                    <option value="3">Mission de mission</option>
+                </select>
             </div>
+  
             <div class="form-group">
                 <label for="date_debut">Date de début</label>
                 <input type="date" class="form-control" id="date_debut" name="date_debut" placeholder="Date de début">
@@ -103,9 +116,14 @@
                 <bouton type="submit" class="btn btn-primary">Enregistrer</bouton>
             </div>
             <div class="form-group">
-                <bouton type="button" class="btn btn-primary button-page-precedent">precedent</bouton>
+                <bouton type="button" class="btn btn-primary button-page-precedent">Precedent</bouton>
             </div>
         </div>
 
     </form>
+
+   
+
+
+
 </div>

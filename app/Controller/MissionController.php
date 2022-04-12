@@ -35,10 +35,26 @@ class MissionController extends BaseController
         check_is_logged_in();
         
         if($this->request->get('cibles')){
-           $_SESSION['cibles'] = $this->request->get('cibles');
-           echo 'ok';
+            $cible_choisie = $this->request->get('cibles');
+            
+            foreach($cible_choisie as $cible){
+            
+
+                
+            }
+           
         }
+
+        $cible = $this->model->getAll('cible');
+        $agent = $this->model->getAll('agent');
+        $contact = $this->model->getAll('contact');
+        $type_mission =  typeMission();
+           
+
+         
        
+      
+            
        
         if($this->request->isMethod('post')){  
             $nom = $this->request->get('nom');
@@ -65,7 +81,11 @@ class MissionController extends BaseController
             'title' => 'Dashboard | Ajouter un mission',
             'message' => 'Добро пожаловать в вашу панель управления.',           
             'user' => $this->session->get('user'),
-            'form' => Authenticator::createMission(),  
+            'form' => Authenticator::createMission(),
+            'cible' => $cible,
+            'contact' => $contact,
+            'type_missions' => $type_mission,  
+            'cible_choisie' => $cible_choisie,
            
         ], 'dashboard');
     }
