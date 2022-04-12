@@ -34,6 +34,7 @@ abstract class BaseController
         $this->flash = new Flash();
         $this->container = Application::getContainer();
         $this->model = new \Core\Model\Model;
+        $this->session->start();
        
     }
 
@@ -42,19 +43,20 @@ abstract class BaseController
     public function redirect( string $url, int $statusCode, string $key=null, string $message = null): bool
     {
         try {
-           /* Redirection vers une page différente du même dossier */
-            $host  = $_SERVER['HTTP_HOST'];
-            $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-            $extra = $url;
-            if($key && $message){
-                Flash::setMessage($key, $message);
-            }
-           
-            header("Location: http://$host$uri/$extra", TRUE, $statusCode);
-            exit;
-        } catch (\Exception $e) {
-            return false;
-        }
+            /* Redirection vers une page différente du même dossier */
+             $host  = $_SERVER['HTTP_HOST'];
+             $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+             $extra = $url;
+             if($key && $message){
+                 Flash::setMessage($key, $message);
+             }
+            
+             header("Location: http://$host$uri/$extra", TRUE, $statusCode);
+             exit;
+         } catch (\Exception $e) {
+             return false;
+         }
+
     }
 
     

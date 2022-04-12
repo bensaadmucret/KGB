@@ -20,6 +20,7 @@ function assets($path)
 {
     $httpRequest  = Request::createFromGlobals();
     $baseUrl = $httpRequest->server->get('HTTP_HOST');
+   
     $baseUrl = 'http://'.$baseUrl;
     return $baseUrl . $path;
 }
@@ -55,7 +56,7 @@ function get_flash_message_error(){
    <?php endif; 
 }
 
-function get_fkash_message_success(){
+function get_flash_message_success(){
     if (!empty( $_SESSION['success'])):?>
         <div class="alert alert-success">
             <?php echo Flash::getMessage('success'); ?>
