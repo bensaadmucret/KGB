@@ -761,15 +761,8 @@
                         <div class="welcome-text">
 							<h3>Управление миссией</h3>
                             <h4> Привет<i>(Bienvenue)</i>, <?php echo UpercaseFirst($user['nom']) ; ?></h4>
-<<<<<<< HEAD
-							<?php get_fkash_message_success(); ?>							
+							<?php get_flash_message_success(); ?>							
 							<?php get_flash_message_error(); ?>
-=======
-
-                            <?php get_flash_message_error(); ?>
-							<?php get_flash_message_success(); ?>
-
->>>>>>> 4f15f660a5d91f97e7bcabf36a20f011169c9fb5
 							
                         </div>
                     </div>
