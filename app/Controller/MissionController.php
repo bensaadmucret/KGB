@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Core\Model\Model;
 use Core\Controller\BaseController;
 use Core\Auth\LoginFormAuthenticator as Authenticator;
 
@@ -18,7 +19,7 @@ class MissionController extends BaseController
     {   
             
        $missions = $this->model->getAll('mission'); 
-       dump($missions);
+       
             $this->render('mission/show', [        
             
             'title' => 'Dashboard | liste des missions',
@@ -33,24 +34,12 @@ class MissionController extends BaseController
     public function add()
     {
         check_is_logged_in();
-        
-        if($this->request->get('cibles')){
-            $cible_choisie = $this->request->get('cibles');
-            
-            foreach($cible_choisie as $cible){
-            
-
-                
-            }
-           
-        }
-
-        $cible = $this->model->getAll('cible');
-        $agent = $this->model->getAll('agent');
-        $contact = $this->model->getAll('contact');
-        $type_mission =  typeMission();
-           
-
+        $model = new Model();
+        $cible = $model->getAll('cible');
+        $agent = $model->getAll('agent');
+        $contact = $model->getAll('contact');
+      
+         
          
        
       
@@ -84,8 +73,7 @@ class MissionController extends BaseController
             'form' => Authenticator::createMission(),
             'cible' => $cible,
             'contact' => $contact,
-            'type_missions' => $type_mission,  
-            'cible_choisie' => $cible_choisie,
+            'agent' => $agent,
            
         ], 'dashboard');
     }

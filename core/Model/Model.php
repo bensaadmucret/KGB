@@ -3,9 +3,10 @@
 namespace Core\Model;
 
 use Core\Database\Connection;
+use Core\Model\InterfaceModel;
 
 
-class Model
+class Model implements InterfaceModel
 {
 
     private $connection;
@@ -31,8 +32,6 @@ class Model
         } catch (\PDOException $e) {
             throw new \Exception("Error connecting to the database: " . $e->getMessage());
         }
-               
-
     }
 
     /**
@@ -44,22 +43,21 @@ class Model
      * @throws \PDOException
      * @author : Mohammed Bensaad
      */
-    public function find($table, $id){
+    public function getOne($table, $id){
         try {
             $query = $this->connexion->prepare("SELECT * FROM $table WHERE id = :id");
-            $query->execute([
-                'id' => $id
-            ]);
+            $query->execute(['id' => $id]);
             $result = $query->fetch(\PDO::FETCH_ASSOC);
             return $result;
         } catch (\PDOException $e) {
             throw new \Exception("Error connecting to the database: " . $e->getMessage());
         }
-        
     }
 
+
+
     /**
-     * Undocumented function
+     *  insert a row in the database
      *
      * @param [type] $data
      * @param [type] $table

@@ -5,7 +5,7 @@ namespace Core\Model;
 interface InterfaceModel{
 
     /**
-     * return all rows from a table
+     * Return all rows from a table
      * @param string $table
      * @return array
      * @throws \PDOException
@@ -22,11 +22,12 @@ interface InterfaceModel{
      * @throws \PDOException
      * @author : Mohammed Bensaad
      */
-    public function getOne($id, $table);
- 
+    public function getOne( string $table, $id);
+
+   
 
     /**
-     * Undocumented function
+     * Insert a row in the database
      *
      * @param [type] $data
      * @param [type] $table
@@ -47,11 +48,11 @@ interface InterfaceModel{
      * @throws \PDOException
      * @author : Mohammed Bensaad
      */
-    public function update($data, $table, $id);
+    public function update(string $table, array $data);
   
 
     /**
-     * delete a row in the database
+     * Delete a row in the database
      *
      * @param [type] $id
      * @param [type] $table

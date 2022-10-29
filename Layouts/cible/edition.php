@@ -1,3 +1,11 @@
+<?php 
+use Core\Token\Token;
+use Core\Session\Session;
+        
+$session = new Session();
+$token = Token::generateToken($session); 
+        
+        ?>
 <div class="col-12">
     <form action="cible-update/<?php echo $cible['id']; ?>" method="POST">
         <div class="card">

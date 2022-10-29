@@ -27,7 +27,7 @@ class Connection
     {
         
 
-       (new DotEnv(__DIR__ . DS .'.env'))->load();
+       (new DotEnv(__DIR__ . DIRECTORY_SEPARATOR .'.env'))->load();
 
         $conStr = sprintf(
             "mysql:host=%s;port=%d;dbname=%s;user=%s;password=%s",

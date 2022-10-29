@@ -41,14 +41,17 @@ class CibleController extends BaseController
             $prenom = $this->request->get('prenom');
             $date_naissance     = $this->request->get('date_naissance');
             $code_identification    = $this->request->get('code_identification');
-            $nationalite   = $this->request->get('nationalite');         
+            $nationalite   = $this->request->get('nationalite');   
+            $pays = $this->request->get('pays');      
            
             $datas = [
                 'nom' => strip_tags($nom),
                 'prenom' => strip_tags($prenom),
                 'date_naissance' => strip_tags($date_naissance),
                 'code_identification' => strip_tags($code_identification),
-                'nationalite' => strip_tags($nationalite)              
+                'nationalite' => strip_tags($nationalite),
+                'pays' => strip_tags($pays)
+           
                           
             ];
             $this->model->insert('cible', $datas);
@@ -68,12 +71,14 @@ class CibleController extends BaseController
 
     public function edit()
     {   check_is_logged_in();  
+       
         
+
         if($this->request->isMethod('get')){
-            $this->redirect('cible-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
+            $this->redirect('cible-show', 302);
         }       
         $id = $this->request->get('id');
-        $cible = $this->model->find('cible', $this->request->get('id'));
+        $cible = $this->model->getOne('cible', $this->request->get('id'));
         
         $this->render('cible/edition', [       
           
