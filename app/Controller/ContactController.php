@@ -73,7 +73,7 @@ class ContactController extends BaseController
             $this->redirect('contact-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
         }       
         $id = $this->request->get('id');
-        $contact = $this->model->find('contact', $this->request->get('id'));
+        $contact = $this->model->getOne('contact', $this->request->get('id'));
         
         $this->render('contact/edition', [       
           

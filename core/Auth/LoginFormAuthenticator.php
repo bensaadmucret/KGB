@@ -994,6 +994,22 @@ class LoginFormAuthenticator
         return $form;
     }
 
+    public function createPlanque()
+    {
+      
+        $form->startForm('contact-add', 'POST', 'create form');
+        $form->addFor( 'Nom', '<h4 class="m-3">Nom</h4>')
+        ->addText('nom', '', ['label' => 'Nom', 'required' => true, 'class'=>'form-control ', 'autofocus', 'placeholder' => 'имя'])
+        ->addFor( 'Adresse', '<h4 class="m-3">Adresse</h4>')
+        ->addText('adresse', '', ['label' => 'Adresse', 'required'=> true,  'class'=>'form-control','placeholder' => 'Адрес'])
+        ->addFor( 'Pays', '<h4 class="m-3">Pays</h4>')
+        ->addSelect('pays',  [ 'class'=>'form-control'],$pays)                  
+        ->addToken( $token)
+        ->addBouton('Envoyer', ['class'=>'btn-primary btn mb-3 mt-3 form-button wow fadeInUp animated'])
+        ->endForm();
+        return $form;
+    }
+
 
 
 }

@@ -75,7 +75,7 @@ class AgentController extends BaseController
             $this->redirect('agent-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
         }       
         $id = $this->request->get('id');
-        $agent = $this->model->find('agent', $id);
+        $agent = $this->model->getOne('agent', $id);
         
         $this->render('agent/edition', [       
           

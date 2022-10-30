@@ -911,6 +911,17 @@
     <!-- Form step init -->
     <link href="<?php echo assets('/ressources/js/plugins-init/jquery-steps-init.js'); ?>"></script>
 
+	 <!-- Required bases -->
+	 <script src="<?php echo assets('/ressources/base/global/global.min.js' );?>"></script>
+	<script src="<?php echo assets('/ressources/base/bootstrap-select/dist/js/bootstrap-select.min.js' );?>"></script>
+    <script src="<?php echo assets('/ressources/js/custom.min.js' );?>"></script>
+	<script src="<?php echo assets('/ressources/js/formulaire.js' );?>"></script>
+	<script src="<?php echo assets('/ressources/js/deznav-init.js' );?>"></script>
+	<script src="<?php echo assets('/ressources/base/sweetalert2/dist/sweetalert2.min.js' );?>"></script>
+    <!-- Datatable -->
+    <script src="<?php echo assets('/ressources/base/datatables/js/jquery.dataTables.min.js' );?>"></script>
+    <script src="<?php echo assets('/ressources/js/plugins-init/datatables.init.js');?>"></script>
+
 
 
 </body>

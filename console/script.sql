@@ -10,7 +10,6 @@ prenom varchar(75) NOT NULL,
 date_naissance date NOT NULL,
 code_identification varchar(50) NOT NULL, UNIQUE KEY (code_identification),
 nationalite varchar(50) NOT NULL,
-pays varchar(50) NOT NULL,
 specialite varchar(150) NOT NULL,
 created_at datetime NOT NULL,
 updated_at datetime
@@ -25,7 +24,6 @@ prenom varchar(75) NOT NULL,
 date_naissance date NOT NULL,
 code_identification varchar(50) NOT NULL, UNIQUE (code_identification),
 nationalite varchar(80) NOT NULL
-pays varchar(80) NOT NULL,
 
 );
 
@@ -38,7 +36,7 @@ prenom varchar(75) NOT NULL,
 date_naissance date NOT NULL,
 code_identification varchar(50) NOT NULL, UNIQUE (code_identification),
 nationalite varchar(80) NOT NULL
-pays varchar(80) NOT NULL,
+
 );
 
 
@@ -57,8 +55,7 @@ CREATE TABLE IF NOT EXISTS `mission` (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 titre varchar(75) NOT NULL,
 description varchar(255) NOT NULL,
-code varchar(150) NOT NULL,
-pays varchar(50) NOT NULL,
+code varchar(150) NOT NULL, UNIQUE KEY code (code),
 agent int(11) NOT NULL,
 contact int(11) NOT NULL,
 planque int(11) NOT NULL,

@@ -1,3 +1,4 @@
+<php make a formulaire : Les planques ont un code, une adresse, un pays, un type ?>
 <?php
 $Pays = [
     'Afghanistan' => 'Afghanistan',
@@ -211,45 +212,26 @@ $type_missions = [
     'sabotage' => 'Sabotage'
 ];
 ?>
-
 <div class="col-12">
-   
-   
-    <style>
-     .page {
-        margin-top: 2rem;
-        display: block;
-    }
-
-
-    .page-number-active {
-        margin-top: 2rem;
-        display: block;
-        border: 1px solid #ccc;
-        border-radius: 50%;
-        height: 50px;
-        width: 50px;
-        text-align: center;
-        line-height: 50px;
-        font-size: 20px;
-        color: #ccc;
-        cursor: pointer;
-        background-color: green;
-    }
-
-    .page-number {
-       display: none;        
-    }
-    </style>
-    <header class="header-form">
-        
-    </header>
-
-    <?php echo $form; ?>
-
-
-   
-
-
-
+<form action="planque-add" method="post">
+    <div class="form-group">
+        <label for="code">Code</label>
+        <input type="text" class="form-control" id="code" name="code" placeholder="Code">
+    </div>
+    <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse">
+    </div>
+    <div class="form-group">
+        <label for="pays">Pays</label>
+        <input type="text" class="form-control" id="pays" name="pays" placeholder="Pays">
+    </div>
+    <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" id="type" name="type" placeholder="Type">
+    </div>
+    <input type="hidden" name="token" value="<?php echo $token ?>">
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
 </div>
+

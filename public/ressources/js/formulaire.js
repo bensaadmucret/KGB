@@ -71,8 +71,8 @@ function pageSuivante(){
     }
  
 
-form.addEventListener('click', function(event){
-    event.preventDefault();
+/*form.addEventListener('click', function(event){
+   // event.preventDefault();
     console.log("Formulaire soumis");
     
     const formattedFormData = new FormData(form);
@@ -88,8 +88,8 @@ async function postData(formattedFormData){
 
     const data = await response.text();
     
-    console.log(data);
+   
 }
-    
+    */
    
 });// fin de la fonction d'écoute de l'événement DOMContentLoaded

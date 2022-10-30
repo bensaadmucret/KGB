@@ -14,26 +14,16 @@ class HomeController extends BaseController
 
     public function index()
     {
-        return  $this->render('home/index');
+        $missions = $this->model->getAll('mission');
+       
+        return  $this->render('home/index', [
+            'title' => 'Dashboard | liste des missions',
+            'message' => 'Добро пожаловать в вашу панель управления.',
+            'missions' => $missions,
+        ], 'default');
     }
 
-    public function about()
-    {
-      
-        return  $this->render('home/about');
-    }
-   
-
-
-    public function blog() 
-    {
-        return $this->render('home/blog');
-    }
-
-    public function contact()
-    {
-        return $this->render('home/contact');
-    }
+    
 
     
 }

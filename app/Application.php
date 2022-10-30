@@ -29,11 +29,8 @@ class Application
         $router->add('POST', '/agent-add', 'AgentController@add', 'agent.add');
          $router->add('GET', '/agent-show', 'AgentController@show', 'agent.show');        
         $router->add('GET', '/agent-edit/:id', 'AgentController@edit', 'agent.edit');   
-
         $router->add('POST', '/agent-edit/agent-update/:id', 'AgentController@update', 'agent.update');
-
         $router->add('GET', '/agent-delete/:id', 'AgentController@delete', 'agent.delete');
-
         $router->add('GET', '/agent-show/:id', 'AgentController@show', 'agent.show');
 
         /**ROUTE MISSION */
@@ -51,11 +48,8 @@ class Application
         $router->add('POST', '/cible-add', 'CibleController@add', 'cible.add');
         $router->add('GET', '/cible-show', 'CibleController@show', 'cible.show');     
         $router->add('GET', '/cible-edit/:id', 'CibleController@edit', 'cible.edit');      
-
         $router->add('POST', '/cible-edit/cible-update/:id', 'CibleController@update', 'cible.update');
-
         $router->add('GET', '/cible-delete/:id', 'CibleController@delete', 'cible.delete');
-
         $router->add('GET', '/cible-show/:id', 'CibleController@show', 'cible.show');
 
         /**ROUTE CONTACT */
@@ -66,7 +60,10 @@ class Application
         $router->add('POST', '/contact-edit/contact-update/:id', 'ContactController@update', 'contact.update');
         $router->add('GET', '/contact-delete/:id', 'ContactController@delete', 'contact.delete');
         $router->add('GET', '/contact-show/:id', 'ContactController@show', 'contact.show');
-        
+
+        /**ROUTE PLANQUE */
+        $router->add('GET', '/planque-add', 'PlanqueController@add', 'planque.add');
+        $router->add('POST', '/planque-add', 'PlanqueController@add', 'planque.add');            
 
 
         $router->dispatch();

@@ -74,6 +74,7 @@ class MissionController extends BaseController
             'cible' => $cible,
             'contact' => $contact,
             'agent' => $agent,
+            
            
         ], 'dashboard');
     }
@@ -86,7 +87,7 @@ class MissionController extends BaseController
             $this->redirect('mission-show', 302, 'error', 'Vous ne pouvez pas accéder à cette page de cette façon!');
         }       
         $id = $this->request->get('id');
-        $mission = $this->model->find('mission', $id);
+        $mission = $this->model->getOne('mission', $id);
         
         $this->render('mission/edition', [       
           
