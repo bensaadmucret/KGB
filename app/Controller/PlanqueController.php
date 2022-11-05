@@ -57,8 +57,8 @@ class PlanqueController extends BaseController
         $this->render('planque/add', [
             'title' => 'Dashboard | Ajouter une planque',
             'message' => 'Добро пожаловать в вашу панель управления.',
+            'form' => Authenticator::createPlanque(),
             'user' => $this->session->get('user'),
-            'token' => $this->session->get('token'),
         ], 'dashboard');
         
     }

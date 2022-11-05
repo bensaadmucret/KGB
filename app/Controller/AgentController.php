@@ -41,7 +41,6 @@ class AgentController extends BaseController
             $date_naissance     = $this->request->get('date_naissance');
             $code_identification    = $this->request->get('code_identification');
             $nationalite   = $this->request->get('nationalite');
-            $pays  = $this->request->get('pays');
             $specialite  = $this->request->get('specialite');
             $token = $this->request->get('token');
             $datas = [
@@ -50,7 +49,6 @@ class AgentController extends BaseController
                 'date_naissance' => strip_tags($date_naissance),
                 'code_identification' => strip_tags($code_identification),
                 'nationalite' => strip_tags($nationalite),
-                'pays' => strip_tags($pays),
                 'specialite' => strip_tags($specialite),
                 'created_at' => date('Y-m-d H:i:s'),                
             ];
@@ -102,7 +100,6 @@ class AgentController extends BaseController
             $date_naissance     = $this->request->get('date_naissance');
             $code_identification    = (string) $this->request->get('code_identification');
             $nationalite   = (string)$this->request->get('nationalite');
-            $pays  = (string)$this->request->get('pays');
             $specialite  = $this->request->get('specialite'); 
             $updated_at = (new \DateTime())->format('Y-m-d');          
             $datas = [
@@ -111,7 +108,6 @@ class AgentController extends BaseController
                 'date_naissance' => $date_naissance,
                 'code_identification' => strip_tags($code_identification),
                 'nationalite' => strip_tags($nationalite),
-                'pays' => strip_tags($pays),
                 'specialite' => strip_tags($specialite),              
                 'updated_at' => (new \DateTime())->format('Y-m-d'),
                 'id' => $id,                               

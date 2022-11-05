@@ -52,17 +52,24 @@ class MissionController extends BaseController
             $code_identification    = $this->request->get('code_identification');
             $nationalite   = $this->request->get('nationalite');
             $specialite  = $this->request->get('specialite');
+            $pays = $this->request->get('pays');
             $token = $this->request->get('token');
+
+            if(Token::isTokenValidInSession($token)):
             $datas = [
                 'nom' => strip_tags($nom),
                 'prenom' => strip_tags($prenom),
                 'date_naissance' => strip_tags($date_naissance),
                 'code_identification' => strip_tags($code_identification),
                 'nationalite' => strip_tags($nationalite),
+                'specialite' => strip_tags($specialite),
+                'pays' => strip_tags($pays)
                             
             ];
             $this->model->insert('mission', $datas);
             return $this->redirect('mission-show', 302, 'success', 'mission ajouté avec succès');
+            else: return $this->redirect('mission-show', 302, 'error', 'token invalide');
+            endif;
         }
     
         $this->render('mission/add', [        
