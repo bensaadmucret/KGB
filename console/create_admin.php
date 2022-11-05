@@ -5,12 +5,6 @@ use App\Application;
 use Core\Database\Connection;
 
 $db = Application::getContainer()->get('Database')->connect();
-/*
-try {
-    $db =   Connection::get()->connect();
-} catch (\PDOException $e) {
-    echo $e->getMessage();
-}*/
 
 
 ($lastname = $argv[1]) || die('Please provide a username');
