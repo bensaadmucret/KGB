@@ -280,3 +280,17 @@ function Pays() {
     ];
  
 }
+
+
+function TypeMission(){
+    return [
+        'surveillance' => 'Surveillance',
+        'assassinat' => 'Assassinat',
+        'infiltration' => 'Infiltration',
+        'terrorisme' => 'Terrorisme',
+        'espionnage' => 'Espionnage',
+        'cyber-menaces' => 'Cyber-menaces',
+        'Coup d\'Etat international' => 'Coup d\'Etat international',
+        'sabotage' => 'Sabotage'
+    ];
+}

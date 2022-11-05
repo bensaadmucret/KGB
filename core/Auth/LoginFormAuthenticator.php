@@ -192,10 +192,13 @@ class LoginFormAuthenticator
         $session = new Session();
         $token = Token::generateToken($session); 
         $pays = Pays();
+        $type_mission = TypeMission();
         $form = new FormBuilder();
-        $form->startForm('contact-add', 'POST', 'create form');
-        $form->addFor( 'Nom', '<h4 class="m-3">Nom</h4>')
-        ->addText('nom', '', ['label' => 'Nom', 'required' => true, 'class'=>'form-control ', 'autofocus', 'placeholder' => 'имя'])
+        $form->startForm('planque-add', 'POST', 'create form');
+        $form->addFor( 'Type de mission', '<h4 class="m-3">Type de mission</h4>')
+        ->addSelect('type_de_planque', [ 'class'=>'form-control'], $type_mission)
+        ->addFor( 'Code', '<h4 class="m-3">Code</h4>')
+        ->addText('code', '', ['label' => 'Code', 'required' => true, 'class'=>'form-control ', 'autofocus', 'placeholder' => 'Code'])
         ->addFor( 'Adresse', '<h4 class="m-3">Adresse</h4>')
         ->addTextarea('adresse',  ['label' => 'Adresse', 'required'=> true,  'class'=>'form-control','placeholder' => 'Адрес'])
         ->addFor( 'Pays', '<h4 class="m-3">Pays</h4>')

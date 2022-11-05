@@ -50,9 +50,13 @@ abstract class BaseController
              if($key && $message){
                  Flash::setMessage($key, $message);
              }
-            
+            if($statusCode === 302){
+                header("Location: http://$host$uri/$extra");
+                exit;
+            }else{
              header("Location: http://$host$uri/$extra", TRUE, $statusCode);
              exit;
+            }
          } catch (\Exception $e) {
              return false;
          }

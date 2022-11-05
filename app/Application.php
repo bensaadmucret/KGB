@@ -63,7 +63,13 @@ class Application
 
         /**ROUTE PLANQUE */
         $router->add('GET', '/planque-add', 'PlanqueController@add', 'planque.add');
-        $router->add('POST', '/planque-add', 'PlanqueController@add', 'planque.add');            
+        $router->add('POST', '/planque-add', 'PlanqueController@add', 'planque.add');
+        $router->add('GET', '/planque-show', 'PlanqueController@show', 'planque.show');
+        $router->add('GET', '/planque-edit/:id', 'PlanqueController@edit', 'planque.edit');
+        $router->add('POST', '/planque-edit/planque-update/:id', 'PlanqueController@update', 'planque.update');
+        $router->add('GET', '/planque-delete/:id', 'PlanqueController@delete', 'planque.delete');
+        $router->add('GET', '/planque-show/:id', 'PlanqueController@show', 'planque.show');
+                    
 
 
         $router->dispatch();

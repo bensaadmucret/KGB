@@ -2,7 +2,7 @@
     <form action="contact-update/<?php echo $contact['id']; ?>" method="POST">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Ajouter un contact</h4>
+                <h4 class="card-title">Mise à jour</h4>
             </div>
             <div class="card-body">
                 <div class="row">

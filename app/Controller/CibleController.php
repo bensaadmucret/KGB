@@ -50,8 +50,6 @@ class CibleController extends BaseController
                 'date_naissance' => strip_tags($date_naissance),
                 'code_identification' => strip_tags($code_identification),
                 'nationalite' => strip_tags($nationalite),
-                'pays' => strip_tags($pays)
-           
                           
             ];
             $this->model->insert('cible', $datas);
